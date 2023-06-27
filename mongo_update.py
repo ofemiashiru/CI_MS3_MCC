@@ -21,6 +21,7 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # Update in CRUD using the $set
+# to update multiple items we can use update_many() method
 coll.update_one({"title": "Rush Hour"}, {"$set":{"rating": 99}})
 
 # read the data in the collections

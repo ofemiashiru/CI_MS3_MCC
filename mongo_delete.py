@@ -21,7 +21,9 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # Delete in CRUD
+# to delete many we can use the .delete_many()
 coll.delete_one({'title': 'The Godfather'})
+
 
 # read the data in the collections
 documents = coll.find()

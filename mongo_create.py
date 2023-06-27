@@ -21,6 +21,7 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 
 # Create in CRUD
+# to add in multiple items we can pass multiple dictionaries into a single list new_docs = [{"key": "value"} , {"key": "value"}]
 new_doc = {
     "title": "The Godfather",
     "year": 1972,
