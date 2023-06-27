@@ -20,8 +20,8 @@ conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
 
-# Update in CRUD using the $set
-coll.update_one({"title": "Rush Hour"}, {"$set":{"rating": 99}})
+# Delete in CRUD
+coll.delete_one({'title': 'The Godfather'})
 
 # read the data in the collections
 documents = coll.find()
