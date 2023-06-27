@@ -20,6 +20,7 @@ conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
 
+# Read in CRUD
 documents = coll.find()
 
 for doc in documents:
