@@ -3,7 +3,10 @@
 {% block content%}
     <h1>All Movies</h1>
     {% for movie in movies %}
-    <h2>{{ movie.title }}</h2>
+    <h2>
+        <i class="fa-solid fa-film"></i>
+        {{ movie.title }}
+    </h2>
     <p>{{ movie.year }} | {{movie.director}}</p>
     <p>{{ movie.genre_name }}</p>
     <p>{{ movie.plot }}</p>
