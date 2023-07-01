@@ -1,7 +1,14 @@
+/* MAIN LOGO */
+
+nav .brand-logo{
+    font-size: 1rem;
+    transition: .4s
+}
+
 /* NAVIGATION */
 nav{
+    border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
 }
 
 .sidenav{
@@ -17,9 +24,26 @@ nav{
 }
 
 
+
+/* FOOTER */
+.page-footer{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+/* REGISTER PAGE */
+.card-panel{
+    border-radius: 10px;
+}
+
+
+/* MEDIA QUERIES */
+
 @media (min-width: 446px){
     /* Chnages take place at this stage */
     nav .brand-logo{
-        color: red
+        font-size: 2rem;
+        transition: .4s
     }
 }

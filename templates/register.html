@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <form class="col s12 m4 offset-m4" method="POST" action="{{ url_for('register') }}">
+        <h5>Create account</h5>
+        <div class="card-panel">
+            <!-- username -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <!-- passowrd -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- re_enter passowrd -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="passwordCheck" name="passwordCheck" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="passwordCheck">Re-enter Password</label>
+                </div>
+            </div>
+            <!-- register -->
+            <div class="row">
+                <button type="submit" class="col s12 btn black">
+                    Register
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Already have an account?
+            <a href="#" class="light-blue-text">Sign In ></a>
+        </p>
+    </div>
+</div>
+{% endblock %}

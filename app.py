@@ -5,6 +5,8 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
 
@@ -20,8 +22,21 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/show_movies")
 def show_movies():
+    """
+    Route for home and show_movies
+    """
     movies = mongo.db.movies.find()
     return render_template("movies.html", movies=movies)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """
+    Route for user registration
+    """
+    if request.method == "POST":
+        return "Tried to Register"
+    return render_template("register.html")
 
 
 if __name__ == "__main__":
