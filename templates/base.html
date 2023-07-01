@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <!-- Added for custom styles on each page -->
+    {% block styles %}
+    {% endblock %}
     <title>Movie Crazy Club</title>
 </head>
 <body>
@@ -14,11 +17,15 @@
     {% block content %}
 
     {% endblock %}
-    <!-- Materialize Script -->
+    <!-- Materialize JS Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Font Awesome Script -->
+    <!-- Font Awesome JS Script -->
     <script src="https://kit.fontawesome.com/27cb7f1fb6.js" crossorigin="anonymous"></script>
-    <!-- Custom Script -->
+    <!-- Custom JS Script -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Added for custom js on each page -->
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>
