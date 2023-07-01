@@ -1,0 +1,21 @@
+/* NAVIGATION */
+nav{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.sidenav{
+    border-top-left-radius: 10px;
+}
+
+.sidenav-close{
+    cursor: pointer;
+}
+
+
+@media (min-width: 446px){
+    /* Chnages take place at this stage */
+    nav .brand-logo{
+        color: red
+    }
+}
