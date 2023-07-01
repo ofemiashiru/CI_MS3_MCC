@@ -12,6 +12,10 @@ nav{
     cursor: pointer;
 }
 
+.sidenav li:not(:first-child) i {
+    margin:0;
+}
+
 
 @media (min-width: 446px){
     /* Chnages take place at this stage */
