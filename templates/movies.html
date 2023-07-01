@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Crazy Club</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content%}
+    <h1>All Movies</h1>
     {% for movie in movies %}
-    <h1>{{ movie.title }}</h1>
+    <h2>{{ movie.title }}</h2>
     <p>{{ movie.year }} | {{movie.director}}</p>
     <p>{{ movie.genre_name }}</p>
     <p>{{ movie.plot }}</p>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
+
