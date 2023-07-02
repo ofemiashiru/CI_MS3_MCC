@@ -11,15 +11,6 @@ nav .brand-logo{
 }
 
 /* NAVIGATION */
-nav{
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-.sidenav{
-    border-top-left-radius: 10px;
-}
-
 .sidenav-close{
     cursor: pointer;
 }
@@ -31,10 +22,6 @@ nav{
 
 
 /* FOOTER */
-.page-footer{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
 
 
 /* REGISTER PAGE */
