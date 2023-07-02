@@ -89,7 +89,7 @@ def sign_in():
             ):
                 # create session for logged in user
                 session["user"] = request.form.get("username").lower()
-                flash(f"Hey, {existing_user['username']}")
+                flash(f"Hey, {existing_user['username']} you are logged in!")
 
                 #  redirect user to profile on successful log in
                 return redirect(url_for(
@@ -106,13 +106,32 @@ def sign_in():
     return render_template("sign_in.html")
 
 
-# USER PROFILE ROUTE
+# USER PROFILE ROUTE WITH CUSTOM
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    if "user" in session:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        return render_template("profile.html", username=session["user"])
 
-    return render_template("profile.html", username=username)
+    flash("You are not currently logged in")
+    return redirect(url_for("sign_in"))
+
+
+# SIGN OUT ROUTE
+@app.route("/sign_out")
+def sign_out():
+    flash("You have been logged out")
+    # remove user from session cookie
+    session.pop("user")
+    return redirect(url_for("sign_in"))
+
+
+# 404 Route - https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":

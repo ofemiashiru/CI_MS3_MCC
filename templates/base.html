@@ -24,7 +24,7 @@
                     <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     <li><a href="#">Add Movie</a></li>
                     <li><a href="#">Manage Genres</a></li>
-                    <li><a href="#">Sign Out</a></li>
+                    <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
                     <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                 </ul>
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ url_for('sign_out') }}">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     Sign Out
                 </a>
