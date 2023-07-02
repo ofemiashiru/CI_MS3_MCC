@@ -35,7 +35,31 @@ def register():
     Route for user registration
     """
     if request.method == "POST":
-        return "Tried to Register"
+        # Check if passwords are matching
+        if request.form.get("password") != request.form.get("passwordCheck"):
+            flash("The passwords do not match")
+            return redirect(url_for("register"))
+
+        # Check if the username exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        # If user name does not exist add new user
+        new_user = {
+            "username": request.form.get("username").lower(),
+            # generate hash for users password
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        
+        # add new user to mongo database
+        mongo.db.users.insert_one(new_user)
+
+        # put the new user in session
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
     return render_template("register.html")
 
 

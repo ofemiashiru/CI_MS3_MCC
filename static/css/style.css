@@ -5,6 +5,11 @@ nav .brand-logo{
     transition: .4s
 }
 
+/* FLASHED MESSAGES */
+.flash-messages h4{
+    font-size: 1rem;
+}
+
 /* NAVIGATION */
 nav{
     border-bottom-right-radius: 10px;
