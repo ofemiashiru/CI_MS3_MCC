@@ -21,12 +21,16 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('show_movies') }}">Home</a></li>
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                    <li><a href="#">Add Movie</a></li>
-                    <li><a href="#">Manage Genres</a></li>
-                    <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
-                    <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <!-- If user exists in session then show relevant links -->
+                    {% if session.user %}
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                        <li><a href="#">Add Movie</a></li>
+                        <li><a href="#">Manage Genres</a></li>
+                        <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -45,42 +49,46 @@
                     Home
                 </a>
             </li>
-            <li>
-                <a href="{{ url_for('profile', username=session['user']) }}">
-                    <i class="fa-solid fa-user"></i>
-                    Profile
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-film"></i>
-                    Add Movie
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-filter"></i>
-                    Manage Genres
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('sign_out') }}">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Sign Out
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('sign_in') }}">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Sign In
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('register') }}">
-                    <i class="fa-solid fa-user-pen"></i>
-                    Register
-                </a>
-            </li>
+            <!-- If user exists in session then show relevant links -->
+            {% if session.user %}
+                <li>
+                    <a href="{{ url_for('profile', username=session['user']) }}">
+                        <i class="fa-solid fa-user"></i>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-film"></i>
+                        Add Movie
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-filter"></i>
+                        Manage Genres
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('sign_out') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Sign Out
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ url_for('sign_in') }}">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Sign In
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('register') }}">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Register
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </header>
 
