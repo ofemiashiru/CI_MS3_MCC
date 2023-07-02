@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-        <h5>Create account</h5>
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('sign_in') }}">
+        <h5>Sign In</h5>
         <div class="card-panel">
             <!-- username -->
             <div class="row">
@@ -22,18 +22,11 @@
                     <label for="password">Password</label>
                 </div>
             </div>
-            <!-- re_enter passowrd -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="passwordCheck" name="passwordCheck" type="password" minlength="5" maxlength="15"
-                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="passwordCheck">Re-enter Password</label>
-                </div>
-            </div>
-            <!-- register -->
+
+            <!-- sign in -->
             <div class="row">
                 <button type="submit" class="col s12 btn black">
-                    Register
+                    Sign in
                 </button>
             </div>
         </div>
@@ -43,9 +36,10 @@
 <div class="row">
     <div class="col s12">
         <p class="center-align">
-            Already have an account?
-            <a href="{{ url_for('sign_in') }}" class="light-blue-text">Sign In ></a>
+            <span>New here?</span>
+            <a href="{{ url_for('register') }}" class="">Create your MCC account</a>
         </p>
     </div>
 </div>
+
 {% endblock %}
