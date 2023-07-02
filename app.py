@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -19,6 +19,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 # ROUTE FOR HOME PAGE AND SHOW MOVIES
 @app.route("/")
 @app.route("/show_movies")
@@ -28,6 +29,7 @@ def show_movies():
     """
     movies = mongo.db.movies.find()
     return render_template("movies.html", movies=movies)
+
 
 # ROUTE FOR REGISTER
 @app.route("/register", methods=["GET", "POST"])
@@ -75,15 +77,15 @@ def sign_in():
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
-
         # if the existing user is truthy
         if existing_user:
             #  compare the password in the db with entered password
-            if check_password_hash(existing_user["password"], 
-                request.form.get("password")):
-                    # create session for logged in user
-                    session["user"] = request.form.get("username").lower()
-                    flash(f"Hey, {existing_user['username']}")
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")
+            ):
+                # create session for logged in user
+                session["user"] = request.form.get("username").lower()
+                flash(f"Hey, {existing_user['username']}")
             else:
                 # if the password is incorrect
                 flash("The credentials you have entered are incorrect")
