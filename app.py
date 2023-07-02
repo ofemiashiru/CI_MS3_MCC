@@ -110,9 +110,10 @@ def sign_in():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     if "user" in session:
+        # Use this section to pull other data through based on username
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-        return render_template("profile.html", username=session["user"])
+        return render_template("profile.html", username=username)
 
     flash("You are not currently logged in")
     return redirect(url_for("sign_in"))
