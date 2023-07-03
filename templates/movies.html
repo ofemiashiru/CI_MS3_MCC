@@ -9,9 +9,13 @@
                     <img class="activator" src="{{ movie.image }}">
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">
+
+                    <span class="card-title activator tooltipped"  data-position="top" data-tooltip="More info">
                         <i class="fa-solid fa-film fa-lg"></i>
-                        {{ movie.title }}<i class="fa-solid fa-ellipsis-vertical right"></i></span>
+                        {{ movie.title }}
+                        <i class="fa-solid fa-ellipsis-vertical right"></i>
+                    </span>
+
                     <p>{{movie.director}} | {{ movie.year }}</p>
                     <p>{{ movie.genre_name }}</p>
                     <p><a href="#">See reviews</a></p>
