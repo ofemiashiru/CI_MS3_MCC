@@ -138,6 +138,14 @@ def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template("404.html"), 404
 
+# ADD MOVIE ROUTE
+@app.route("/add_movie")
+def add_movie():
+    if "user" in session:
+        return render_template("add_movie.html")
+    
+    flash("You need to be logged in to add a movie.")
+    return redirect("sign_in")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

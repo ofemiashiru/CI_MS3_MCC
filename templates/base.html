@@ -24,7 +24,7 @@
                     <!-- If user exists in session then show relevant links -->
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="#">Add Movie</a></li>
+                        <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
                         <li><a href="#">Manage Genres</a></li>
                         <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
                     {% else %}
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('add_movie') }}">
                         <i class="fa-solid fa-film"></i>
                         Add Movie
                     </a>
