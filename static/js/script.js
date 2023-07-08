@@ -10,6 +10,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Get year for footer
 const now = new Date();
-const year = now.getFullYear()
+const year = now.getFullYear();
 const footer = document.querySelector(".footer-copyright .container span");
 footer.innerHTML = `© ${year} Movie Crazy Club`;
+
+
+// Get Movie cover - add_movie.html
+const fetchMovieCover = function(){
+    const movieName = document.querySelector("#move_title").value;
+
+    if(!movieName){
+        document.querySelector('.movie-cover-container__header').innerHTML = "Please Enter a Movie";
+        return;  
+    }
+    // split movie name by space
+    const arrMovieName = movieName.split(" ");
+    // join movie name as a string with + between
+    const strMovieName = arrMovieName.join("+");
+
+    // fetch request
+    fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=a366f18e`)
+    .then(response => response.json())
+    .then(data => {
+        if(data.Response === "False"){
+            document.querySelector('.movie-cover-container__header').innerHTML = `${data.Error}`;
+            document.querySelector("#movie-img").src = "";
+        } else {
+            const omdbMoviePoster = data.Poster;
+            document.querySelector('.movie-cover-container__header').innerHTML = "Movie Found";
+            document.querySelector("#movie-img").src = omdbMoviePoster;
+        }
+
+    })
+    .catch((error) => {
+        console.error(error);
+    })
+
+}

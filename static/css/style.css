@@ -29,6 +29,12 @@ nav .brand-logo{
     border-radius: 10px;
 }
 
+/* ADD MOVIE PAGE */
+
+.movie-cover-container img {
+    width: 80%;
+}
+
 
 /* MEDIA QUERIES */
 
