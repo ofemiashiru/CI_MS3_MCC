@@ -17,10 +17,12 @@ footer.innerHTML = `© ${year} Movie Crazy Club`;
 
 // Get Movie cover - add_movie.html
 const fetchMovieCover = function(){
+    // clear img src
+    document.querySelector("#movie-img").src = "";
     const movieName = document.querySelector("#move_title").value;
 
     if(!movieName){
-        document.querySelector('.movie-cover-container__header').innerHTML = "Please Enter a Movie";
+        document.querySelector('.movie-cover-container__header').innerHTML = "Please Enter a Title";
         return;  
     }
     // split movie name by space
@@ -33,11 +35,11 @@ const fetchMovieCover = function(){
     .then(response => response.json())
     .then(data => {
         if(data.Response === "False"){
-            document.querySelector('.movie-cover-container__header').innerHTML = `${data.Error}`;
+            document.querySelector('.movie-cover-container__header').innerHTML = "Poster not Found!";
             document.querySelector("#movie-img").src = "";
         } else {
             const omdbMoviePoster = data.Poster;
-            document.querySelector('.movie-cover-container__header').innerHTML = "Movie Found";
+            document.querySelector('.movie-cover-container__header').innerHTML = "Poster Found";
             document.querySelector("#movie-img").src = omdbMoviePoster;
         }
 
