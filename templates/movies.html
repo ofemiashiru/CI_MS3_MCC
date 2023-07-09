@@ -20,16 +20,13 @@
                             Edit
                         </a>
                         <a class="btn-small red darken-4">Delete</a>
+                        {% if movie.created_by %}
+                            <p>Added by: <em class="grey-text text-darken-4">{{ movie.created_by }}</em></p>
+                        {% endif %}
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
                         <p>{{ movie.plot }}</p>
-                        {% if movie.created_by %}
-                            <span class="card-title grey-text text-darken-4">Added by:</span>
-                            <p>{{ movie.created_by }}</p>
-                        {% else %}
-
-                        {% endif %}
                     </div>
                 </div>
             </div>        
