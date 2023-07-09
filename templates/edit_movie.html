@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <h4>Add movie</h4>
+    <h4>Edit movie</h4>
     <div class="row">
-        <form class="col s6" method="POST" action="{{ url_for('add_movie') }}">
+        <form class="col s6" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="title" name="title" type="text" class="validate" oninput="fetchMovieCover()">
@@ -46,9 +46,13 @@
                 </div>
             </div>
             <div class="row">
+                <a href="{{ url_for('show_movies') }}" class="btn-large red darken-4"> 
+                    <i class="fa-solid fa-xmark right"></i>
+                    Cancel
+                </a>
                 <button class="btn-large green darken-3" type="submit">
-                    <i class="fa-solid fa-plus right"></i>
-                    Add Movie
+                    <i class="fa-solid fa-pen-to-square right"></i>
+                    Update Movie
                 </button>
             </div>
         </form>

@@ -15,7 +15,11 @@
 
                         <p>{{movie.director}} | {{ movie.year }}</p>
                         <p>{{ movie.genre_name }}</p>
-                        <p><a href="#">See reviews</a></p>
+                        <a class="btn-small black">Reviews</a>
+                        <a class="btn-small green darken-3" href="{{ url_for('edit_movie', movie_id=movie._id) }}">
+                            Edit
+                        </a>
+                        <a class="btn-small red darken-4">Delete</a>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
