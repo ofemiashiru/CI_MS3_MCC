@@ -32,7 +32,8 @@ nav .brand-logo{
 /* ADD MOVIE PAGE */
 
 .movie-cover-container img {
-    width: 80%;
+    width: 70%;
+    border-radius: 10px;
 }
 
 

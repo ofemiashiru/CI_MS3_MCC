@@ -144,7 +144,8 @@ def page_not_found(e):
 @app.route("/add_movie")
 def add_movie():
     if "user" in session:
-        return render_template("add_movie.html")
+        genres = list(mongo.db.genres.find().sort("genre_name", 1))
+        return render_template("add_movie.html", genres=genres)
 
     flash("You need to be logged in to add a movie.")
     return redirect("sign_in")

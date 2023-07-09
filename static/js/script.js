@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // tooltip initialization
     let tooltipped = document.querySelectorAll('.tooltipped');
     M.Tooltip.init(tooltipped);
+
+    // drop down initialization
+    let select = document.querySelectorAll('select');
+    M.FormSelect.init(select);
 });
 
 // Get year for footer
@@ -19,10 +23,12 @@ footer.innerHTML = `© ${year} Movie Crazy Club`;
 const fetchMovieCover = function(){
     // clear img src
     document.querySelector("#movie-img").src = "";
-    const movieName = document.querySelector("#move_title").value;
+    document.querySelector("#poster").value = "";
+    const movieName = document.querySelector("#title").value;
 
     if(!movieName){
-        document.querySelector('.movie-cover-container__header').innerHTML = "Please Enter a Title";
+        document.querySelector(".movie-cover-container__header").innerHTML = "Please enter a title";
+        document.querySelector("#poster").value = "Please enter a title";
         return;  
     }
     // split movie name by space
@@ -35,12 +41,15 @@ const fetchMovieCover = function(){
     .then(response => response.json())
     .then(data => {
         if(data.Response === "False"){
-            document.querySelector('.movie-cover-container__header').innerHTML = "Poster not Found!";
+            document.querySelector("#poster").value = "Poster not found!";
             document.querySelector("#movie-img").src = "";
+            document.querySelector(".movie-cover-container__header").innerHTML = "Poster not found!";
+            
         } else {
             const omdbMoviePoster = data.Poster;
-            document.querySelector('.movie-cover-container__header').innerHTML = "Poster Found";
+            document.querySelector(".movie-cover-container__header").innerHTML = "Poster found";
             document.querySelector("#movie-img").src = omdbMoviePoster;
+            document.querySelector("#poster").value = omdbMoviePoster;
         }
 
     })
