@@ -27,7 +27,7 @@ def show_movies():
     """
     Route for home and show_movies
     """
-    movies = list(mongo.db.movies.find())
+    movies = list(mongo.db.movies.find().sort("title", 1))
     return render_template("movies.html", movies=movies)
 
 
@@ -141,8 +141,25 @@ def page_not_found(e):
 
 
 # ADD MOVIE ROUTE
-@app.route("/add_movie")
+@app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
+
+    if request.method == "POST":
+        if "user" in session:
+            movie = {
+                "genre_name": request.form.get("genre_name"),
+                "title": request.form.get("title"),
+                "year": request.form.get("year"),
+                "plot": request.form.get("plot"),
+                "rating": request.form.get("rating"),
+                "director": request.form.get("director"),
+                "poster": request.form.get("poster"),
+                "created_by": session["user"]
+            }
+            mongo.db.movies.insert_one(movie)
+            flash("Your movie has been succesfully added")
+            return redirect(url_for("show_movies"))
+
     if "user" in session:
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
         return render_template("add_movie.html", genres=genres)

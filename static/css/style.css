@@ -19,7 +19,14 @@ nav .brand-logo{
     margin:0;
 }
 
-
+/* MOVIES PAGE */
+.movie-col{
+    margin: 0 5px;
+}
+.movies-row{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 /* FOOTER */
 
@@ -44,5 +51,35 @@ nav .brand-logo{
     nav .brand-logo{
         font-size: 2rem;
         transition: .4s
+    }
+}
+
+/* Mobile */
+@media (min-width: 320px){
+    .movie-col{
+        width:100%;
+     }
+     .movie-title{
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px){
+    .movie-col{
+        width:22%;
+     }
+     .movie-title{
+        font-size: 1rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px){
+    .movie-col{
+        width: 30%;
+     }
+     .movie-title{
+        font-size: 1.5rem;
     }
 }

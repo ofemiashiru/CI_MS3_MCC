@@ -1,32 +1,34 @@
 {% extends "base.html" %}
 
 {% block content%}
-    <div class="row">
+    <div class="movies-row">
         {% for movie in movies %}
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ movie.image }}">
-                </div>
-                <div class="card-content">
+            <div class="movie-col">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{ movie.poster }}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator tooltipped"  data-position="top" data-tooltip="More info">
+                            <span class="movie-title">{{ movie.title }}</span>
+                        </span>
 
-                    <span class="card-title activator tooltipped"  data-position="top" data-tooltip="More info">
-                        <i class="fa-solid fa-film fa-lg"></i>
-                        {{ movie.title }}
-                        <i class="fa-solid fa-ellipsis-vertical right"></i>
-                    </span>
+                        <p>{{movie.director}} | {{ movie.year }}</p>
+                        <p>{{ movie.genre_name }}</p>
+                        <p><a href="#">See reviews</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
+                        <p>{{ movie.plot }}</p>
+                        {% if movie.created_by %}
+                            <span class="card-title grey-text text-darken-4">Added by:</span>
+                            <p>{{ movie.created_by }}</p>
+                        {% else %}
 
-                    <p>{{movie.director}} | {{ movie.year }}</p>
-                    <p>{{ movie.genre_name }}</p>
-                    <p><a href="#">See reviews</a></p>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
-                    <p>{{ movie.plot }}</p>
-                    <span class="card-title grey-text text-darken-4">Actors</span>
-                </div>
-            </div>
-        </div>        
+            </div>        
         {% endfor %}
     </div>
 {% endblock %}
