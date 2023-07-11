@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // drop down initialization
     let select = document.querySelectorAll('select');
     M.FormSelect.init(select);
+
+    // modal initialisation
+    let modal = document.querySelectorAll('.modal');
+    M.Modal.init(modal);
 /*
     vanilla JavaScript for validating the materialize dropdown - 
     taken from https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js

@@ -27,7 +27,7 @@ def show_movies():
     """
     Route for home and show_movies
     """
-    movies = list(mongo.db.movies.find().sort("title", 1))
+    movies = list(mongo.db.movies.find().sort("rating", 1))
     return render_template("movies.html", movies=movies)
 
 
@@ -112,6 +112,9 @@ def sign_in():
 # USER PROFILE ROUTE WITH CUSTOM
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Route for the user profile route with additional custom route
+    """
     if "user" in session:
         # Use this section to pull other data through based on username
         username = mongo.db.users.find_one(
@@ -125,6 +128,9 @@ def profile(username):
 # SIGN OUT ROUTE
 @app.route("/sign_out")
 def sign_out():
+    """
+    Route to allow user to sign out of their account
+    """
     if "user" in session:
         # remove user from session cookie
         session.pop("user")
@@ -136,6 +142,9 @@ def sign_out():
 # 404 Route - https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
 @app.errorhandler(404)
 def page_not_found(e):
+    """
+    Route for all 404 errors
+    """
     # note that we set the 404 status explicitly
     return render_template("404.html"), 404
 
@@ -143,7 +152,9 @@ def page_not_found(e):
 # ADD MOVIE ROUTE
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
-
+    """
+    Route to allow isers to add movies
+    """
     if request.method == "POST":
         if "user" in session:
             movie = {
@@ -171,8 +182,26 @@ def add_movie():
 # EDIT MOVIE ROUTE
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
+    """
+    Route to allow users to edit and update movie
+    """
+    if request.method == "POST":
+        updated_movie = {
+            "genre_name": request.form.get("genre_name"),
+            "title": request.form.get("title"),
+            "year": request.form.get("year"),
+            "plot": request.form.get("plot"),
+            "rating": request.form.get("rating"),
+            "director": request.form.get("director"),
+            "poster": request.form.get("poster"),
+            "created_by": session["user"]
+        }
+        mongo.db.movies.update_one(
+            {"_id": ObjectId(movie_id)}, {"$set": updated_movie})
+        flash("Your movie has been succesfully updated")
+        return redirect(url_for("show_movies"))
+
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-    
     genres = list(mongo.db.genres.find().sort("genre_name", 1))
     return render_template("edit_movie.html", movie=movie, genres=genres)
 
