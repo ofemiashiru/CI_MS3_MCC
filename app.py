@@ -206,7 +206,6 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", movie=movie, genres=genres)
 
 
-
 @app.route("/delete_movie/<movie_id>")
 def delete_movie(movie_id):
     if "user" in session:
