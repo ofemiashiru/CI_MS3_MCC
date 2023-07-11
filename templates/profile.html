@@ -8,12 +8,12 @@
                 {{ username }}'s account
             </h3>
 
-            <h5>My movies</h5>
+            <h5 class="center">My movies</h5>
             <ul class="collapsible">
                 {% for movie in users_movies %}
                     <li>
                         <div class="collapsible-header">
-                            {{ movie.title }}
+                            <i class="fa-solid fa-caret-down"></i> {{ movie.title }}
                         </div>
                         <div class="collapsible-body">
                             <a class="btn-small green darken-3" href="{{ url_for('edit_movie', movie_id=movie._id) }}">
@@ -25,8 +25,8 @@
                             </a>
                             {% for review in reviews %}
                                 {% if movie.title|lower == review.title|lower  %}
-                                    <p>{{ review.review }}</p>
-                                    <p class="grey-text text-darken-1">Reviewed by: <em>{{ review.created_by}}</em></p>
+                                    <p class="flow-text">{{ review.review }}</p>
+                                    <em class="grey-text text-darken-1">{{ review.created_by}}</em>                 
                                 {% endif %}
                             {% endfor %}
                         </div>
