@@ -16,10 +16,12 @@
                         <p>{{movie.director}} | {{ movie.year }}</p>
                         <p>{{ movie.genre_name }}</p>
                         <a class="btn-small black">Reviews</a>
-                        <a class="btn-small green darken-3" href="{{ url_for('edit_movie', movie_id=movie._id) }}">
-                            Edit
-                        </a>
-                        <a class="btn-small red darken-4">Delete</a>
+                        {% if session.user|lower == movie.created_by|lower %}
+                            <a class="btn-small green darken-3" href="{{ url_for('edit_movie', movie_id=movie._id) }}">
+                                Edit
+                            </a>
+                            <a class="btn-small red darken-4">Delete</a>
+                        {% endif %}
                         {% if movie.created_by %}
                             <p>added by: <em class="grey-text text-darken-4">{{ movie.created_by }}</em></p>
                         {% endif %}
