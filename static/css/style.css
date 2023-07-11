@@ -7,7 +7,7 @@ nav .brand-logo{
 
 /* FLASHED MESSAGES */
 .flash-messages h4{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 /* NAVIGATION */
@@ -36,6 +36,16 @@ nav .brand-logo{
 
     margin: 5px 0;
     padding: 0 10px;
+}
+
+.modal{
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+.modal .modal-footer{
+    text-align: center;
 }
 
 /* ADD MOVIE PAGE */

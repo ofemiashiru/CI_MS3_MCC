@@ -206,6 +206,15 @@ def edit_movie(movie_id):
     return render_template("edit_movie.html", movie=movie, genres=genres)
 
 
+
+@app.route("/delete_movie/<movie_id>")
+def delete_movie(movie_id):
+    if "user" in session:
+        mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
+        flash("Movie has been successfully deleted")
+        return redirect(url_for("show_movies"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
