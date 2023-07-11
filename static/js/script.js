@@ -4,16 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
     M.Sidenav.init(sidenav, {edge:"right"});
 
     // tooltip initialization
-    let tooltipped = document.querySelectorAll('.tooltipped');
+    let tooltipped = document.querySelectorAll(".tooltipped");
     M.Tooltip.init(tooltipped);
 
     // drop down initialization
-    let select = document.querySelectorAll('select');
+    let select = document.querySelectorAll("select");
     M.FormSelect.init(select);
 
     // modal initialisation
-    let modal = document.querySelectorAll('.modal');
+    let modal = document.querySelectorAll(".modal");
     M.Modal.init(modal);
+
+    // collapsabile initialization
+    let collapsible = document.querySelectorAll(".collapsible");
+    M.Collapsible.init(collapsible);
 /*
     vanilla JavaScript for validating the materialize dropdown - 
     taken from https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js

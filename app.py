@@ -119,7 +119,17 @@ def profile(username):
         # Use this section to pull other data through based on username
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-        return render_template("profile.html", username=username)
+        # Bring back all the users movies
+        users_movies = list(mongo.db.movies.find({"created_by": username}))
+        # bring back all reviews for the users movie
+        reviews = list(mongo.db.reviews.find())
+
+        return render_template(
+            "profile.html",
+            username=username,
+            users_movies=users_movies,
+            reviews=reviews
+        )
 
     flash("You are not currently logged in")
     return redirect(url_for("sign_in"))
