@@ -67,6 +67,7 @@ const fetchMovieCover = function(){
     document.querySelector("#poster").value = "";
     const movieName = document.querySelector("#title").value;
 
+
     if(!movieName){
         document.querySelector(".movie-cover-container__header").innerHTML = "Please enter a title";
         document.querySelector("#poster").value = "Please enter a title";
@@ -85,12 +86,14 @@ const fetchMovieCover = function(){
             document.querySelector("#poster").value = "Poster not found!";
             document.querySelector("#movie-img").src = "";
             document.querySelector(".movie-cover-container__header").innerHTML = "Poster not found!";
+            document.querySelector(".preloader-wrapper").classList.remove("hidden");
             
         } else {
             const omdbMoviePoster = data.Poster;
             document.querySelector(".movie-cover-container__header").innerHTML = "Poster found";
             document.querySelector("#movie-img").src = omdbMoviePoster;
             document.querySelector("#poster").value = omdbMoviePoster;
+            document.querySelector(".preloader-wrapper").classList.add("hidden");
         }
 
     })
