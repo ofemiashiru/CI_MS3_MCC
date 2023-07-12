@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% block title %}
+    All Movies
+{% endblock %}
 {% block content%}
     <div class="movies-row">
         {% for movie in movies %}
@@ -15,13 +18,25 @@
 
                         <p>{{movie.director}} | {{ movie.year }}</p>
                         <p>{{ movie.genre_name }}</p>
-                        <a class="btn-small black">Reviews</a>
+                        <a class="btn-small black tooltipped"
+                            data-position="top" data-tooltip="See Reviews"
+                            aria-label="See Reviews">
+                            <i class="fa-solid fa-comment"></i>
+                        </a>
                         {% if session.user|lower == movie.created_by|lower %}
-                            <a class="btn-small green darken-3" href="{{ url_for('edit_movie', movie_id=movie._id) }}">
-                                Edit
+                            <a class="btn-small green darken-3 tooltipped" 
+                                href="{{ url_for('edit_movie', movie_id=movie._id) }}"
+                                data-position="top" data-tooltip="Edit Movie"
+                                aria-label="Edit Movie">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                             </a>
                             <!-- Modal Trigger -->
-                            <a href="#modal-delete-{{ movie._id }}" class="btn-small red darken-4 modal-trigger">Delete</a>
+                            <a href="#modal-delete-{{ movie._id }}" 
+                                class="btn-small red darken-4 modal-trigger tooltipped"
+                                data-position="top" data-tooltip="Delete Movie"
+                                aria-label="Delete Movie">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
                         {% endif %}
                         {% if movie.created_by %}
                             <p class="grey-text text-darken-1">added by: <em>{{ movie.created_by }}</em></p>
