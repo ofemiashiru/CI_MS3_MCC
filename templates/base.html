@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
     <!-- Materialize Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <!-- Custom Styles -->
@@ -17,9 +21,11 @@
         <!-- main navbar -->
         <nav class="nav-extended text-shadow black">
             <div class="nav-wrapper">
-                <a href="{{ url_for('show_movies') }}" class="brand-logo">Movie Crazy Club</a>
+                <a href="{{ url_for('show_movies') }}" class="brand-logo">
+                    <span>movie.crazy.club</span>
+                </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down nav-body">
                     <li><a href="{{ url_for('show_movies') }}">Home</a></li>
                     <!-- If user exists in session then show relevant links -->
                     {% if session.user %}
@@ -36,12 +42,12 @@
         </nav>
 
         <!-- mobile navbar -->
-        <ul class="sidenav" id="mobile-demo">
+        <ul class="sidenav nav-body" id="mobile-demo">
             <li>
-                <h4 class="center-align black-text mobile-nav-logo">
-                    <i class="fa-solid fa-xmark fa-sm sidenav-close"></i>
-                    Movie Crazy Club
-                </h4>
+                <i class="fa-solid fa-xmark fa-xl sidenav-close"></i>
+                <a href="{{ url_for('show_movies') }}" class="brand-logo side-nav-logo">
+                    <span>movie.crazy.club</span>
+                </a>
             </li>
             <li>
                 <a href="{{ url_for('show_movies') }}">
@@ -114,13 +120,11 @@
     <footer class="page-footer black">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Movie Crazy Club</h5>
-                    <p class="white-text">Developed by Femi Ashiru for Code Institute's Milestone Project 3 2023</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="">Socials</h5>
-                    <ul>
+                <div class="col l12 s12 center">
+                    <a href="{{ url_for('show_movies') }}" class="brand-logo">
+                        <span>movie.crazy.club</span>
+                    </a>
+                    <ul class="socials">
                         <li>
                             <a class="white-text" target="_blank" href="https://www.linkedin.com/in/ofemiashiru/">
                                 <i class="fa-brands fa-linkedin fa-xl"></i> LinkedIn
@@ -137,11 +141,14 @@
                             </a>
                         </li>
                     </ul>
+                    <p class="white-text">Developed by Femi Ashiru for Code Institute's Milestone Project 3 2023</p>
+                    <p class="white-text">Inspired by iMDb</p>
                 </div>
+
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="container">
+            <div class="container center">
                 <span></span>
             </div>
         </div>

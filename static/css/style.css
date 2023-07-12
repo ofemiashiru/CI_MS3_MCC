@@ -1,18 +1,44 @@
+/* BODY */
+*{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -0.5px;
+}
+
 /* MAIN LOGO */
 
 nav .brand-logo{
-    font-size: 1rem;
     transition: .4s
 }
 
+.brand-logo span{
+    font-size: 1.4rem;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #000000;
+    border: 1px solid rgb(187, 155, 13);
+    background-color: rgb(187, 155, 13);
+    border-radius: 5px;
+    margin: 0;
+    padding: 5px;
+}
+
+.side-nav-logo{
+    display: inline !important;
+    margin: 0;
+    padding: 0 !important;
+}
+
 /* FLASHED MESSAGES */
+
 .flash-messages h4{
     font-size: 1.2rem;
 }
 
 /* NAVIGATION */
+
 .sidenav-close{
     cursor: pointer;
+    display: inline;
+    margin: 10px;
 }
 
 .sidenav li:not(:first-child) i {
@@ -56,6 +82,14 @@ nav .brand-logo{
 
 /* FOOTER */
 
+.socials{
+    margin: 30px 0;
+}
+
+.socials li{
+    display: inline;
+    padding: 10px;
+}
 
 /* REGISTER PAGE */
 .card-panel{
@@ -92,6 +126,9 @@ nav .brand-logo{
 
 /* Tablet */
 @media (min-width: 768px){
+    nav .brand-logo{
+        margin: 0;
+    }
     .movie-col{
         width:23%;
      }
@@ -102,6 +139,10 @@ nav .brand-logo{
 
 /* Desktop */
 @media (min-width: 1024px){
+    nav .brand-logo{
+        margin: 0 20px;
+    }
+
     .movie-col{
         width: 31%;
      }
