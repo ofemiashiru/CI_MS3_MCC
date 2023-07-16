@@ -8,13 +8,13 @@
     <div class="row">
         {% for genre in genres %}
             <div class="col l4 s12 m6">
-                <div class="card darken-1">
+                <div class="card genre-card">
                     <div class="card-content black-text">
                         <span class="card-title center">{{ genre.genre_name }}</span>
                     </div>
                     <div class="card-action center">
                         <a class="btn-small green darken-3 tooltipped" 
-                        href="#"
+                        href="{{ url_for('edit_genre', genre_id=genre._id )}}"
                         data-position="top" data-tooltip="Edit Genre"
                         aria-label="Edit Genre">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -41,5 +41,11 @@
                 </div>
             </div>  
         {% endfor %}
+    </div>
+    <div class="row center">
+        <a class="btn-large green darken-3" href="{{ url_for('add_genre')}}" aria-label="Add genre page">
+            <i class="fa-solid fa-plus right"></i>
+            Add genre
+        </a>
     </div>
 {% endblock %}

@@ -1,3 +1,7 @@
+:root {
+    --gold: #bb9b0d;
+  }
+
 /* BODY */
 *{
     font-family: 'Roboto', sans-serif;
@@ -14,8 +18,8 @@ nav .brand-logo{
     font-size: 1.4rem;
     font-family: 'Bebas Neue', sans-serif;
     color: #000000;
-    border: 1px solid rgb(187, 155, 13);
-    background-color: rgb(187, 155, 13);
+    border: 1px solid var(--gold);
+    background-color: var(--gold);
     border-radius: 5px;
     margin: 0;
     padding: 5px;
@@ -78,6 +82,13 @@ nav .brand-logo{
 
 .hidden{
     display: none;
+}
+
+/* MANGE GENRE PAGE */
+
+.genre-card .card-content{
+    background-color: var(--gold);
+
 }
 
 /* FOOTER */

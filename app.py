@@ -226,12 +226,46 @@ def delete_movie(movie_id):
 
 @app.route("/show_genres")
 def show_genres():
+    """
+    Route used to display all genres
+    """
     if "user" in session and session["user"].lower() == "admin":
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
         return render_template("genres.html", genres=genres)
     flash("You need to be logged in as admin")
     return redirect(url_for("sign_in"))
 
+
+@app.route("/add_genre", methods=["GET", "POST"])
+def add_genre():
+    """
+    Route used to add genres
+    """
+    if "user" in session and session["user"].lower() == "admin":
+        if request.method == "POST":
+            genre = request.form.get("genre_name")
+            mongo.db.genres.insert_one({"genre_name": genre})
+            flash("Genre successfully added")
+            return redirect("show_genres")
+        return render_template("add_genre.html")
+    flash("You need to be logged in as admin")
+    return redirect(url_for("sign_in"))
+
+@app.route("/edit_genre/<genre_id>", methods=["GET","POST"])
+def edit_genre(genre_id):
+    """
+    Route used to edit a single genre
+    """  
+    if "user" in session and session["user"].lower() == "admin":
+        if request.method == "POST":
+            updated_genre = {
+                "genre_name" : request.form.get("genre_name")
+            }
+        genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+        return render_template("edit_genre.html", genre=genre)
+
+    flash("You need to be logged in as admin")
+    return redirect(url_for("sign_in"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

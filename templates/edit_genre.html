@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Movie
+{% endblock %}
+
+{% block content %}
+    <h4>Edit genre</h4>
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('edit_genre', genre_id=genre._id) }}">
+            <div class="row">
+                <div class="input-field col s12">
+                    
+                    <input id="genre_name" name="genre_name" value="{{ genre.genre_name }}"  type="text" class="validate" required>
+                    <label for="title">Genre</label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="row">
+                    <a href="#!" onclick="history.back()" class="btn-large red darken-4"> 
+                        <i class="fa-solid fa-xmark right"></i>
+                        Cancel
+                    </a>
+                    <button class="btn-large green darken-3" type="submit">
+                        <i class="fa-solid fa-pen-to-square right"></i>
+                        Update Movie
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
