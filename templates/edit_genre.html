@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h4>Edit genre</h4>
+    <h4 class="center">Edit genre</h4>
     <div class="row">
         <form class="col s12" method="POST" action="{{ url_for('edit_genre', genre_id=genre._id) }}">
             <div class="row">
@@ -17,7 +17,7 @@
             </div>
             <div class="row center">
                 <div class="row">
-                    <a href="#!" onclick="history.back()" class="btn-large red darken-4"> 
+                    <a href="#!" class="cancel-btn btn-large red darken-4"> 
                         <i class="fa-solid fa-xmark right"></i>
                         Cancel
                     </a>

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h4>Add movie</h4>
+    <h4 class="center">Add movie</h4>
     <div class="row">
         <form class="col s6" method="POST" action="{{ url_for('add_movie') }}">
             <div class="row">
@@ -51,6 +51,10 @@
                 </div>
             </div>
             <div class="row">
+                <a href="#!" class="cancel-btn btn-large red darken-4"> 
+                    <i class="fa-solid fa-xmark right"></i>
+                    Cancel
+                </a>
                 <button class="btn-large green darken-3" type="submit">
                     <i class="fa-solid fa-plus right"></i>
                     Add Movie
