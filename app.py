@@ -99,11 +99,11 @@ def sign_in():
                     "profile", username=session["user"]))
             else:
                 # if the password is incorrect
-                flash("The credentials you have entered are incorrect")
+                flash("The credentials you have entered are incorrect.")
                 return redirect(url_for("sign_in"))
         else:
             # if the username is incorrect
-            flash("The credentials you have entered are incorrect")
+            flash("The credentials you have entered are incorrect.")
             return redirect(url_for("sign_in"))
 
     return render_template("sign_in.html")
@@ -131,7 +131,7 @@ def profile(username):
             reviews=reviews
         )
 
-    flash("You are not currently logged in")
+    flash("You are not currently logged in.")
     return redirect(url_for("sign_in"))
 
 
@@ -178,7 +178,7 @@ def add_movie():
                 "created_by": session["user"]
             }
             mongo.db.movies.insert_one(movie)
-            flash("Your movie has been succesfully added")
+            flash("Your movie has been succesfully added.")
             return redirect(url_for("show_movies"))
 
     if "user" in session:
@@ -208,7 +208,7 @@ def edit_movie(movie_id):
         }
         mongo.db.movies.update_one(
             {"_id": ObjectId(movie_id)}, {"$set": updated_movie})
-        flash("Your movie has been succesfully updated")
+        flash("Your movie has been succesfully updated.")
         return redirect(url_for("show_movies"))
 
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
@@ -220,7 +220,7 @@ def edit_movie(movie_id):
 def delete_movie(movie_id):
     if "user" in session:
         mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
-        flash("Movie has been successfully deleted")
+        flash("Movie has been successfully deleted.")
         return redirect(url_for("show_movies"))
 
 
@@ -232,7 +232,7 @@ def show_genres():
     if "user" in session and session["user"].lower() == "admin":
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
         return render_template("genres.html", genres=genres)
-    flash("You need to be logged in as admin")
+    flash("You need to be logged in as admin.")
     return redirect(url_for("sign_in"))
 
 
@@ -245,10 +245,10 @@ def add_genre():
         if request.method == "POST":
             genre = request.form.get("genre_name")
             mongo.db.genres.insert_one({"genre_name": genre})
-            flash("Genre successfully added")
+            flash("Genre successfully added.")
             return redirect("show_genres")
         return render_template("add_genre.html")
-    flash("You need to be logged in as admin")
+    flash("You need to be logged in as admin.")
     return redirect(url_for("sign_in"))
 
 
@@ -272,13 +272,27 @@ def edit_genre(genre_id):
             mongo.db.movies.update_many(
                 {"genre_name":  prev_genre}, {"$set": updated_genre})
 
-            flash("Genre succesfully updated and all associated movies")
+            flash("Genre succesfully updated and all associated movies.")
             return redirect(url_for("show_genres"))
         genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
         return render_template("edit_genre.html", genre=genre)
 
-    flash("You need to be logged in as admin")
+    flash("You need to be logged in as admin.")
     return redirect(url_for("sign_in"))
+
+
+@app.route("/delete_genre/<genre_id>")
+def delete_genre(genre_id):
+    if "user" in session and session["user"] == "admin":
+        # Grab genre name to delete associated movies
+        genre = mongo.db.genres.find_one(
+            {"_id": ObjectId(genre_id)})["genre_name"]
+        # Find all movies associated with genre and delete
+        mongo.db.movies.delete_many({"genre_name": genre})
+        # Finally find the genre and delete it
+        mongo.db.genres.find_one_and_delete({"_id": ObjectId(genre_id)})
+        flash("Genre succesfully deleted and all associated movies.")
+        return redirect(url_for("show_genres"))
 
 
 if __name__ == "__main__":

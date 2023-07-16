@@ -37,7 +37,7 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-close btn red darken-4">No</a>
-                    <a href="#!" class="modal-close btn green darken-3">Yes</a>
+                    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="modal-close btn green darken-3">Yes</a>
                 </div>
             </div>  
         {% endfor %}
