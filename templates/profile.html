@@ -20,7 +20,10 @@
                                 <i class="fa-solid fa-caret-down"></i> <span>{{ movie.title }}</span>
                             </div>
                             <div class="collapsible-body">
-                                <a class="btn-small green darken-3 tooltipped" 
+                                <div class="collapsible__img-container">
+                                    <img  src="{{ movie.poster }}" alt="{{ movie.title }} image"/>
+                                </div>
+                                <a class="collapsible__btn btn-small green darken-3 tooltipped" 
                                     aria-label="Edit Movie" href="{{ url_for('edit_movie', movie_id=movie._id) }}"
                                     data-position="top" data-tooltip="Edit Movie">
                                         <i class="fa-solid fa-pen-to-square"></i>
@@ -28,7 +31,7 @@
                                 <!-- Modal Trigger -->
                                 <a href="#modal-delete-{{ movie._id }}" 
                                     aria-label="Delete Movie" 
-                                    class="btn-small red darken-4 modal-trigger tooltipped"
+                                    class="collapsible__btn btn-small red darken-4 modal-trigger tooltipped"
                                     data-position="top" data-tooltip="Delete Movie">
                                         <i class="fa-solid fa-trash"></i>
                                 </a>

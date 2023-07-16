@@ -108,10 +108,19 @@ nav .brand-logo{
 }
 
 /* ADD MOVIE PAGE */
-
 .movie-cover-container img {
     width: 70%;
     border-radius: 10px;
+}
+
+/* PROFILE */
+
+.collapsible__img-container{
+    width: 100px;
+}
+
+.collapsible__img-container img{
+    width: 100%;
 }
 
 
