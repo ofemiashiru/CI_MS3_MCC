@@ -17,15 +17,31 @@
             </div>
             <div class="row center">
                 <div class="row">
-                    <a href="#!" class="cancel-btn btn-large red darken-4"> 
+                    <a href="{{ url_for('show_genres') }}" class="cancel-btn btn-large red darken-4"> 
                         <i class="fa-solid fa-xmark right"></i>
                         Cancel
                     </a>
-                    <button class="btn-large green darken-3" type="submit">
+                    <!-- Modal Trigger -->
+                    <a href="#modal-update-{{ genre._id }}" 
+                    class="btn-large green darken-3 modal-trigger"
+                    data-position="top" data-tooltip="Update Genre"
+                    aria-label="Update Genre">
                         <i class="fa-solid fa-pen-to-square right"></i>
                         Update Movie
+                    </a>
+                </div>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modal-update-{{ genre._id }}" class="modal">
+                <div class="modal-content">
+                    <h5>Are you sure you want to update {{ genre.genre_name }}</h5>
+                    <span>Warning! Updating this genre will effect all associated movies.</span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close btn red darken-4">No</a>
+                    <button class="modal-clos btn green darken-3" type="submit">
+                        Yes
                     </button>
-                    <p>Warning! Updating this genre will effect all associated movies.</p>
                 </div>
             </div>
         </form>

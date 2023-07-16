@@ -61,10 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Cancel Buttons
-document.querySelector(".cancel-btn").addEventListener("click", function(){
-    history.back();
-});
 
 // Get year for footer
 const now = new Date();

@@ -258,16 +258,17 @@ def edit_genre(genre_id):
     """  
     if "user" in session and session["user"].lower() == "admin":
         # Grabs the previous genre and stores it
-        prev_genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+        prev_genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["genre_name"]
         if request.method == "POST":
             updated_genre = {
                 "genre_name" : request.form.get("genre_name")
             }
+            # Update genre
             mongo.db.genres.update_one(
-                {"_id": ObjectId(genre_id)}, {"$set": updated_genre})
+                {"_id": ObjectId(genre_id)}, {"$set": updated_genre}) 
             # Uses the previous genre to update all associated movies
             mongo.db.movies.update_many(
-                {"genre_name" :  prev_genre['genre_name']}, {"$set" : updated_genre})
+                {"genre_name" :  prev_genre}, {"$set" : updated_genre})
 
             flash("Your genre has been succesfully updated and all associated movies")
             return redirect(url_for("show_genres"))
