@@ -269,7 +269,7 @@ def edit_genre(genre_id):
             mongo.db.movies.update_many(
                 {"genre_name" :  prev_genre['genre_name']}, {"$set" : updated_genre})
 
-            flash("Your genre has been succesfully updated")
+            flash("Your genre has been succesfully updated and all associated movies")
             return redirect(url_for("show_genres"))
         genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
         return render_template("edit_genre.html", genre=genre)
