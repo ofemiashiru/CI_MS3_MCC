@@ -224,6 +224,15 @@ def delete_movie(movie_id):
         return redirect(url_for("show_movies"))
 
 
+@app.route("/show_genres")
+def show_genres():
+    if "user" in session and session["user"].lower() == "admin":
+        genres = list(mongo.db.genres.find().sort("genre_name", 1))
+        return render_template("genres.html", genres=genres)
+    flash("You need to be logged in as admin")
+    return redirect(url_for("sign_in"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

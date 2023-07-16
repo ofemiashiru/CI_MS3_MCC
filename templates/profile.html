@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col s12 m8 offset-m2">
+        <div class="col ls12 m8 offset-m2">
             <div class="card-panel">
                 <h3 class="center-align light-blue-text text-darken-4">
                     {{ username }}'s account
@@ -52,6 +52,9 @@
                         </div>    
                     {% endfor %}
                 </ul>
+                {% if session.user == "admin" %}
+                    <h5 class="center">All users</h5>
+                {% endif %}
             </div>
         </div>
     </div>
