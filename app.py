@@ -251,32 +251,35 @@ def add_genre():
     flash("You need to be logged in as admin")
     return redirect(url_for("sign_in"))
 
-@app.route("/edit_genre/<genre_id>", methods=["GET","POST"])
+
+@app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     """
     Route used to edit a single genre
-    """  
+    """
     if "user" in session and session["user"].lower() == "admin":
         # Grabs the previous genre and stores it
-        prev_genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["genre_name"]
+        prev_genre = mongo.db.genres.find_one(
+            {"_id": ObjectId(genre_id)})["genre_name"]
         if request.method == "POST":
             updated_genre = {
-                "genre_name" : request.form.get("genre_name")
+                "genre_name": request.form.get("genre_name")
             }
             # Update genre
             mongo.db.genres.update_one(
-                {"_id": ObjectId(genre_id)}, {"$set": updated_genre}) 
+                {"_id": ObjectId(genre_id)}, {"$set": updated_genre})
             # Uses the previous genre to update all associated movies
             mongo.db.movies.update_many(
-                {"genre_name" :  prev_genre}, {"$set" : updated_genre})
+                {"genre_name":  prev_genre}, {"$set": updated_genre})
 
-            flash("Your genre has been succesfully updated and all associated movies")
+            flash("Genre succesfully updated and all associated movies")
             return redirect(url_for("show_genres"))
         genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
         return render_template("edit_genre.html", genre=genre)
 
     flash("You need to be logged in as admin")
     return redirect(url_for("sign_in"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
