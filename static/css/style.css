@@ -123,6 +123,17 @@ nav .brand-logo{
     width: 100%;
 }
 
+/* REVIEWS */
+
+.review_plot{
+    font-size: 1.3rem;
+}
+
+.review-divider{
+    margin-bottom: 50px;
+    border-top: 1px;
+}
+
 
 /* MEDIA QUERIES */
 

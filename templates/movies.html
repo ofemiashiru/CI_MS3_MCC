@@ -16,9 +16,10 @@
                             <span class="movie-title">{{ movie.title }}</span>
                         </span>
 
-                        <p>{{movie.director}} | {{ movie.year }}</p>
+                        <p>{{ movie.director }} | {{ movie.year }}</p>
                         <p>{{ movie.genre_name }}</p>
                         <a class="btn-small black tooltipped"
+                            href="{{ url_for('show_reviews', movie_id=movie._id) }}"
                             data-position="top" data-tooltip="See Reviews"
                             aria-label="See Reviews">
                             <i class="fa-solid fa-comment"></i>

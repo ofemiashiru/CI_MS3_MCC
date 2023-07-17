@@ -295,6 +295,24 @@ def delete_genre(genre_id):
         return redirect(url_for("show_genres"))
 
 
+@app.route("/show_reviews/<movie_id>")
+def show_reviews(movie_id):
+    if "user" in session:
+        # Grab all the movie information
+        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        # Grab all reviews associated with the movie
+        reviews = list(mongo.db.reviews.find({"title": movie["title"]}))
+        return render_template("reviews.html", movie=movie, reviews=reviews)
+
+
+@app.route("/add_review/<movie_id>", methods=["GET", "POST"])
+def add_review(movie_id):
+    if "user" in session:
+        
+        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        return render_template("add_review.html", movie=movie)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

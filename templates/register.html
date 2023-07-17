@@ -7,7 +7,7 @@
 {% block content %}
     <div class="row">
         <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-            <h5>Create account</h5>
+            <h5 class="center">Create account</h5>
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">
@@ -47,7 +47,7 @@
         <div class="col s12">
             <p class="center-align">
                 Already have an account?
-                <a href="{{ url_for('sign_in') }}" class="light-blue-text">Sign In ></a>
+                <a href="{{ url_for('sign_in') }}" class="light-blue-text">Sign In</a>
             </p>
         </div>
     </div>

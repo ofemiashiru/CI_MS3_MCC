@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Review
+{% endblock %}
+
+{% block content %}
+    <h4 class="center">Add review for {{ movie.title }}</h4>
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('add_review', movie_id=movie._id) }}">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="review" name="review" class="materialize-textarea validate"></textarea>
+                    <label for="review">Review</label>
+                </div>
+            </div>
+            <div class="row center">
+                <a href="{{ url_for('show_reviews', movie_id=movie._id) }}" class="cancel-btn btn-large red darken-4"> 
+                    <i class="fa-solid fa-xmark right"></i>
+                    Cancel
+                </a>
+                <button class="btn-large green darken-3" type="submit" aria-label="Add review">
+                    <i class="fa-solid fa-plus right"></i>
+                    Add Review
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
