@@ -99,7 +99,7 @@ def delete_user(user_id):
         flash("User has been succesfully deleted.")
         return redirect(url_for("profile", username=session["user"]))
 
-    if "user" in session and session["user"] != "admin":
+    if "user" in session and session["user"].lower() != "admin":
         delete_user_entirely(user_id)
 
         session.pop("user")
@@ -167,8 +167,8 @@ def profile(username):
             user_info=user_info,
             users_movies=users_movies,
             reviews=reviews,
-            all_users=list(
-                mongo.db.users.find()) if session["user"] == "admin" else []
+            all_users=list(mongo.db.users.find())
+            if session["user"].lower() == "admin" else []
         )
 
     flash("You are not currently logged in.")
@@ -323,7 +323,7 @@ def edit_genre(genre_id):
 
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
-    if "user" in session and session["user"] == "admin":
+    if "user" in session and session["user"].lower() == "admin":
         # Grab genre name to delete associated movies
         genre = mongo.db.genres.find_one(
             {"_id": ObjectId(genre_id)})["genre_name"]
