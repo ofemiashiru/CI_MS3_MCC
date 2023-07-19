@@ -70,6 +70,42 @@ def register():
     return render_template("register.html")
 
 
+def delete_user_entirely(id):
+    """
+    Function to purge user and all associated movies
+    and reviews from mongodb
+    """
+    # Grab user to delete associated movies and reviews
+    user_to_delete = mongo.db.users.find_one(
+        {"_id": ObjectId(id)})["username"]
+    # Find all reviews associated with user and delete
+    mongo.db.reviews.delete_many({"created_by": user_to_delete})
+    # Find all movies associated with user and delete
+    mongo.db.movies.delete_many({"created_by": user_to_delete})
+    # Finally find the user and delete them
+    mongo.db.users.find_one_and_delete({"_id": ObjectId(id)})
+
+
+# ROUTE TO DELETE USER
+@app.route("/delete_user/<user_id>")
+def delete_user(user_id):
+    """
+    Route handles the deletion of a user from the site
+    from both the admin and user themselves
+    """
+    if session["user"] == "admin":
+        delete_user_entirely(user_id)
+
+        flash("User has been succesfully deleted.")
+        return redirect(url_for("profile", username=session["user"]))
+
+    if "user" in session and session["user"] != "admin":
+        delete_user_entirely(user_id)
+
+        session.pop("user")
+        flash("Your account has been succesfully deleted.")
+        return redirect(url_for("show_movies"))
+
 # ROUTE FOR SIGN IN
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
@@ -117,18 +153,21 @@ def profile(username):
     """
     if "user" in session:
         # Use this section to pull other data through based on username
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
+        user_info = mongo.db.users.find_one(
+            {"username": session["user"]})
         # Bring back all the users movies
-        users_movies = list(mongo.db.movies.find({"created_by": username}))
+        users_movies = list(
+            mongo.db.movies.find({"created_by": user_info["username"]}))
         # bring back all reviews for the users movie
         reviews = list(mongo.db.reviews.find())
 
         return render_template(
             "profile.html",
-            username=username,
+            user_info=user_info,
             users_movies=users_movies,
-            reviews=reviews
+            reviews=reviews,
+            all_users=list(
+                mongo.db.users.find()) if session["user"] == "admin" else []
         )
 
     flash("You are not currently logged in.")
@@ -297,12 +336,11 @@ def delete_genre(genre_id):
 
 @app.route("/show_reviews/<movie_id>")
 def show_reviews(movie_id):
-    if "user" in session:
-        # Grab all the movie information
-        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-        # Grab all reviews associated with the movie
-        reviews = list(mongo.db.reviews.find({"title": movie["title"]}))
-        return render_template("reviews.html", movie=movie, reviews=reviews)
+    # Grab all the movie information
+    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+    # Grab all reviews associated with the movie
+    reviews = list(mongo.db.reviews.find({"title": movie["title"]}))
+    return render_template("reviews.html", movie=movie, reviews=reviews)
 
 
 @app.route("/add_review/<movie_id>", methods=["GET", "POST"])

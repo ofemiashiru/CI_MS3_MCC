@@ -9,7 +9,7 @@
         <div class="col ls12 m8 offset-m2">
             <div class="card-panel">
                 <h3 class="center-align light-blue-text text-darken-4">
-                    {{ username }}'s account
+                    {{ user_info.username }}'s account
                 </h3>
 
                 <h5 class="center">My movies</h5>
@@ -57,27 +57,60 @@
                 </ul>
                 {% if session.user == "admin" %}
                     <h5 class="center">All users</h5>
+                    <ul class="collection">
+                        {% for user in all_users %}
+                            <li class="collection-item row">
+                                <div class="col s4">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <h6 class="col s4 center">
+                                    <span>{{ user.username }}</span>
+                                </h6>
+                                <div class="col s4 center">
+                                    <!-- Modal Trigger -->
+                                    <a href="#modal-delete-{{ user._id }}" 
+                                        aria-label="Delete User" 
+                                        class="collapsible__btn btn-small red darken-4 modal-trigger tooltipped"
+                                        data-position="top" data-tooltip="Delete User">
+                                            <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- Modal Structure -->
+                            <div id="modal-delete-{{ user._id }}" class="modal">
+                                <div class="modal-content">
+                                    <h5>Are you sure you want to delete {{ user.username }}</h5>
+                                    <span>Warning! All movies and reviews associated with this account will be deleted.</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                                    <a href="{{ url_for('delete_user', user_id=user._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
+                                </div>
+                            </div>    
+                        {% endfor %}
+                    </ul>
                 {% endif %}
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                No longer want to be a part of the Movie club? 
-                <a href="#modal-delete-account" class="light-blue-text modal-trigger">Click here</a>
-            </p>
+    {% if session.user|lower != "admin" %}
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    No longer want to be a part of the Movie club? 
+                    <a href="#modal-delete-account" class="light-blue-text modal-trigger">Click here</a>
+                </p>
+            </div>
         </div>
-    </div>
+    {% endif %}
     <div id="modal-delete-account" class="modal">
         <div class="modal-content">
             <h5>Are you sure you want to delete your account?</h5>
-            <span>Warning! All movies associated with this account will be deleted.</span>
+            <span>Warning! All movies and reviews associated with this account will be deleted.</span>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
-            <a href="#!" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
+            <a href="{{ url_for('delete_user', user_id=user_info._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
         </div>
     </div> 
 
