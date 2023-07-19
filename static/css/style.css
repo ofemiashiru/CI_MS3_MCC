@@ -1,11 +1,41 @@
 :root {
     --gold: #bb9b0d;
+    --white: #ffffff;
   }
+/* GENERAL */
 
-/* BODY */
 *{
     font-family: 'Roboto', sans-serif;
     letter-spacing: -0.5px;
+}
+
+form{
+    border-radius: 10px; 
+}
+
+.alt-form{
+    background-color: transparent !important;
+}
+
+
+/* BODY */
+body{
+    background-image: url('https://wallpapers.com/images/hd/collage-of-movie-posters-g2fdqahxlakaa7yq.jpg');
+}
+
+.background-cover{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.content--container{
+
 }
 
 /* MAIN LOGO */
@@ -35,6 +65,8 @@ nav .brand-logo{
 
 .flash-messages h4{
     font-size: 1.2rem;
+    display: inline-block;
+    padding: 10px;
 }
 
 /* NAVIGATION */
@@ -82,6 +114,16 @@ nav .brand-logo{
 
 .hidden{
     display: none;
+}
+
+.movie-cover-container__header{
+    color: var(--white)
+}
+
+/* ADD REVIEW PAGE */
+
+.review__image{
+    margin-top: 50px;
 }
 
 /* MANGE GENRE PAGE */

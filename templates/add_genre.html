@@ -5,25 +5,26 @@
 {% endblock %}
 
 {% block content %}
-    <h4 class="center">Add genre</h4>
+    <h4 class="center white-text">Add genre</h4>
     <div class="row">
-        <form class="col s12" method="POST" action="{{ url_for('add_genre') }}">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="genre_name" name="genre_name" type="text" class="validate" required>
-                    <label for="title">Genre</label>
-                </div>
+    <form class="col s12 white" method="POST" action="{{ url_for('add_genre') }}">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="genre_name" name="genre_name" type="text" class="validate" required>
+                <label for="title">Genre</label>
             </div>
-            <div class="row center">
-                <a href="{{ url_for('show_genres') }}" class="cancel-btn btn-large red darken-4"> 
-                    <i class="fa-solid fa-xmark right"></i>
-                    Cancel
-                </a>
-                <button class="btn-large green darken-3" type="submit" aria-label="Add genre">
-                    <i class="fa-solid fa-plus right"></i>
-                    Add Genre
-                </button>
-            </div>
-        </form>
+        </div>
+        <div class="row center">
+            <a href="{{ url_for('show_genres') }}" class="cancel-btn btn-large red darken-4"> 
+                <i class="fa-solid fa-xmark right"></i>
+                Cancel
+            </a>
+            <button class="btn-large green darken-3" type="submit" aria-label="Add genre">
+                <i class="fa-solid fa-plus right"></i>
+                Add Genre
+            </button>
+        </div>
+    </form>
     </div>
+
 {% endblock %}

@@ -17,155 +17,158 @@
     <title>Movie Crazy Club - {% block title %} {% endblock %}</title>
 </head>
 <body>
-    <header>
-        <!-- main navbar -->
-        <nav class="nav-extended text-shadow black">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('show_movies') }}" class="brand-logo">
-                    <span>movie.crazy.club</span>
-                </a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down nav-body">
-                    <li><a href="{{ url_for('show_movies') }}">Home</a></li>
-                    <!-- If user exists in session then show relevant links -->
-                    {% if session.user %}
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
-                        {% if session.user|lower == "admin" %}
-                            <li><a href="{{ url_for('show_genres') }}">Manage Genres</a></li>
-                        {% endif %}
-                        <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-
-        <!-- mobile navbar -->
-        <ul class="sidenav nav-body" id="mobile-demo">
-            <li>
-                <i class="fa-solid fa-xmark fa-xl sidenav-close"></i>
-                <a href="{{ url_for('show_movies') }}" class="brand-logo side-nav-logo">
-                    <span>movie.crazy.club</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('show_movies') }}">
-                    <i class="fa-solid fa-house"></i>
-                    Home
-                </a>
-            </li>
-            <!-- If user exists in session then show relevant links -->
-            {% if session.user %}
-                <li>
-                    <a href="{{ url_for('profile', username=session['user']) }}">
-                        <i class="fa-solid fa-user"></i>
-                        Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('add_movie') }}">
-                        <i class="fa-solid fa-film"></i>
-                        Add Movie
-                    </a>
-                </li>
-                {% if session.user == "admin" %}
-                    <li>
-                        <a href="{{ url_for('show_genres') }}">
-                            <i class="fa-solid fa-filter"></i>
-                            Manage Genres
-                        </a>
-                    </li>
-                {% endif %}
-                <li>
-                    <a href="{{ url_for('sign_out') }}">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        Sign Out
-                    </a>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{{ url_for('sign_in') }}">
-                        <i class="fa-solid fa-right-to-bracket"></i>
-                        Sign In
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('register') }}">
-                        <i class="fa-solid fa-user-pen"></i>
-                        Register
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
-    </header>
-
-    <!-- flash messages -->
-    <div>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row flash-messages">
-                        <h4 class="center-align">{{ message }}</h4>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
-
-    <main class="container">
-        {% block content %}
-        <!-- This is where the main content appears -->
-        {% endblock %}
-    </main>
-
-    <footer class="page-footer black">
-        <div class="container">
-            <div class="row">
-                <div class="col l12 s12 center">
+    <div class="background-cover">
+        <header>
+            <!-- main navbar -->
+            <nav class="nav-extended text-shadow black">
+                <div class="nav-wrapper">
                     <a href="{{ url_for('show_movies') }}" class="brand-logo">
                         <span>movie.crazy.club</span>
                     </a>
-                    <ul class="socials">
-                        <li>
-                            <a class="white-text" target="_blank" href="https://www.linkedin.com/in/ofemiashiru/">
-                                <i class="fa-brands fa-linkedin fa-xl"></i> LinkedIn
-                            </a>
-                        </li>
-                        <li>
-                            <a class="white-text" target="_blank" href="https://github.com/ofemiashiru">
-                                <i class="fa-brands fa-square-github fa-xl"></i> Github
-                            </a>
-                        </li>
-                        <li>
-                            <a class="white-text" target="_blank" href="https://twitter.com/ofemiashiru">
-                                <i class="fa-brands fa-square-twitter fa-xl"></i> Twitter
-                            </a>
-                        </li>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <ul class="right hide-on-med-and-down nav-body">
+                        <li><a href="{{ url_for('show_movies') }}">Home</a></li>
+                        <!-- If user exists in session then show relevant links -->
+                        {% if session.user %}
+                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                            <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
+                            {% if session.user|lower == "admin" %}
+                                <li><a href="{{ url_for('show_genres') }}">Manage Genres</a></li>
+                            {% endif %}
+                            <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
                     </ul>
-                    <p class="white-text">Developed by Femi Ashiru for Code Institute's Milestone Project 3 2023</p>
-                    <p class="white-text">Inspired by iMDb</p>
                 </div>
+            </nav>
 
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container center">
-                <span></span>
-            </div>
-        </div>
-    </footer>
-    <!-- Materialize JS Script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Font Awesome JS Script -->
-    <script src="https://kit.fontawesome.com/27cb7f1fb6.js" crossorigin="anonymous"></script>
-    <!-- Custom JS Script -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+            <!-- mobile navbar -->
+            <ul class="sidenav nav-body" id="mobile-demo">
+                <li>
+                    <i class="fa-solid fa-xmark fa-xl sidenav-close"></i>
+                    <a href="{{ url_for('show_movies') }}" class="brand-logo side-nav-logo">
+                        <span>movie.crazy.club</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('show_movies') }}">
+                        <i class="fa-solid fa-house"></i>
+                        Home
+                    </a>
+                </li>
+                <!-- If user exists in session then show relevant links -->
+                {% if session.user %}
+                    <li>
+                        <a href="{{ url_for('profile', username=session['user']) }}">
+                            <i class="fa-solid fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('add_movie') }}">
+                            <i class="fa-solid fa-film"></i>
+                            Add Movie
+                        </a>
+                    </li>
+                    {% if session.user == "admin" %}
+                        <li>
+                            <a href="{{ url_for('show_genres') }}">
+                                <i class="fa-solid fa-filter"></i>
+                                Manage Genres
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a href="{{ url_for('sign_out') }}">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Sign Out
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('sign_in') }}">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Sign In
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('register') }}">
+                            <i class="fa-solid fa-user-pen"></i>
+                            Register
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </header>
 
-    <!-- Added for custom js on each page -->
-    {% block scripts %}
-    {% endblock %}
+        <!-- flash messages -->
+        <div class="flash__container center">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row flash-messages">
+                            <h4 class="center-align white">{{ message }}</h4>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <main class="container">
+            {% block content %}
+            <!-- This is where the main content appears -->
+            {% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer black">
+            <div class="container">
+                <div class="row">
+                    <div class="col l12 s12 center">
+                        <a href="{{ url_for('show_movies') }}" class="brand-logo">
+                            <span>movie.crazy.club</span>
+                        </a>
+                        <ul class="socials">
+                            <li>
+                                <a class="white-text" target="_blank" href="https://www.linkedin.com/in/ofemiashiru/">
+                                    <i class="fa-brands fa-linkedin fa-xl"></i> LinkedIn
+                                </a>
+                            </li>
+                            <li>
+                                <a class="white-text" target="_blank" href="https://github.com/ofemiashiru">
+                                    <i class="fa-brands fa-square-github fa-xl"></i> Github
+                                </a>
+                            </li>
+                            <li>
+                                <a class="white-text" target="_blank" href="https://twitter.com/ofemiashiru">
+                                    <i class="fa-brands fa-square-twitter fa-xl"></i> Twitter
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="white-text">Developed by Femi Ashiru for Code Institute's Milestone Project 3 2023</p>
+                        <p class="white-text">Inspired by iMDb</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container center">
+                    <span></span>
+                </div>
+            </div>
+        </footer>
+        <!-- Materialize JS Script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- Font Awesome JS Script -->
+        <script src="https://kit.fontawesome.com/27cb7f1fb6.js" crossorigin="anonymous"></script>
+        <!-- Custom JS Script -->
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+        <!-- Added for custom js on each page -->
+        {% block scripts %}
+        {% endblock %}
+    </div>
 </body>
 </html>

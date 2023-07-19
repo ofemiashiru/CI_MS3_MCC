@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-
+    
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('sign_in') }}">
-            <h5 class="center">Sign In</h5>
+        <form class="alt-form col s12 m8 offset-m2" method="POST" action="{{ url_for('sign_in') }}">
+            <h5 class="center white-text">Sign In</h5>
             <div class="card-panel">
                 <!-- username -->
                 <div class="row">
@@ -39,9 +39,9 @@
 
     <div class="row">
         <div class="col s12">
-            <p class="center-align">
+            <p class="center-align white-text">
                 <span>New here?</span>
-                <a href="{{ url_for('register') }}" class="">Create your MCC account</a>
+                <a class="white" href="{{ url_for('register') }}" class="">Create your MCC account</a>
             </p>
         </div>
     </div>
