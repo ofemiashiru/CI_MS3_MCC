@@ -7,7 +7,7 @@
 {% block content %}
     <h4 class="center white-text">Edit movie</h4>
     <div class="row">
-        <form class="col s6 white" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
+        <form class="col s12 l6 white" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="title" name="title" value="{{ movie.title }}" type="text" class="validate" oninput="fetchMovieCover()">
@@ -69,7 +69,7 @@
             </div>
         </form>
         <div class="row">
-            <div class="movie-cover-container col s6 center">
+            <div class="movie-cover-container col s12 l6 center">
                 <h5 class="movie-cover-container__header">Movie Poster</h5>
                 <img id="movie-img" src="{{ movie.poster }}" >
                 <!-- Preloader from Materialize -->
