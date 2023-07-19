@@ -13,10 +13,10 @@ form{
     border-radius: 10px; 
 }
 
-.alt-form{
-    background-color: transparent !important;
+.pad-small-text{
+    padding: 5px;
+    border-radius: 5px;
 }
-
 
 /* BODY */
 body{
@@ -31,11 +31,7 @@ body{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto;
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-}
-
-.content--container{
-
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
 
 /* MAIN LOGO */
