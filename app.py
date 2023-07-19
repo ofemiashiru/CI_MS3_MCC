@@ -106,6 +106,7 @@ def delete_user(user_id):
         flash("Your account has been succesfully deleted.")
         return redirect(url_for("show_movies"))
 
+
 # ROUTE FOR SIGN IN
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
