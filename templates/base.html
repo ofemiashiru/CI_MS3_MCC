@@ -23,27 +23,30 @@
             <nav class="nav-extended text-shadow black">
                 <div class="nav-wrapper row ">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <!-- main logo -->
                     <div class="col l2">
                         <a href="{{ url_for('show_movies') }}" class="brand-logo">
                             <span>movie.crazy.club</span>
                         </a>
                     </div>
-                    <div class="col s12 l5 valign">
+                    <!-- Search Bar -->
+                    <div class="col s12 l4">
                         <form action="{{ url_for('search') }}" method="POST">
-                                <div class="col s12 m8 l7">
-                                    <div class="input-field">
-                                        <input type="text" name="query" id="query" minlength="3" class="validate white-text" required>
-                                        <label class="white-text" for="query">Search Movies</label>
-                                    </div>
+                            <div class="col s10 m11 l9">
+                                <div class="input-field">
+                                    <input type="text" name="query" id="query" minlength="3" class="validate white-text" required>
+                                    <label class="white-text" for="query">Search Movies</label>
                                 </div>
-                                <div class="col s12 m3 l3 center-align">
-                                    <button type="submit" class="transparent btn tooltipped" data-position="bottom" data-tooltip="Search Movies">
-                                        <i class="fa-solid fa-magnifying-glass white-text"></i>                        
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="col s2 m1 l1 center-align">
+                                <button type="submit" class="transparent btn tooltipped" data-position="bottom" data-tooltip="Search Movies">
+                                    <i class="fa-solid fa-magnifying-glass white-text"></i>                        
+                                </button>
+                            </div>
                         </form>
                     </div>
-                    <div class="col l5">
+                    <!-- top link body -->
+                    <div class="col l6 right">
                         <ul class="right hide-on-med-and-down nav-body">
                             <li><a href="{{ url_for('show_movies') }}">Home</a></li>
                             <!-- If user exists in session then show relevant links -->
