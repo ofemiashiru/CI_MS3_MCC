@@ -5,61 +5,75 @@
 {% endblock %}
 {% block content %}
     <div class="movies-row">
-        {% for movie in movies %}
-            <div class="movie-col">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="{{ movie.poster }}" alt="{{ movie.title }} poster">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator tooltipped"  data-position="top" data-tooltip="More info">
-                            <span class="movie-title">{{ movie.title }}</span>
-                        </span>
+        {% if movies|length > 0 %}
+            {% for movie in movies %}
+                <div class="movie-col">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ movie.poster }}" alt="{{ movie.title }} poster">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator tooltipped"  data-position="top" data-tooltip="More info">
+                                <span class="movie-title">{{ movie.title }}</span>
+                            </span>
 
-                        <p>{{ movie.director }} | {{ movie.year }}</p>
-                        <p>{{ movie.genre_name }}</p>
-                        <a class="btn-small black tooltipped"
-                            href="{{ url_for('show_reviews', movie_id=movie._id) }}"
-                            data-position="top" data-tooltip="See Reviews"
-                            aria-label="See Reviews">
-                            <i class="fa-solid fa-comment"></i>
-                        </a>
-                        {% if session.user|lower == movie.created_by|lower %}
-                            <a class="btn-small green darken-3 tooltipped" 
-                                href="{{ url_for('edit_movie', movie_id=movie._id) }}"
-                                data-position="top" data-tooltip="Edit Movie"
-                                aria-label="Edit Movie">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                            <p>{{ movie.director }} | {{ movie.year }}</p>
+                            <p>{{ movie.genre_name }}</p>
+                            <a class="btn-small black tooltipped"
+                                href="{{ url_for('show_reviews', movie_id=movie._id) }}"
+                                data-position="top" data-tooltip="See Reviews"
+                                aria-label="See Reviews">
+                                <i class="fa-solid fa-comment"></i>
                             </a>
-                            <!-- Modal Trigger -->
-                            <a href="#modal-delete-{{ movie._id }}" 
-                                class="btn-small red darken-4 modal-trigger tooltipped"
-                                data-position="top" data-tooltip="Delete Movie"
-                                aria-label="Delete Movie">
-                                <i class="fa-solid fa-trash"></i>
-                            </a>
-                        {% endif %}
-                        {% if movie.created_by %}
-                            <p class="grey-text text-darken-1">added by: <em>{{ movie.created_by }}</em></p>
-                        {% endif %}
+                            {% if session.user|lower == movie.created_by|lower %}
+                                <a class="btn-small green darken-3 tooltipped" 
+                                    href="{{ url_for('edit_movie', movie_id=movie._id) }}"
+                                    data-position="top" data-tooltip="Edit Movie"
+                                    aria-label="Edit Movie">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <!-- Modal Trigger -->
+                                <a href="#modal-delete-{{ movie._id }}" 
+                                    class="btn-small red darken-4 modal-trigger tooltipped"
+                                    data-position="top" data-tooltip="Delete Movie"
+                                    aria-label="Delete Movie">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            {% endif %}
+                            {% if movie.created_by %}
+                                <p class="grey-text text-darken-1">added by: <em>{{ movie.created_by }}</em></p>
+                            {% endif %}
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
+                            <p>{{ movie.plot }}</p>
+                        </div>
                     </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Plot<i class="fa-solid fa-xmark right"></i></span>
-                        <p>{{ movie.plot }}</p>
+                </div>  
+                <!-- Modal Structure -->
+                <div id="modal-delete-{{ movie._id }}" class="modal">
+                    <div class="modal-content">
+                        <h5>Are you sure you want to delete {{ movie.title }}</h5>
                     </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close btn red darken-4">No</a>
+                        <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="modal-close btn green darken-3">Yes</a>
+                    </div>
+                </div>      
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col s12">
+                    <h3 class="center-align white-text">
+                        No movies were found that match your search.
+                    </h3>
+                    <p class="center-align white-text">
+                        Go back to the home page 
+                        <a class="white pad-small-text" href="{{ url_for('show_movies') }}" class="light-blue-text">Home</a>
+                    </p>
                 </div>
-            </div>  
-            <!-- Modal Structure -->
-            <div id="modal-delete-{{ movie._id }}" class="modal">
-                <div class="modal-content">
-                    <h5>Are you sure you want to delete {{ movie.title }}</h5>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close btn red darken-4">No</a>
-                    <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="modal-close btn green darken-3">Yes</a>
-                </div>
-            </div>      
-        {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 
