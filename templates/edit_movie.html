@@ -10,7 +10,7 @@
         <form class="col s12 l6 white" method="POST" action="{{ url_for('edit_movie', movie_id=movie._id) }}">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="title" name="title" value="{{ movie.title }}" type="text" class="validate" oninput="fetchMovieCover()">
+                    <input id="title" name="title" value="{{ movie.title }}" type="text" class="validate">
                     <label for="title">Title</label>
                 </div>
             </div>

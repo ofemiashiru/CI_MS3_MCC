@@ -21,26 +21,45 @@
         <header>
             <!-- main navbar -->
             <nav class="nav-extended text-shadow black">
-                <div class="nav-wrapper">
-                    <a href="{{ url_for('show_movies') }}" class="brand-logo">
-                        <span>movie.crazy.club</span>
-                    </a>
+                <div class="nav-wrapper row ">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
-                    <ul class="right hide-on-med-and-down nav-body">
-                        <li><a href="{{ url_for('show_movies') }}">Home</a></li>
-                        <!-- If user exists in session then show relevant links -->
-                        {% if session.user %}
-                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                            <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
-                            {% if session.user|lower == "admin" %}
-                                <li><a href="{{ url_for('show_genres') }}">Manage Genres</a></li>
+                    <div class="col l2">
+                        <a href="{{ url_for('show_movies') }}" class="brand-logo">
+                            <span>movie.crazy.club</span>
+                        </a>
+                    </div>
+                    <div class="col s12 l5 valign">
+                        <form action="{{ url_for('search') }}" method="POST">
+                                <div class="col s12 m8 l7">
+                                    <div class="input-field">
+                                        <input type="text" name="query" id="query" minlength="3" class="validate white-text" required>
+                                        <label class="white-text" for="query">Search Movies</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m3 l3 center-align">
+                                    <button type="submit" class="transparent btn tooltipped" data-position="bottom" data-tooltip="Search Movies">
+                                        <i class="fa-solid fa-magnifying-glass white-text"></i>                        
+                                    </button>
+                                </div>
+                        </form>
+                    </div>
+                    <div class="col l5">
+                        <ul class="right hide-on-med-and-down nav-body">
+                            <li><a href="{{ url_for('show_movies') }}">Home</a></li>
+                            <!-- If user exists in session then show relevant links -->
+                            {% if session.user %}
+                                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                                <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
+                                {% if session.user|lower == "admin" %}
+                                    <li><a href="{{ url_for('show_genres') }}">Manage Genres</a></li>
+                                {% endif %}
+                                <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+                                <li><a href="{{ url_for('register') }}">Register</a></li>
                             {% endif %}
-                            <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
-                        {% else %}
-                            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-                            <li><a href="{{ url_for('register') }}">Register</a></li>
-                        {% endif %}
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </nav>
 

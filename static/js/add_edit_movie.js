@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-/*
-    vanilla JavaScript for validating the materialize dropdown - 
-    taken from https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
-*/
+    /*
+        vanilla JavaScript for validating the materialize dropdown - 
+        taken from https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
+    */
     
-    validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = "border-bottom: 1px solid #4caf50; box-shadow: 0 1px 0 0 #4caf50;";
         let classInvalid = "border-bottom: 1px solid #f44336; box-shadow: 0 1px 0 0 #f44336;";
@@ -40,4 +39,56 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    validateMaterializeSelect();
+    
+    // Get Movie cover - add_movie.html
+    const fetchMovieCover = function(){
+        // clear img src
+        document.querySelector("#movie-img").src = "";
+        document.querySelector("#poster").value = "";
+        const movieName = document.querySelector("#title").value;
+
+
+        if(!movieName){
+            document.querySelector(".movie-cover-container__header").innerHTML = "Please enter a title";
+            document.querySelector("#poster").value = "Please enter a title";
+            return;  
+        }
+        // split movie name by space
+        const arrMovieName = movieName.split(" ");
+        // join movie name as a string with + between
+        const strMovieName = arrMovieName.join("+");
+
+        // fetch request
+        fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=a366f18e`)
+        .then(response => response.json())
+        .then(data => {
+            if(data.Response === "False"){
+                document.querySelector("#poster").value = "Poster not found!";
+                document.querySelector("#movie-img").src = "";
+                document.querySelector(".movie-cover-container__header").innerHTML = "Poster not found!";
+                document.querySelector(".preloader-wrapper").classList.remove("hidden");
+                
+            } else {
+                const omdbMoviePoster = data.Poster;
+                document.querySelector(".movie-cover-container__header").innerHTML = "Poster found";
+                document.querySelector("#movie-img").src = omdbMoviePoster;
+                document.querySelector("#poster").value = omdbMoviePoster;
+                document.querySelector(".preloader-wrapper").classList.add("hidden");
+            }
+
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+
+    }
+
+    document.querySelector("#title").addEventListener("input", function(){
+        fetchMovieCover()
+    });
+
+    
+
 });
