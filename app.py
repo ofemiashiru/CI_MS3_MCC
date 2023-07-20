@@ -361,6 +361,12 @@ def add_review(movie_id):
         return render_template("add_review.html", movie=movie)
 
 
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    if "user" in session:
+        mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

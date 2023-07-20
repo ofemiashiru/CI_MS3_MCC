@@ -15,17 +15,17 @@ form{
 
 .pad-small-text{
     padding: 5px;
+    margin-left: 5px;
     border-radius: 5px;
 }
 
 /* BODY */
 body{
     background-image: url('https://wallpapers.com/images/hd/collage-of-movie-posters-g2fdqahxlakaa7yq.jpg');
+    background-repeat: repeat-y;
 }
 
 .background-cover{
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -91,7 +91,6 @@ nav .brand-logo{
 }
 
 .card-content a{
-
     margin: 5px 0;
     padding: 0 10px;
 }
@@ -172,7 +171,6 @@ nav .brand-logo{
     border-top: 1px;
 }
 
-
 /* MEDIA QUERIES */
 
 @media (min-width: 446px){
@@ -191,6 +189,10 @@ nav .brand-logo{
      .movie-title{
         font-size: 1.5rem;
     }
+
+    .profile-header{
+        font-size: 2.2rem;
+    }
 }
 
 /* Tablet */
@@ -199,10 +201,10 @@ nav .brand-logo{
         margin: 0;
     }
     .movie-col{
-        width:23%;
+        width:47%;
      }
      .movie-title{
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 }
 
