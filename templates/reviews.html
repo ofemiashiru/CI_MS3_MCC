@@ -36,16 +36,26 @@
                     <em class="right white pad-small-text">
                         written by {{ review.created_by }}
                         {% if session.user|lower == review.created_by|lower %}
-                            -
-                            <a href="" class="tooltipped" aria-label="Delete Your Review" data-position="top" data-tooltip="Delete Your Review">
+                            <!-- Modal Trigger -->
+                            <a href="#modal-delete-{{ review._id }}" class="tooltipped modal-trigger" aria-label="Delete Your Review" data-position="top" data-tooltip="Delete Your Review">
                                 <i class="fa-solid fa-trash black-text"></i>
                             </a>
                         {% endif %}
                     </em>
+                    <!-- Modal Structure -->
+                    <div id="modal-delete-{{ review._id }}" class="modal">
+                        <div class="modal-content">
+                            <h5>Are you sure you want to delete your review</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close btn red darken-4">No</a>
+                            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="modal-close btn green darken-3">Yes</a>
+                        </div>
+                    </div> 
                 </div>
                 <div class="col s12">
                     <hr class="review-divider">
-                </div>  
+                </div>    
             {% endfor %}
         </div>
     {% else %}

@@ -337,6 +337,9 @@ def delete_genre(genre_id):
 
 @app.route("/show_reviews/<movie_id>")
 def show_reviews(movie_id):
+    """
+    Route used to show reviews for specific movie
+    """
     # Grab all the movie information
     movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     # Grab all reviews associated with the movie
@@ -346,6 +349,9 @@ def show_reviews(movie_id):
 
 @app.route("/add_review/<movie_id>", methods=["GET", "POST"])
 def add_review(movie_id):
+    """
+    Route used to allow user to add a review for specific movie
+    """
     if "user" in session:
         movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
         if request.method == "POST":
@@ -363,8 +369,15 @@ def add_review(movie_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
+    """
+    Route used to delete reviews
+    """
     if "user" in session:
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        movie = mongo.db.movies.find_one({"title": review["title"]})
         mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+        flash("Review sucessfully deleted")
+        return redirect(url_for("show_reviews", movie_id=movie["_id"]))
 
 
 if __name__ == "__main__":
