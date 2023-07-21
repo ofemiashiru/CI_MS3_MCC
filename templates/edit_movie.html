@@ -62,10 +62,27 @@
                     <i class="fa-solid fa-xmark right"></i>
                     Cancel
                 </a>
-                <button class="btn-large green darken-3" type="submit">
+                <!-- Modal Trigger -->
+                <a href="#modal-update-{{ movie._id }}" 
+                class="btn-large green darken-3 modal-trigger"
+                data-position="top" data-tooltip="Update Genre"
+                aria-label="Update Genre">
                     <i class="fa-solid fa-pen-to-square right"></i>
                     Update Movie
-                </button>
+                </a>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modal-update-{{ movie._id }}" class="modal">
+                <div class="modal-content">
+                    <h5>Are you sure you want to update {{ movie.title }}?</h5>
+                    <span class="red-text darken-4">Warning! Updating this movie will affect the reviews connected.</span>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close btn red darken-4">No</a>
+                    <button class="modal-clos btn green darken-3" type="submit">
+                        Yes
+                    </button>
+                </div>
             </div>
         </form>
         <div class="row">
