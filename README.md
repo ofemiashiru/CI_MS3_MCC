@@ -4,6 +4,7 @@
 ![Movie Crazy Club Website Responsive Image](docs/am-i-responsive.png)
 
 [Live Project](https://movie-crazy-club-73ece9687233.herokuapp.com/show_movies)
+
 [Github Repo](https://github.com/ofemiashiru/CI_MS3_MCC)
 
 ## Table of Content
