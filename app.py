@@ -205,8 +205,16 @@ def page_not_found(e):
     """
     Route for all 404 errors
     """
-    # note that we set the 404 status explicitly
     return render_template("404.html"), 404
+
+
+# 500 Route - https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
+@app.errorhandler(500)
+def page_not_found(e):
+    """
+    Route for all 500 errors
+    """
+    return render_template("500.html"), 500
 
 
 # ADD MOVIE ROUTE
