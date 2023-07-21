@@ -210,7 +210,7 @@ def page_not_found(e):
 
 # 500 Route - https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
 @app.errorhandler(500)
-def page_not_found(e):
+def internal_server_error(e):
     """
     Route for all 500 errors
     """
