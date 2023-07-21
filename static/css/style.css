@@ -131,9 +131,12 @@ nav .brand-logo{
 
 /* MANGE GENRE PAGE */
 
+.add-genre_container{
+    margin-bottom: 160px;
+}
+
 .genre-card .card-content{
     background-color: var(--gold);
-
 }
 
 /* FOOTER */
