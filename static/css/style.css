@@ -75,6 +75,10 @@ nav .brand-logo{
 
 /* NAVIGATION */
 
+nav.nav-extended .nav-wrapper{
+    min-height: 75px !important;
+}
+
 .sidenav-close{
     cursor: pointer;
     display: inline;
