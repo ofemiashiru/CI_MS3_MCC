@@ -1,10 +1,10 @@
 # Movie Crazy Club
 (Developer: Femi Ashiru)
 
-![QuickShot Website Responsive Image](docs/am-i-responsive-1.png)
-![QuickShot Game Responsive Image](docs/am-i-responsive-2.png)
+![Movie Crazy Club Website Responsive Image](docs/am-i-responsive.png)
 
-[Live Project](https://ofemiashiru.github.io/CI_MS2_QSG/)
+[Live Project](https://movie-crazy-club-73ece9687233.herokuapp.com/show_movies)
+[Github Repo](https://github.com/ofemiashiru/CI_MS3_MCC)
 
 ## Table of Content
 
