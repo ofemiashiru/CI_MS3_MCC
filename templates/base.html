@@ -22,7 +22,7 @@
     <title>Movie Crazy Club - {% block title %} {% endblock %}</title>
 </head>
 <body>
-    <div class="background-cover">
+    <div class="fade-cover">
         <header>
             <!-- main navbar -->
             <nav class="nav-extended text-shadow black">
@@ -142,7 +142,8 @@
                 {% endif %}
             {% endwith %}
         </div>
-        <img src="{{ url_for('static', filename='images/collage_of_movie_posters.jpeg') }}" >
+
+        <!-- Main Content -->
         <main class="container">
             {% block content %}
             <!-- This is where the main content appears -->
