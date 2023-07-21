@@ -19,6 +19,14 @@ form{
     border-radius: 5px;
 }
 
+.question-mark-back{
+    padding:20px;
+}
+
+.question-mark-back i {
+    font-size: 13rem;
+}
+
 /* BODY */
 body{
     background-image: url('https://wallpapers.com/images/hd/collage-of-movie-posters-g2fdqahxlakaa7yq.jpg');
