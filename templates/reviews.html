@@ -44,9 +44,12 @@
                     <blockquote class="flow-text white-text">{{ review.review }}</blockquote>
                     <em class="right white pad-small-text">
                         written by {{ review.created_by }}
-                        {% if session.user|lower == review.created_by|lower %}
+                        {% if session.user|lower == review.created_by|lower %}           
+                            <a href="{{ url_for('edit_review', review_id=review._id) }}" class="tooltipped modal-trigger user-review-btn" aria-label="Edit Your Review" data-position="top" data-tooltip="Edit Your Review">
+                                <i class="fa-solid fa-pen-to-square black-text"></i>
+                            </a>
                             <!-- Modal Trigger -->
-                            <a href="#modal-delete-{{ review._id }}" class="tooltipped modal-trigger" aria-label="Delete Your Review" data-position="top" data-tooltip="Delete Your Review">
+                            <a href="#modal-delete-{{ review._id }}" class="tooltipped modal-trigger user-review-btn" aria-label="Delete Your Review" data-position="top" data-tooltip="Delete Your Review">
                                 <i class="fa-solid fa-trash black-text"></i>
                             </a>
                         {% endif %}
@@ -55,7 +58,7 @@
                     <div id="modal-delete-{{ review._id }}" class="modal">
                         <div class="modal-content">
                             <h5>Are you sure you want to delete your review?</h5>
-                            <span class="red-text darken-4">Warning! Maybe you wish to edit it instead?</span>
+                            <span class="red-text darken-4">Warning! Maybe you wish to edit your review instead?</span>
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close btn red darken-4">No</a>

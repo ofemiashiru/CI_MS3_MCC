@@ -376,6 +376,30 @@ def add_review(movie_id):
         return render_template("add_review.html", movie=movie)
 
 
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    """
+    Route allows user to edit their own review
+    """
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    movie = mongo.db.movies.find_one({"title": review["title"]})
+    # Check if the review writer is logged in.
+    if "user" in session and session["user"].lower() == review["created_by"].lower():
+        if request.method == "POST":
+            updated_review = {
+                "review" : request.form.get("review")
+            }
+            mongo.db.reviews.update_one(
+                {"_id": ObjectId(review_id)}, {"$set": updated_review})
+            flash("Review succesfully updated.")
+            return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+
+        return render_template("edit_review.html", review=review, movie=movie)
+    
+    flash("You cannot edit this review")
+    return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+
+
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     """
