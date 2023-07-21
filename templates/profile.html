@@ -8,8 +8,8 @@
     <div class="row">
         <div class="col ls12 m8 offset-m2">
             <div class="card-panel">
-                <h3 class="center-align light-blue-text text-darken-4 profile-header">
-                    {{ user_info.username }}'s account
+                <h3 class="center-align black-text profile-header">
+                    {{ user_info.username.capitalize() }}'s account
                 </h3>
 
                 <h5 class="center">My movies</h5>
@@ -46,7 +46,8 @@
                         <!-- Modal Structure -->
                         <div id="modal-delete-{{ movie._id }}" class="modal">
                             <div class="modal-content">
-                                <h5>Are you sure you want to delete {{ movie.title }}</h5>
+                                <h5>Are you sure you want to delete {{ movie.title }}?</h5>
+                                <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
                             </div>
                             <div class="modal-footer">
                                 <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
@@ -59,14 +60,14 @@
                     <h5 class="center">All users</h5>
                     <ul class="collection">
                         {% for user in all_users %}
-                            <li class="collection-item row">
-                                <div class="col s4">
+                            <li class="collection-item row valign-wrapper">
+                                <div class="col s1 m2 l2 center">
                                     <i class="fa-solid fa-user"></i>
                                 </div>
-                                <h6 class="col s4 center">
+                                <h6 class="col s8 m8 l8 center">
                                     <span>{{ user.username }}</span>
                                 </h6>
-                                <div class="col s4 center">
+                                <div class="col s3 m2 l2 center">
                                     <!-- Modal Trigger -->
                                     <a href="#modal-delete-{{ user._id }}" 
                                         aria-label="Delete User" 
@@ -80,7 +81,7 @@
                             <div id="modal-delete-{{ user._id }}" class="modal">
                                 <div class="modal-content">
                                     <h5>Are you sure you want to delete {{ user.username }}</h5>
-                                    <span>Warning! All movies and reviews associated with this account will be deleted.</span>
+                                    <span class="red-text darken-4">Warning! All movies and reviews associated with this account will be deleted.</span>
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>

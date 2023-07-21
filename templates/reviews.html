@@ -22,6 +22,15 @@
                             <i class="fa-solid fa-comment right"></i>
                             Leave Review
                         </a>
+                    {% else %}
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="center-align white-text">
+                                <span>To leave a review you must be logged in</span>
+                                <a class="white pad-small-text light-blue-text" href="{{ url_for('sign_in') }}">Sign In</a>
+                            </p>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
             </div>
@@ -46,6 +55,7 @@
                     <div id="modal-delete-{{ review._id }}" class="modal">
                         <div class="modal-content">
                             <h5>Are you sure you want to delete your review?</h5>
+                            <span class="red-text darken-4">Warning! Maybe you wish to edit it instead?</span>
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close btn red darken-4">No</a>
