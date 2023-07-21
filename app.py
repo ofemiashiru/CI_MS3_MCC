@@ -245,31 +245,36 @@ def edit_movie(movie_id):
     """
     Route to allow users to edit and update movie
     """
-    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-    if "user" in session and session["user"].lower() == movie["created_by"]:
-
-        if request.method == "POST":
-            updated_movie = {
-                "genre_name": request.form.get("genre_name"),
-                "title": request.form.get("title"),
-                "year": request.form.get("year"),
-                "plot": request.form.get("plot"),
-                "rating": request.form.get("rating"),
-                "director": request.form.get("director"),
-                "poster": request.form.get("poster"),
-                "created_by": session["user"]
-            }
-            mongo.db.movies.update_one(
-                {"_id": ObjectId(movie_id)}, {"$set": updated_movie})
-            flash("Your movie has been succesfully updated.")
-            return redirect(url_for("show_movies"))
-
+    if "user" in session:
         movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-        genres = list(mongo.db.genres.find().sort("genre_name", 1))
-        return render_template("edit_movie.html", movie=movie, genres=genres)
+        if session["user"].lower() == movie["created_by"]:
 
-    flash("Only the user who submitted this movie can edit it.")
-    return redirect(url_for("show_movies"))
+            if request.method == "POST":
+                updated_movie = {
+                    "genre_name": request.form.get("genre_name"),
+                    "title": request.form.get("title"),
+                    "year": request.form.get("year"),
+                    "plot": request.form.get("plot"),
+                    "rating": request.form.get("rating"),
+                    "director": request.form.get("director"),
+                    "poster": request.form.get("poster"),
+                    "created_by": session["user"]
+                }
+                mongo.db.movies.update_one(
+                    {"_id": ObjectId(movie_id)}, {"$set": updated_movie})
+                flash("Your movie has been succesfully updated.")
+                return redirect(url_for("show_movies"))
+
+            movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+            genres = list(mongo.db.genres.find().sort("genre_name", 1))
+            return render_template(
+                "edit_movie.html", movie=movie, genres=genres)
+
+        flash("Only the user who submitted this movie can edit it.")
+        return redirect(url_for("show_movies"))
+
+    flash("You need to be logged in.")
+    return redirect(url_for("sign_in"))
 
 
 # DELETE MOVIE ROUTE
@@ -278,14 +283,17 @@ def delete_movie(movie_id):
     """
     Route allows logged in users to delete their own movies
     """
-    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-    if "user" in session and session["user"].lower() == movie["created_by"].lower():
-        mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
-        flash("Movie has been successfully deleted.")
+    if "user" in session:
+        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        if session["user"].lower() == movie["created_by"].lower():
+            mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
+            flash("Movie has been successfully deleted.")
+            return redirect(url_for("show_movies"))
+        flash("Only the user who submitted this movie can delete it.")
         return redirect(url_for("show_movies"))
 
-    flash("Only the user who submitted this movie can delete it.")
-    return redirect(url_for("show_movies"))
+    flash("You need to be logged in.")
+    return redirect(url_for("sign_in"))
 
 
 # SHOW GENRES ROUTE
@@ -294,10 +302,13 @@ def show_genres():
     """
     Route used to display all genres
     """
-    if "user" in session and session["user"].lower() == "admin":
-        genres = list(mongo.db.genres.find().sort("genre_name", 1))
-        return render_template("genres.html", genres=genres)
-    flash("You need to be logged in as admin.")
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            genres = list(mongo.db.genres.find().sort("genre_name", 1))
+            return render_template("genres.html", genres=genres)
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
     return redirect(url_for("sign_in"))
 
 
@@ -307,14 +318,17 @@ def add_genre():
     """
     Route used to add genres
     """
-    if "user" in session and session["user"].lower() == "admin":
-        if request.method == "POST":
-            genre = request.form.get("genre_name")
-            mongo.db.genres.insert_one({"genre_name": genre})
-            flash("Genre successfully added.")
-            return redirect("show_genres")
-        return render_template("add_genre.html")
-    flash("You need to be logged in as admin.")
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            if request.method == "POST":
+                genre = request.form.get("genre_name")
+                mongo.db.genres.insert_one({"genre_name": genre})
+                flash("Genre successfully added.")
+                return redirect("show_genres")
+            return render_template("add_genre.html")
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
     return redirect(url_for("sign_in"))
 
 
@@ -324,27 +338,30 @@ def edit_genre(genre_id):
     """
     Route used to edit a single genre
     """
-    if "user" in session and session["user"].lower() == "admin":
-        # Grabs the previous genre and stores it
-        prev_genre = mongo.db.genres.find_one(
-            {"_id": ObjectId(genre_id)})["genre_name"]
-        if request.method == "POST":
-            updated_genre = {
-                "genre_name": request.form.get("genre_name")
-            }
-            # Update genre
-            mongo.db.genres.update_one(
-                {"_id": ObjectId(genre_id)}, {"$set": updated_genre})
-            # Uses the previous genre to update all associated movies
-            mongo.db.movies.update_many(
-                {"genre_name":  prev_genre}, {"$set": updated_genre})
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            # Grabs the previous genre and stores it
+            prev_genre = mongo.db.genres.find_one(
+                {"_id": ObjectId(genre_id)})["genre_name"]
+            if request.method == "POST":
+                updated_genre = {
+                    "genre_name": request.form.get("genre_name")
+                }
+                # Update genre
+                mongo.db.genres.update_one(
+                    {"_id": ObjectId(genre_id)}, {"$set": updated_genre})
+                # Uses the previous genre to update all associated movies
+                mongo.db.movies.update_many(
+                    {"genre_name":  prev_genre}, {"$set": updated_genre})
 
-            flash("Genre succesfully updated and all associated movies.")
-            return redirect(url_for("show_genres"))
-        genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
-        return render_template("edit_genre.html", genre=genre)
+                flash("Genre succesfully updated and all associated movies.")
+                return redirect(url_for("show_genres"))
+            genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+            return render_template("edit_genre.html", genre=genre)
 
-    flash("You need to be logged in as admin.")
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
     return redirect(url_for("sign_in"))
 
 
@@ -354,17 +371,20 @@ def delete_genre(genre_id):
     """
     Route allows admin user to delete genre
     """
-    if "user" in session and session["user"].lower() == "admin":
-        # Grab genre name to delete associated movies
-        genre = mongo.db.genres.find_one(
-            {"_id": ObjectId(genre_id)})["genre_name"]
-        # Find all movies associated with genre and delete
-        mongo.db.movies.delete_many({"genre_name": genre})
-        # Finally find the genre and delete it
-        mongo.db.genres.find_one_and_delete({"_id": ObjectId(genre_id)})
-        flash("Genre succesfully deleted and all associated movies.")
-        return redirect(url_for("show_genres"))
-    flash("You need to be logged in as admin.")
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            # Grab genre name to delete associated movies
+            genre = mongo.db.genres.find_one(
+                {"_id": ObjectId(genre_id)})["genre_name"]
+            # Find all movies associated with genre and delete
+            mongo.db.movies.delete_many({"genre_name": genre})
+            # Finally find the genre and delete it
+            mongo.db.genres.find_one_and_delete({"_id": ObjectId(genre_id)})
+            flash("Genre succesfully deleted and all associated movies.")
+            return redirect(url_for("show_genres"))
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
     return redirect(url_for("sign_in"))
 
 
@@ -387,8 +407,8 @@ def add_review(movie_id):
     """
     Route used to allow user to add a review for specific movie
     """
-    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
     if "user" in session:
+        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
         if request.method == "POST":
             new_review = {
                 "review": request.form.get("review"),
@@ -400,8 +420,8 @@ def add_review(movie_id):
             return redirect(
                 url_for("show_reviews", movie_id=ObjectId(movie_id)))
         return render_template("add_review.html", movie=movie)
-    flash("You need to be logged in to add a review.")
-    return redirect(url_for("show_reviews", movie_id=ObjectId(movie_id)))
+    flash("You need to be logged in.")
+    return redirect(url_for("sign_in"))
 
 
 # EDIT REVIEW ROUTE
@@ -410,23 +430,30 @@ def edit_review(review_id):
     """
     Route allows user to edit their own review
     """
-    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    movie = mongo.db.movies.find_one({"title": review["title"]})
+
     # Check if the review writer is logged in.
-    if "user" in session and session["user"].lower() == review["created_by"].lower():
-        if request.method == "POST":
-            updated_review = {
-                "review": request.form.get("review")
-            }
-            mongo.db.reviews.update_one(
-                {"_id": ObjectId(review_id)}, {"$set": updated_review})
-            flash("Review succesfully updated.")
-            return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+    if "user" in session:
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        movie = mongo.db.movies.find_one({"title": review["title"]})
 
-        return render_template("edit_review.html", review=review, movie=movie)
+        if session["user"].lower() == review["created_by"].lower():
+            if request.method == "POST":
+                updated_review = {
+                    "review": request.form.get("review")
+                }
+                mongo.db.reviews.update_one(
+                    {"_id": ObjectId(review_id)}, {"$set": updated_review})
+                flash("Review succesfully updated.")
+                return redirect(url_for("show_reviews", movie_id=movie["_id"]))
 
-    flash("Only the user who submitted this review can edit it.")
-    return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+            return render_template(
+                "edit_review.html", review=review, movie=movie)
+
+        flash("Only the user who submitted this review can edit it.")
+        return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+
+    flash("You need to be logged in")
+    return redirect(url_for("sign_in"))
 
 
 # DELETE REVIEW ROUTE
@@ -435,14 +462,18 @@ def delete_review(review_id):
     """
     Route used to delete reviews
     """
-    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    movie = mongo.db.movies.find_one({"title": review["title"]})
-    if "user" in session and session["user"].lower() == review["created_by"]:     
-        mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
-        flash("Review sucessfully deleted")
+    if "user" in session:
+        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+        movie = mongo.db.movies.find_one({"title": review["title"]})
+        if session["user"].lower() == review["created_by"]:
+            mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
+            flash("Review sucessfully deleted")
+            return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+        flash("Only the user who submitted this review can delete it.")
         return redirect(url_for("show_reviews", movie_id=movie["_id"]))
-    flash("Only the user who submitted this review can delete it.")
-    return redirect(url_for("show_reviews", movie_id=movie["_id"]))
+
+    flash("You need to be logged in")
+    return redirect(url_for("sign_in"))
 
 
 if __name__ == "__main__":
