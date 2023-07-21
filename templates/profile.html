@@ -101,12 +101,14 @@
         <div class="col s12">
             <p class="center-align white-text">
                 No longer want to be a part of the Movie club? 
-                <a class="white pad-small-text" href="#modal-delete-account" class="light-blue-text modal-trigger">Click here</a>
+                <!-- Modal Trigger -->
+                <a class="white light-blue-text pad-small-text  modal-trigger" href="#modal-delete-{{user_info._id}}">Click Here</a>
             </p>
         </div>
     </div>
-
-    <div id="modal-delete-account" class="modal">
+    
+    <!-- Modal Structure -->
+    <div id="modal-delete-{{user_info._id}}" class="modal">
         <div class="modal-content">
             <h5>Are you sure you want to delete your account?</h5>
             <span>Warning! All movies and reviews associated with this account will be deleted.</span>
