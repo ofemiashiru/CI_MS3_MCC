@@ -9,10 +9,10 @@
     <div class="row">
         <form class="col s12 white" method="POST" action="{{ url_for('edit_review', review_id=review._id) }}">
             <div class="row">
-                <div class="col s4">
+                <div class="col s12 m6 l6">
                     <img class="review__image" src="{{ movie.poster }}" alt="{{ movie.poster }} image" >
                 </div>
-                <div class="input-field col s8">
+                <div class="input-field col s12 m6 l6">
                     <textarea id="review" name="review" class="materialize-textarea validate" required>
                         {{- review.review -}}
                     </textarea>
