@@ -31,7 +31,7 @@ form{
 /* BODY */
 body{
     background-image: url("https://raw.githubusercontent.com/ofemiashiru/CI_MS3_MCC/main/static/images/collage_of_movie_posters.jpeg");
-    background-repeat: repeat-y;
+    background-repeat: repeat;
 }
 
 .fade-cover{
