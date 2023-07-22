@@ -355,38 +355,28 @@ edit_genre.html - admin [results](https://validator.w3.org/nu/?doc=https%3A%2F%2
 The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website.
 After testing the whole sites CSS and my own custom CSS all pages passed with no errors, however, there were a number of warnings present that were related to the webkit css extensions used.
 
-whole site [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fofemiashiru.github.io%2FCI_MS2_QSG%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) - No Errors Found
+whole site [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) - 1 Error found in the materialize.min.css
 
-custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fofemiashiru.github.io%2FCI_MS2_QSG%2Fassets%2Fcss%2Fstyle.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) - No Errors Found
+custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fstatic%2Fcss%2Fstyle.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) - No Errors Found
 
 ### JS Validation
 
 [JS Hint](https://jshint.com/) was used to validate the JavaScript of the website.
 
-<details><summary>index.js</summary>
-<img src="docs/validation/js/index_js.png" alt="index script">
+<details><summary>script.js</summary>
+<img src="docs/validation/js/script.png" alt="script.js">
 </details>
 
-<details><summary>game.js</summary>
-<img src="docs/validation/js/game_js.png" alt="game script">
+<details><summary>register.js</summary>
+<img src="docs/validation/js/register.png" alt="register.js">
 </details>
 
-<details><summary>highScore.js</summary>
-<img src="docs/validation/js/highScore_js.png" alt="highScore script">
+<details><summary>drop_down_validator.js</summary>
+<img src="docs/validation/js/drop_down_validator.png" alt="drop_down_validator.js">
 </details>
 
-<details><summary>getHighScore.js</summary>
-<img src="docs/validation/js/getHighScore_js.png" alt="gethighScore script">
-</details>
-
-<details><summary>quiz.js</summary>
-<img src="docs/validation/js/quiz_js.png" alt="quiz script">
-</details>
-
-<details><summary>contact.js</summary>
-<p>Initially the variable was called in the HTML file in accordance with the usage of EmailJS, however, I moved it into the JS file as I didn’t want to have any JS displayed in my HTML and wanted to adhere to separation of concerns.</p>
-<p>This is the reason the warning appears about the undefined variable.</p>
-<img src="docs/validation/js/contact_js.png" alt="contact script">
+<details><summary>fetch_movie_poster.js</summary>
+<img src="docs/validation/js/fetch_movie_poster.png" alt="fetch_movie_poster.js">
 </details>
 
 
