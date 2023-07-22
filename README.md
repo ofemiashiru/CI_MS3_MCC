@@ -22,7 +22,8 @@
     2. [Colour](#colour)
     3. [Fonts](#fonts)
     4. [Structure](#structure)
-    5. [Wireframes](#wireframes)
+    5. [Database Structure](#database-structure)
+    6. [Wireframes](#wireframes)
 4. [Technologies Used](#technologies-used)
     1. [Languages](#languages)
     2. [Frameworks and Tools](#frameworks-and-tools)
@@ -69,10 +70,11 @@
 - All links to work as expected.
 - Appealing design that works well on both desktop and mobile devices.
 - Be able to log in and upload a movie of their choice.
-- Be able to add reviews to all movies on the site.
-- Be able to edit/delete movies.
-- Be able to edit/delete reviews to associated movies.
-- To be able to search for movies using a search bar feature.
+- Be able to add reviews to all movies on the site if logged in.
+- Be able to edit/delete users own movies.
+- Be able to edit/delete users own reviews.
+- All users to be able to search for movies using a search bar feature.
+- All users to be able to see movies and reviews
 - Accessibility.
 
 ### User Stories
@@ -89,58 +91,88 @@
 7. I want to delete my movies on MCC.
 8. I want delete my reviews on MCC.
 9. I want to use the search bar to search movies on MCC.
+10. I want to delete my account if no longer needed.
 
 #### Site Owner 
-8. I want users to be able to play QuickShot game on mobile, tablet and desktop.
-9. I want users to be able to save their score to the leader board.
-10. I want users to be able to see the top ten scores.
-11. I want users to be able to contact us.
-12. I do not want users to use browser back button if they are looking for a page that does not exist.
-13. Inform users that the game will be coming to App store and Google Play soon
-14. I want users to take a quiz that tests their video game knowledge, to pass the time.
+11. I want all users to be able to see all movies.
+12. I want all users to be able to see all reviews.
+13. I want all users to be able to create an account.
+14. I want users who have created accounts to log in and see their profile.
+15. I want account users to add a movie.
+16. I want account users to edit their own movie.
+17. I want account users to delete their own movie.
+18. I want account users to add reviews.
+19. I want account users to edit their own review.
+20. I want account users to delete their own review.
+21. I want to be able to log in as admin.
+22. I want to be able to add a genre.
+23. I want to be able to edit a genre.
+24. I want to be able to delete a genre.
+25. I want to be able to prompt account users before updating or deleting.
+26. I do not want users to use browser back button if they are looking for a page that does not exist.
 
 ## Scope
 
 The scope of the project in its first release is defined by the following features:
 
 - Simple navigation that allows user to navigate between sections of the site. 
-- Game page that allows user to play game, see how to play game, save score to the leader board and navigate back to main site.
-- Allow user to see their score on the leader board if they have reached the top ten.
-- Allow users to see the top ten players on the leader board.
-- Contact form to allow users to send queries. The form is fully functional using EmailJS and will not submit unless all fields are filled out.
-- An error page (404.html) that appears when visiting a page that does not exist with navigation above.
+- Allow users to log into their own accounts and perform CRUD operations on movies and reviews associated to their own account as well as their own account.
+- Allow all users to see the stored movies and reviews.
+- Allow users to search all the movies that have been added.
+- An error page (404.html) and internal server error page (500.html) that appears when visiting a page that does not exist or when an internal server error has been detected.
 - Clear and simple favicon icon to help users identify the site.
+- Navigation links to show and hide based on logged in and logged out users as well as admin and non-admin users 
 
 Features to be built in future releases:
 
-- Addition of social media links when QuickShot develop their social media platforms.
-- Active links to Apples App store and Google Plays store when the game becomes available on these platforms.
+- Allow admin to review movie submissions to check whether movie has already been added or not. Some movies over time have had the same title so an extra field in the Movies collection that will signify approval that will alert admin so that they can approve it or not.
+- Ability for users to add a list of Actors to be submitted into the Movies collection.
 
 ## Design
 
 ### Design Choices
-QuickShot was designed to have an old school 80s game look that adopted some of the layout from 80s game displays creating a sense of nostalgia. The site is a simple scrolling page as it didn't need to be too complex and is simply made to advertise the game, display the leader board and give user the facility to send messages. The game design has a similar look to an old Nintendo game as I was looking to show how modern technology can still give users a sense of nostalgia while playing.
+MMC was designed to mimic the look and feel of iMdb. It was very much styled on that basis however the layout is very simple so that users can accurately locate all the necesarry sections of the site with ease. The majority of the site is style using Materialize components which has helped the site keep a consistent structure and made it fully responsive also. As alot of the images used are being derived from OMdbs api the site colours and layout need to be kept simple. My attempt with this was to see if I could essentially make the design an iMdb/Netflix clone.
 
 ### Colour
 
-For the colour scheme I opted for an army fatigue palette of greens and browns to match the theme of the game.
+For the colour scheme I opted to base it on the colour scheme of iMdB.
 
 ![Colour Scheme](docs/features/colour-scheme.png)
 
 ### Fonts
 
-The main headings of the site and game use Press Start 2P with a fallback of sans-serif to mimic the look of 80s games. This font is also used on the navigation. For the body text of the site I opted for the Oswald font which also has a fallback of sans-serif. Both fonts were imported using Google Fonts API.
+The main font used in the entirety of the website is "'Roboto', sans-serif" which also has negative letter spacing of 0.5px. For the logo I opted for 'Bebas Neue', sans-serif which has a similar look to the iMdb logo. Both fonts were imported using Google Fonts API.
 
 ### Structure
-The main site is structured with different sections for each page . Both main site and game are responsive in nature and have been tested on the industry standard width of 320px.
+The site has a total of 14 pages each having certain restrictions based on who is logged in. The entire site is fully responsive and has been tested within the industry standard width of 320px.
 
-The website consists of 6 main pages:
-- Home page which shows what the site is about, featured albums, and the various subscription options
-- Artist page which allows users to browse the artist they want to listen to by letter and shows the top three featured artists
-- Genre page which allows users to browse the artist they want to listen to by genre
-- Events page which allows users to see the latest events and navigate to their corresponding sites
-- News page which allows users to see and keep up with the latest news
-- Contact page which allows users to contact the business and locate the office
+The website consists of 14 main pages:
+- Main page which shows all movies stored, giving all users the ability to see details and reviews.
+- Sign in page that allows returning users to log in to their account.
+- Register page that allows visitors to the site to set up their own new accounts.
+- Profile page that allows logged in users to see and edit their movies as well as delete their own account. Admin user can also see all the users with accounts and delete them.
+- Add and edit movie pages which are only accessible to logged in users.
+- Add and edit review pages which are only accessible to logged in users.
+- Manage genere page which allows the admin user to see all genres stored and delete them.
+- Add and edit genre pages which are only accessible to admin user.
+
+![MovieCrazyClub ConceptualFlow Image](docs/data_models/conceptual-flow-chart.png)
+
+- All users:
+    - Home, Sign In, Register
+- Logged in (non-admin user)
+    - Home, Profile, Add Movie, Sign Out
+- Logged in (admin user)
+    - Home, Profile, Add Movie, Manage Genres, Sign Out
+
+- Logged in users can only edit and delete their own reviews and movies
+
+### Database Structure
+
+Using Lucid chart I created an ERD to show how data will flow and be stored within the MongoDB.
+
+![MovieCrazyClub MongoDB Image](docs/data_models/movie-crazy-club-erd.png)
+
 
 ### Wireframes
 
