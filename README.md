@@ -383,11 +383,11 @@ custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%
 
 ### Python Validation
 
-[Python Linter](https://pep8ci.herokuapp.com/) was used to validate the Python used
+[Python Linter](https://pep8ci.herokuapp.com/) was used to test and validate the Python used in app.py and env.py
 
-- No Errors
+- app.py - No Errors
 
-![app.py validated with Python Linter](docs/validation/python/app_python_validate.png)
+![app python file validated](docs/validation/python/app_python_validate.png)
 
 ### Accessibility
 The WAVE WebAIM web accessibility tool was used to ensure the website met accessibility standards. 
