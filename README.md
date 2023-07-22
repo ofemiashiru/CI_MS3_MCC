@@ -46,44 +46,49 @@
 ## Project Goals 
 
 ### User Goals
-- Play QuickShot game.
-- Save Score to the leader board.
-- Contact Quickshot Site Owner.
+- See all movies added to MCC.
+- To see reviews of all movies.
+- To add movies to MCC.
+- To add reviews to movies.
 
 ### Site Owner Goals
-- Allow users to play QuickShot game.
-- Receive messages from QuickShot players.
-- Show users the top ten QuickShot Players.
+- To allow users to sign up to MCC.
+- To manage the genres on MCC.
+- To manage users accounts on MCC.
 
 ## User Experience
 
 ### Target Audience
-- People who are fans of nostalgic 80s games. 
-- People who are fans of shoot and aim games.
-- People who are competitive and relish a challenge.
+- People who are fans of films. 
+- People who are part of a film club.
 
 ### User Requirements and Expectations
 
 - Easy to use navigation that is responsive.
-- Be able to easily browse between sections of the site and the game.
+- Be able to easily browse between sections of the site.
 - All links to work as expected.
 - Appealing design that works well on both desktop and mobile devices.
-- Be able to play game on Mobile, tablet and desktop device.
-- Be able to contact QuickShot game site.
+- Be able to log in and upload a movie of their choice.
+- Be able to add reviews to all movies on the site.
+- Be able to edit/delete movies.
+- Be able to edit/delete reviews to associated movies.
+- To be able to search for movies using a search bar feature.
 - Accessibility.
 
 ### User Stories
 
 #### First-time User 
-1. I want to play the QuickShot game.
-2. I want to save my score on the leader board.
-3. I want to see the leader board.
-4. I want to contact QuickShot game site.
+1. I want to see all movies on MCC.
+2. I want to create an account on MCC.
+3. I want to add movies on MCC.
+4. I want to add reviews on MCC.
 
 #### Returning User
-5. I want to see all the top ten scores.
-6. I want to be able to see if I can top the leader board.
-7. I want to be able to contact QuickShot game site.
+5. I want to edit movies on MCC.
+6. I want to edit reviews on MCC.
+7. I want to delete my movies on MCC.
+8. I want delete my reviews on MCC.
+9. I want to use the search bar to search movies on MCC.
 
 #### Site Owner 
 8. I want users to be able to play QuickShot game on mobile, tablet and desktop.
@@ -139,22 +144,10 @@ The website consists of 6 main pages:
 
 ### Wireframes
 
-<details><summary>index.html</summary>
+<details><summary>movies</summary>
 <img src="docs/wireframes/index.png" alt="index wireframe">
 </details>
-<details><summary>game.html</summary>
-<p>Game Home</p>
-<img src="docs/wireframes/game_home.png" alt="game home wireframe">
-<p>How to play</p>
-<img src="docs/wireframes/how_to_play.png" alt="game how to play wireframe">
-<p>Game Display</p>
-<img src="docs/wireframes/game_display.png" alt="game display wireframe">
-<p>Game Over Screen</p>
-<img src="docs/wireframes/game_over_screen.png" alt="game over screen wireframe">
-</details>
-<details><summary>404.html</summary>
-<img src="docs/wireframes/404.png" alt="404 wireframe"> 
-</details>
+
 
 ## Technologies Used
 
@@ -162,19 +155,21 @@ The website consists of 6 main pages:
 - HTML
 - CSS
 - JavaScript
+- Python
 
 ### Frameworks and Tools
-- Bootstrap v4.5 - simply for base css
+- Flask
+- Materialise
+- MongoDB
 - Git
 - GitHub
-- Gitpod
+- CodeAnywhere
 - Balsamiq
-- Ezgif.com
 - Google Fonts
 - Adobe Color
 - Font Awesome
 - Favicon<span>.</span>io
-- Open Trivia DB 
+- OMDb API
 
 ## Features
 
