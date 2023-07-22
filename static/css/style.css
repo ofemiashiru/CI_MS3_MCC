@@ -92,11 +92,16 @@ nav.nav-extended .nav-wrapper{
     min-height: 75px !important;
 }
 
+.sidenav-trigger{
+    cursor: pointer;
+}
+
 .sidenav-close{
     cursor: pointer;
     display: inline;
     margin: 10px;
 }
+
 
 .sidenav li:not(:first-child) i {
     margin:0;
