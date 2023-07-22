@@ -209,6 +209,7 @@ The website consists of 6 main pages:
 - Adobe Color
 - Font Awesome
 - Favicon<span>.</span>io
+- Lucid
 - OMDb API
 
 ## Features
