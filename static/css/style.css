@@ -1,6 +1,7 @@
 :root {
     --gold: #bb9b0d;
     --white: #ffffff;
+    --black: #000000;
   }
 /* GENERAL */
 
@@ -8,8 +9,20 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.gold{
+    background-color: var(--gold)
+}
+
+.gold-text{
+    color: var(--gold)
+}
+
 form{
     border-radius: 10px; 
+}
+
+label{
+    color: var(--black) !important;
 }
 
 .pad-small-text{
