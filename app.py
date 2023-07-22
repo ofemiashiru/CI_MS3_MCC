@@ -20,7 +20,6 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# ROUTE FOR HOME PAGE AND SHOW MOVIES
 @app.route("/")
 @app.route("/show_movies")
 def show_movies():
@@ -34,18 +33,17 @@ def show_movies():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     """
-    Route for search functionality
+    Route for search functionality to allow users to search for movies
     """
     query = request.form.get("query")
     movies = list(mongo.db.movies.find({"$text": {"$search": query}}))
     return render_template("movies.html", movies=movies)
 
 
-# ROUTE FOR REGISTER
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """
-    Route for user registration
+    Route for user registration to allow users to sign up
     """
     if request.method == "POST":
         # Check if passwords are matching
@@ -96,7 +94,6 @@ def delete_user_entirely(id):
     mongo.db.users.find_one_and_delete({"_id": ObjectId(id)})
 
 
-# ROUTE TO DELETE USER
 @app.route("/delete_user/<user_id>")
 def delete_user(user_id):
     """
@@ -117,7 +114,6 @@ def delete_user(user_id):
         return redirect(url_for("show_movies"))
 
 
-# ROUTE FOR SIGN IN
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
     """
@@ -185,7 +181,6 @@ def profile(username):
     return redirect(url_for("sign_in"))
 
 
-# SIGN OUT ROUTE
 @app.route("/sign_out")
 def sign_out():
     """
@@ -217,7 +212,6 @@ def internal_server_error(e):
     return render_template("500.html"), 500
 
 
-# ADD MOVIE ROUTE
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     """
@@ -229,9 +223,9 @@ def add_movie():
             movie = {
                 "genre_name": request.form.get("genre_name"),
                 "title": request.form.get("title"),
-                "year": request.form.get("year"),
+                "year": int(request.form.get("year")),
                 "plot": request.form.get("plot"),
-                "rating": request.form.get("rating"),
+                "rating": int(request.form.get("rating")),
                 "director": request.form.get("director"),
                 "poster": request.form.get("poster"),
                 "created_by": session["user"]
@@ -247,7 +241,6 @@ def add_movie():
     return redirect("sign_in")
 
 
-# EDIT MOVIE ROUTE
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
 def edit_movie(movie_id):
     """
@@ -261,9 +254,9 @@ def edit_movie(movie_id):
                 updated_movie = {
                     "genre_name": request.form.get("genre_name"),
                     "title": request.form.get("title"),
-                    "year": request.form.get("year"),
+                    "year": int(request.form.get("year")),
                     "plot": request.form.get("plot"),
-                    "rating": request.form.get("rating"),
+                    "rating": int(request.form.get("rating")),
                     "director": request.form.get("director"),
                     "poster": request.form.get("poster"),
                     "created_by": session["user"]
@@ -285,7 +278,6 @@ def edit_movie(movie_id):
     return redirect(url_for("sign_in"))
 
 
-# DELETE MOVIE ROUTE
 @app.route("/delete_movie/<movie_id>")
 def delete_movie(movie_id):
     """
@@ -304,7 +296,6 @@ def delete_movie(movie_id):
     return redirect(url_for("sign_in"))
 
 
-# SHOW GENRES ROUTE
 @app.route("/show_genres")
 def show_genres():
     """
@@ -320,7 +311,6 @@ def show_genres():
     return redirect(url_for("sign_in"))
 
 
-# ADD GENRE ROUTE
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     """
@@ -340,7 +330,6 @@ def add_genre():
     return redirect(url_for("sign_in"))
 
 
-# EDIT GENRE ROUTE
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     """
@@ -373,7 +362,6 @@ def edit_genre(genre_id):
     return redirect(url_for("sign_in"))
 
 
-# DELTE GENRE ROUTE
 @app.route("/delete_genre/<genre_id>")
 def delete_genre(genre_id):
     """
@@ -396,7 +384,6 @@ def delete_genre(genre_id):
     return redirect(url_for("sign_in"))
 
 
-# SHOW REVIEWS ROUTE
 @app.route("/show_reviews/<movie_id>")
 def show_reviews(movie_id):
     """
@@ -409,7 +396,6 @@ def show_reviews(movie_id):
     return render_template("reviews.html", movie=movie, reviews=reviews)
 
 
-# ADD REVIEW ROUTE
 @app.route("/add_review/<movie_id>", methods=["GET", "POST"])
 def add_review(movie_id):
     """
@@ -432,7 +418,6 @@ def add_review(movie_id):
     return redirect(url_for("sign_in"))
 
 
-# EDIT REVIEW ROUTE
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     """
@@ -464,7 +449,6 @@ def edit_review(review_id):
     return redirect(url_for("sign_in"))
 
 
-# DELETE REVIEW ROUTE
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
     """
