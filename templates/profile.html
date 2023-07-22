@@ -11,7 +11,7 @@
                 <h3 class="center-align black-text profile-header">
                     {{ user_info.username.capitalize() }}'s account
                 </h3>
-                {% if user_movies|length > 0 %}
+                {% if user_movies | length < 1 %}
                     <h5 class="center">My movies</h5>
                     <ul class="collapsible">
                         {% for movie in users_movies %}
