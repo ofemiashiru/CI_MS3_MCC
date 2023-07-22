@@ -11,51 +11,54 @@
                 <h3 class="center-align black-text profile-header">
                     {{ user_info.username.capitalize() }}'s account
                 </h3>
-
-                <h5 class="center">My movies</h5>
-                <ul class="collapsible">
-                    {% for movie in users_movies %}
-                        <li>
-                            <div class="collapsible-header">
-                                <i class="fa-solid fa-caret-down"></i> <span>{{ movie.title }}</span>
-                            </div>
-                            <div class="collapsible-body">
-                                <div class="collapsible__img-container">
-                                    <img  src="{{ movie.poster }}" alt="{{ movie.title }} image"/>
+                {% if user_movies|length > 0 %}
+                    <h5 class="center">My movies</h5>
+                    <ul class="collapsible">
+                        {% for movie in users_movies %}
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="fa-solid fa-caret-down"></i> <span>{{ movie.title }}</span>
                                 </div>
-                                <a class="collapsible__btn btn-small green darken-3 tooltipped" 
-                                    aria-label="Edit Movie" href="{{ url_for('edit_movie', movie_id=movie._id) }}"
-                                    data-position="top" data-tooltip="Edit Movie">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <!-- Modal Trigger -->
-                                <a href="#modal-delete-{{ movie._id }}" 
-                                    aria-label="Delete Movie" 
-                                    class="collapsible__btn btn-small red darken-4 modal-trigger tooltipped"
-                                    data-position="top" data-tooltip="Delete Movie">
-                                        <i class="fa-solid fa-trash"></i>
-                                </a>
-                                {% for review in reviews %}
-                                    {% if movie.title|lower == review.title|lower  %}
-                                        <p class="flow-text">{{ review.review }}</p>
-                                        <em class="grey-text text-darken-1">{{ review.created_by}}</em>                 
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </li>
-                        <!-- Modal Structure -->
-                        <div id="modal-delete-{{ movie._id }}" class="modal">
-                            <div class="modal-content">
-                                <h5>Are you sure you want to delete {{ movie.title }}?</h5>
-                                <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
-                                <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
-                            </div>
-                        </div>    
-                    {% endfor %}
-                </ul>
+                                <div class="collapsible-body">
+                                    <div class="collapsible__img-container">
+                                        <img  src="{{ movie.poster }}" alt="{{ movie.title }} image"/>
+                                    </div>
+                                    <a class="collapsible__btn btn-small green darken-3 tooltipped" 
+                                        aria-label="Edit Movie" href="{{ url_for('edit_movie', movie_id=movie._id) }}"
+                                        data-position="top" data-tooltip="Edit Movie">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <!-- Modal Trigger -->
+                                    <a href="#modal-delete-{{ movie._id }}" 
+                                        aria-label="Delete Movie" 
+                                        class="collapsible__btn btn-small red darken-4 modal-trigger tooltipped"
+                                        data-position="top" data-tooltip="Delete Movie">
+                                            <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                    {% for review in reviews %}
+                                        {% if movie.title|lower == review.title|lower  %}
+                                            <p class="flow-text">{{ review.review }}</p>
+                                            <em class="grey-text text-darken-1">{{ review.created_by}}</em>                 
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </li>
+                            <!-- Modal Structure -->
+                            <div id="modal-delete-{{ movie._id }}" class="modal">
+                                <div class="modal-content">
+                                    <h5>Are you sure you want to delete {{ movie.title }}?</h5>
+                                    <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                                    <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
+                                </div>
+                            </div>    
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h5 class="center">No movies</h5>
+                {% endif %}
                 {% if session.user == "admin" %}
                     <h5 class="center">All users</h5>
                     <ul class="collection">

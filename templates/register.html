@@ -32,6 +32,9 @@
                             pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="passwordCheck">Re-enter Password</label>
                     </div>
+                    <div class="col s12 center">
+                        <p class="password-check red-text darken-4"></p>
+                    </div>
                 </div>
                 <!-- register -->
                 <div class="row">
@@ -51,4 +54,8 @@
             </p>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
 {% endblock %}

@@ -19,11 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let collapsible = document.querySelectorAll(".collapsible");
     M.Collapsible.init(collapsible);
 
+    // Get year for footer
+    const now = new Date();
+    const year = now.getFullYear();
+    const footer = document.querySelector(".footer-copyright .container span");
+    footer.innerHTML = `© ${year} Movie Crazy Club`;
+
 });
 
 
-// Get year for footer
-const now = new Date();
-const year = now.getFullYear();
-const footer = document.querySelector(".footer-copyright .container span");
-footer.innerHTML = `© ${year} Movie Crazy Club`;
