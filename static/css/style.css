@@ -17,6 +17,14 @@
     color: var(--gold)
 }
 
+.no-border{
+    border: none;
+}
+
+.hide{
+    visibility: none;
+}
+
 form{
     border-radius: 10px; 
 }
