@@ -157,6 +157,9 @@ The website consists of 14 main pages:
 - Manage genere page which allows the admin user to see all genres stored and delete them.
 - Add and edit genre pages which are only accessible to admin user.
 
+
+Using Figma I created a conceptual flow chart of how users will navigate throughout the site
+
 ![MovieCrazyClub ConceptualFlow Image](docs/data_models/conceptual-flow-chart.png)
 
 #### What links users can and cannot see:
