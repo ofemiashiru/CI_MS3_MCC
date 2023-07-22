@@ -26,5 +26,3 @@ document.addEventListener("DOMContentLoaded", function () {
     footer.innerHTML = `© ${year} Movie Crazy Club`;
 
 });
-
-

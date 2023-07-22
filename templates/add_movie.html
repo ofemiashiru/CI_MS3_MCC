@@ -10,7 +10,7 @@
         <form class="col s12 l6 white" method="POST" action="{{ url_for('add_movie') }}">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="title" name="title" type="text" class="validate">
+                    <input id="title" name="title" type="text" class="validate" required>
                     <label for="title">Title</label>
                 </div>
             </div>
@@ -26,19 +26,19 @@
                     <label for="director">Director</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="year" name="year" type="number" min="1888" max="2023" step="1" pattern="^[0-9]{4}$" class="validate"/>
+                    <input id="year" name="year" type="number" min="1888" max="2023" step="1" pattern="^[0-9]{4}$" class="validate" required/>
                     <label for="year">Year</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="plot" name="plot" class="materialize-textarea validate"></textarea>
+                    <textarea id="plot" name="plot" class="materialize-textarea validate" required></textarea>
                     <label for="plot">Plot</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s3">
-                    <input id="rating" name="rating" type="number" max="100" step="1" class="validate"/>
+                    <input id="rating" name="rating" type="number" max="100" step="1" class="validate" required/>
                     <label for="rating">Rating</label>
                 </div>
                 <div class="input-field col s9">
