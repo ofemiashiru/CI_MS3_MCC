@@ -32,12 +32,13 @@
     1. [HTML Validation](#HTML-validation)
     2. [CSS Validation](#CSS-validation)
     3. [JS Validation](#JS-Validation)
-    4. [Accessibility](#accessibility)
-    5. [Performance](#performance)
-    6. [Responsiveness](#responsiveness)
-    7. [Device testing](#performing-tests-on-various-devices)
-    8. [Browser compatibility](#browser-compatibility)
-    9. [Testing user stories](#testing-user-stories) 
+    4. [Python Validation](#python-validation)
+    5. [Accessibility](#accessibility)
+    6. [Performance](#performance)
+    7. [Responsiveness](#responsiveness)
+    8. [Device testing](#performing-tests-on-various-devices)
+    9. [Browser compatibility](#browser-compatibility)
+    10. [Testing user stories](#testing-user-stories) 
 7. [Bugs](#Bugs)
 8. [Deployment](#deployment)
 9. [Credits](#credits)
@@ -380,14 +381,24 @@ custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%
 </details>
 
 
+### Python Validation
+
+[Python Linter](https://pep8ci.herokuapp.com/) was used to validate the Python used
+
+- No Errors
+
+![app.py validated with Python Linter](docs/validation/python/app_python_validate.png)
+
 ### Accessibility
 The WAVE WebAIM web accessibility tool was used to ensure the website met accessibility standards. 
 
-index.html [results](https://wave.webaim.org/report#/https://ofemiashiru.github.io/CI_MS2_QSG/index.html) - No Errors Found.
+movies.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/show_movies) - No Errors Found.
 
-game.html [results](https://wave.webaim.org/report#/https://ofemiashiru.github.io/CI_MS2_QSG/game.html) - No Errors Found.
+sign_in.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/sign_in) - No Errors Found.
 
-404.html [results](https://wave.webaim.org/report#/https://ofemiashiru.github.io/CI_MS2_QSG/404.html) - No Errors Found.
+register.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/register) - No Errors Found.
+
+404.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/profilesdfd)
 
 ### Performance 
 Google Lighthouse Tool was used to test the performance of the website. 
