@@ -91,6 +91,7 @@ nav.nav-extended .nav-wrapper{
 }
 
 /* MOVIES PAGE */
+
 .movie-col{
     margin: 0 5px;
 }
@@ -118,6 +119,11 @@ nav.nav-extended .nav-wrapper{
     text-align: center;
 }
 
+.rating__value{
+    font-size: 4rem;
+    margin-top: 0;
+}
+
 /* ADD MOVIE PAGE */
 
 .hidden{
@@ -126,6 +132,26 @@ nav.nav-extended .nav-wrapper{
 
 .movie-cover-container__header{
     color: var(--white)
+}
+
+.movie-cover-container img {
+    width: 70%;
+    border-radius: 10px;
+}
+
+/* REVIEWS */
+
+.review_plot{
+    font-size: 1.3rem;
+}
+
+.user-review-btn{
+    margin-left: 10px;
+}
+
+.review-divider{
+    margin-bottom: 50px;
+    border-top: 1px;
 }
 
 /* ADD REVIEW PAGE */
@@ -161,12 +187,6 @@ nav.nav-extended .nav-wrapper{
     border-radius: 10px;
 }
 
-/* ADD MOVIE PAGE */
-.movie-cover-container img {
-    width: 70%;
-    border-radius: 10px;
-}
-
 /* PROFILE */
 
 .collapsible__img-container{
@@ -177,25 +197,10 @@ nav.nav-extended .nav-wrapper{
     width: 100%;
 }
 
-/* REVIEWS */
-
-.review_plot{
-    font-size: 1.3rem;
-}
-
-.user-review-btn{
-    margin-left: 10px;
-}
-
-.review-divider{
-    margin-bottom: 50px;
-    border-top: 1px;
-}
-
 /* MEDIA QUERIES */
 
 @media (min-width: 446px){
-    /* Chnages take place at this stage */
+
     nav .brand-logo{
         font-size: 2rem;
         transition: .4s

@@ -26,7 +26,7 @@ def show_movies():
     """
     Route for home and show_movies
     """
-    movies = list(mongo.db.movies.find().sort("rating", 1))
+    movies = list(mongo.db.movies.find().sort("rating", -1))
     return render_template("movies.html", movies=movies)
 
 
