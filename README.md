@@ -127,6 +127,7 @@ The scope of the project in its first release is defined by the following featur
 Features to be built in future releases:
 
 - Allow admin to review movie submissions to check whether movie has already been added or not. Some movies over time have had the same title so an extra field in the Movies collection that will signify approval that will alert admin so that they can approve it or not.
+- Further development to allow admin users to have super user controls and delete reviews and movies.
 - Ability for users to add a list of Actors to be submitted into the Movies collection.
 
 ## Design
@@ -158,7 +159,7 @@ The website consists of 14 main pages:
 - Add and edit genre pages which are only accessible to admin user.
 
 
-Using Figma I created a conceptual flow chart of how users will navigate throughout the site
+Using Figma I created a conceptual flow chart of how users will navigate throughout the site.
 
 ![MovieCrazyClub ConceptualFlow Image](docs/data_models/conceptual-flow-chart.png)
 
@@ -253,32 +254,15 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ## Features
 
 ### Logo Navigation and Search bar
-- Navigation and Logo remains consistent on each page apart from game page (link to main site on game)
-- Navigation is fully responsive and collapses when window is resized
-- Navigation allows users to easily navigate from section to section and from main site to game
-- Logo in Navigation takes user back to the home page
+- Navigation and Logo remains consistent on each page
+- Navigation and search bar are fully responsive and collapse when window is resized
+- Navigation allows users to easily navigate the site and search bar allows users to search movies
+- Logo in Navigation takes user back to the main page
 
-<p>Nav on Desktop</p>
+<p>Nav on Desktop, tablet and mobile</p>
 
-![Logo Navigation on Desktop](docs/features/feature-navigation-bar-1.png)
+![Logo Navigation on Desktop](docs/features/feature-navigation-bar.png)
 
-<p>Nav on Tablet(Closed)</p>
-
-![Logo Navigation on Tablet (Closed)](docs/features/feature-navigation-bar-2.png)
-
-<p>Nav on Tablet(Open)</p>
-
-![Logo Navigation and Tablet (Open)](docs/features/feature-navigation-bar-3.png)
-
-<p>Nav on Mobile(Open)</p>
-
-![Logo Navigation and Mobile (Open)](docs/features/feature-navigation-bar-4.png)
-
-### Hero Section
-- Greets user on entering the site and displays game on different screen sizes
-- Shows user that QuickShot game will be coming soon on App store and Google Play (User story - 13)
-
-![Hero Section](docs/features/feature-hero.png)
 
 ### About Section
 - Informs user of what the QuickShot game is about 
