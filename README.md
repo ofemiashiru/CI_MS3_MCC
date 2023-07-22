@@ -247,6 +247,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 - Font Awesome
 - Favicon<span>.</span>io
 - Lucid
+- Figma
 - OMDb API
 
 ## Features
@@ -437,7 +438,6 @@ The website is completely responsive and has been tested on mobile, tablet and d
 <p>Part Two</p>
 <img src="docs/responsiveness/respsonsiveness-part-two.gif" alt="Responsiveness Part Two">
 </details>
-
 
 
 
