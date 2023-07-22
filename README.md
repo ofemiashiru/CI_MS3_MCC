@@ -131,7 +131,7 @@ Features to be built in future releases:
 ## Design
 
 ### Design Choices
-MMC was designed to mimic the look and feel of iMdb. It was very much styled on that basis however the layout is very simple so that users can accurately locate all the necesarry sections of the site with ease. The majority of the site is style using Materialize components which has helped the site keep a consistent structure and made it fully responsive also. As alot of the images used are being derived from OMdbs api the site colours and layout need to be kept simple. My attempt with this was to see if I could essentially make the design an iMdb/Netflix clone.
+MMC was designed to mimic the look and feel of iMdb. It was very much styled on that basis however the layout is very simple so that users can accurately locate all the necesarry sections of the site with ease. The majority of the site is style using Materialize components which has helped the site keep a consistent structure and made it fully responsive also. As alot of the images used are being derived from OMDbs api the site colours and layout need to be kept simple. My attempt with this was to see if I could essentially make the design an iMdb/Netflix clone.
 
 ### Colour
 
@@ -141,7 +141,7 @@ For the colour scheme I opted to base it on the colour scheme of iMdB.
 
 ### Fonts
 
-The main font used in the entirety of the website is "'Roboto', sans-serif" which also has negative letter spacing of 0.5px. For the logo I opted for 'Bebas Neue', sans-serif which has a similar look to the iMdb logo. Both fonts were imported using Google Fonts API.
+The main font used in the entirety of the website is "'Roboto', sans-serif". For the logo I opted for 'Bebas Neue', sans-serif which has a similar look to the iMdb logo. Both fonts were imported using Google Fonts API.
 
 ### Structure
 The site has a total of 14 pages each having certain restrictions based on who is logged in. The entire site is fully responsive and has been tested within the industry standard width of 320px.
@@ -158,6 +158,8 @@ The website consists of 14 main pages:
 
 ![MovieCrazyClub ConceptualFlow Image](docs/data_models/conceptual-flow-chart.png)
 
+#### What links users can and cannot see:
+
 - All users:
     - Home, Sign In, Register
 - Logged in (non-admin user)
@@ -165,11 +167,11 @@ The website consists of 14 main pages:
 - Logged in (admin user)
     - Home, Profile, Add Movie, Manage Genres, Sign Out
 
-- Logged in users can only edit and delete their own reviews and movies
+- Logged in users can only edit and delete their own reviews and movies.
 
 ### Database Structure
 
-Using Lucid chart I created an ERD to show how data will flow and be stored within the MongoDB.
+Using Lucid chart I created an ERD to show how data will flow and be stored within MongoDB collections.
 
 ![MovieCrazyClub MongoDB Image](docs/data_models/movie-crazy-club-erd.png)
 
@@ -218,7 +220,6 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 <details><summary>500</summary>
 <img src="docs/wireframes/500.png" alt="500 wireframe">
 </details>
-
 
 
 ## Technologies Used
@@ -324,11 +325,31 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ### HTML Validation
 The W3C Markup Validation Service was used to validate the HTML of the website. 
 
-index.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fofemiashiru.github.io%2FCI_MS2_QSG%2Findex.html) - No Errors Found
+movies.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fshow_movies) - No Errors Found
 
-game.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fofemiashiru.github.io%2FCI_MS2_QSG%2Fgame.html) - No Errors Found
+add_movie.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fadd_movie) - No Errors Found
 
-404.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fofemiashiru.github.io%2FCI_MS2_QSG%2F404.html) - No Errors Found
+edit_movie.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fedit_movie%2F64aa76200062b2ede6c081c1) - No Errors Found
+
+reviews.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fshow_reviews%2F64aa76200062b2ede6c081c1) - No Errors Found
+
+add_review.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fadd_review%2F64aa76200062b2ede6c081c1) - No Errors Found
+
+edit_review.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fedit_review%2F64b4941eac9e68e3acbbbb53) - No Errors Found
+
+sign_in.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fsign_in) - No Errors Found
+
+register.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fregister) - No Errors Found
+
+profile.html [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fprofile%2Fajasko) - No Errors Found
+
+profile.html - admin [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fprofile%2Fadmin) - No Errors Found
+
+genres.html - admin [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fshow_genres) - No Errors Found
+
+add_genre.html - admin [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fadd_genre) - No Errors Found
+
+edit_genre.html - admin [results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmovie-crazy-club-73ece9687233.herokuapp.com%2Fedit_genre%2F64ba84070878e37c4dd6a478) No Errors Found
 
 ### CSS Validation
 The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website.
@@ -583,12 +604,6 @@ The website is completely responsive and has been tested on mobile, tablet and d
 |-------------|------------|
 |Receiving the error message ```An invalid form control with name='' is not focusable``` when submitting answer without picking true or false|As the element created was set to required the DOM was searching for the element but could not find it as I set it the display property to none - created custom validation within the quiz.js file starting on line 170 to handle non input.|
 
-```
-if(!userAnswer){
-    document.querySelector('#answer-feedback').innerHTML = '> Please select True or False! <';
-    return;
-}
-```
 
 ## Deployment
 
@@ -612,45 +627,18 @@ You can clone the repository by:
 7. Press Enter to create your local clone in your chosen folder.
 
 ## Credits
-Images not referenced below are owned by the Developer or created by Developer using CSS3.
 
 ### Media
 
-[Cross hair used for cursor](assets/images/crosshair.png), taken from [Flaticon - created by xnimrodx](https://www.flaticon.com/free-icon/focus_865240?term=crosshair&page=1&position=20&origin=tag&related_id=865240)
+- Movie Wallpaper background | soure: [Wallpapers.com](https://wallpapers.com/)
 
-[QuickShot logo](assets/favicon/android-chrome-512x512.png), taken from [Favicon.io](https://favicon.io/emoji-favicons/direct-hit)
-
-[Questions used in Quiz](https://opentdb.com/api.php?amount=10&category=15&type=boolean). API generated using [Open Trivia Database](https://opentdb.com/)
+- All movie poster images are API generated from [OMDb](https://www.omdbapi.com/).
 
 ### Code
 
-- Used [Compart](https://www.compart.com/en/unicode/U+2022) to add appropriate Unicode for bullet points in game
+- Used [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/) to add error routes for 404 and 500.
 
-- Used [w3schools.com](https://www.w3schools.com/jsref/met_win_setinterval.asp) to aid in using setInterval function
-
-- Used [w3schools.com](https://www.w3schools.com/jsref/met_win_clearinterval.asp) to aid in using clearInterval function
-
-- Used [w3schools.com](https://www.w3schools.com/jsref/met_document_removeeventlistener.asp) to aid in using the removeEventListener function
-
-- Used [w3schools.com](https://www.w3schools.com/cssref/pr_scroll-behavior.php) to help with adding smooth scrolling to index.html
-
-- Used [w3schools.com](https://www.w3schools.com/cssref/pr_class_cursor.php), [stackoverflow.com - show custom cursor](https://stackoverflow.com/questions/6623769/css-custom-cursor-doesnt-work-in-ff-chrome ) and [stackoverflow.com - centre cursor](https://stackoverflow.com/questions/19560878/css-change-custom-cursor-image-origin-hotspot-to-center) to create a custom cursor, to help show a custom cursor and to centre the custom cursor
-
-- Used [w3schools.com](https://www.w3schools.com/cssref/css3_pr_box-shadow.php) to help add box shadows to images
-
-- Used [stackoverflow.com](https://stackoverflow.com/questions/3186688/drop-shadow-for-png-image-in-css) to help add drop shadows to PNGs
-
-- Used [w3schools.com](https://www.w3schools.com/css/css3_animations.asp) to add animation to the game labels when a target is hit
-
-- Used [w3schools.com](https://www.w3schools.com/howto/howto_css_modals.asp) to assist with creating modals on game.html
-
-- Used [w3schools.com](https://www.w3schools.com/css/css_grid.asp) to assist with using grid layout in CSS
-
-- Used [w3schools.com](https://www.w3schools.com/css/css3_transitions.asp) to assist with using transitions in CSS
-
-- Used [w3schools.com](https://www.w3schools.com/jsref/prop_win_localstorage.asp) to assist with saving and retrieving data from the local storage, and [stackoverflow.com](https://stackoverflow.com/questions/40843773/localstorage-keeps-overwriting-my-data) to stop the local storage data from being overwritten with new data
-
-- Used [w3schools.com](https://www.w3schools.com/howto/howto_js_redirect_webpage.asp) to assist with redirecting to a new page
+- Used [Code Institute Github Solutions](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) to assist with validating materializes drop down correctly.
 
 ## Acknowledgements
 

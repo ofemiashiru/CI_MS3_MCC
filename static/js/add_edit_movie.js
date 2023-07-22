@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    /*
-        vanilla JavaScript for validating the materialize dropdown - 
-        taken from https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js
-    */
-    
+
+    // validating the materialize dropdown - 
     function validateMaterializeSelect() {
         let classValid = "border-bottom: 1px solid #4caf50; box-shadow: 0 1px 0 0 #4caf50;";
         let classInvalid = "border-bottom: 1px solid #f44336; box-shadow: 0 1px 0 0 #f44336;";
