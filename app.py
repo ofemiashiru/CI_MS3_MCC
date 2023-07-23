@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 from werkzeug.security import generate_password_hash, check_password_hash
+import re
 
 if os.path.exists("env.py"):
     import env
@@ -20,11 +21,15 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-def object_id_checker(id):
+def valid_object_id(id):
     """
     Function that checks that the id being passed is 24 characters long
+    and contains only letters and numbers. This is used to validate the
+    ids being used and returns a boolean value
     """
-    return True if len(id) == 24 else False
+    check = re.search("[0-9a-zA-Z]{24}", id)
+
+    return bool(check)
 
 
 @app.route("/")
@@ -399,7 +404,7 @@ def show_reviews(movie_id):
     """
     Route used to show reviews for specific movie
     """
-    if not object_id_checker(movie_id):
+    if not valid_object_id(movie_id):
         return redirect(url_for("show_reviews", movie_id=""))
 
     # Grab all the movie information
@@ -414,6 +419,9 @@ def add_review(movie_id):
     """
     Route used to allow user to add a review for specific movie
     """
+    if not valid_object_id(movie_id):
+        return redirect(url_for("add_reviews", movie_id=""))
+        
     if "user" in session:
         movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
         if request.method == "POST":
@@ -436,6 +444,8 @@ def edit_review(review_id):
     """
     Route allows user to edit their own review
     """
+    if not valid_object_id(movie_id):
+        return redirect(url_for("edit_review", review_id=""))
 
     # Check if the review writer is logged in.
     if "user" in session:
