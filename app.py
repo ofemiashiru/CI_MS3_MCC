@@ -19,12 +19,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 def object_id_checker(id):
     """
     Function that checks that the id being passed is 24 characters long
     """
     return True if len(id) == 24 else False
-        
+
 
 @app.route("/")
 @app.route("/show_movies")
