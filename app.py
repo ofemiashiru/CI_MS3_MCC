@@ -52,7 +52,7 @@ def register():
             return redirect(url_for("register"))
 
         # Check if the username exists
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.db.users.find_one_or_404(
             {"username": request.form.get("username").lower()})
         if existing_user:
             flash("Username already exists")
@@ -84,7 +84,7 @@ def delete_user_entirely(id):
     and reviews from mongodb based upon id
     """
     # Grab user to delete associated movies and reviews
-    user_to_delete = mongo.db.users.find_one(
+    user_to_delete = mongo.db.users.find_one_or_404(
         {"_id": ObjectId(id)})["username"]
     # Find all reviews associated with user and delete
     mongo.db.reviews.delete_many({"created_by": user_to_delete})
@@ -124,7 +124,7 @@ def sign_in():
 
     if request.method == "POST":
         #  check if the user exists in our database
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.db.users.find_one_or_404(
             {"username": request.form.get("username").lower()})
 
         # if the existing user is truthy
@@ -160,7 +160,7 @@ def profile(username):
     """
     if "user" in session:
         # Use this section to pull other data through based on username
-        user_info = mongo.db.users.find_one(
+        user_info = mongo.db.users.find_one_or_404(
             {"username": session["user"]})
         # Bring back all the users movies
         users_movies = list(
@@ -245,7 +245,9 @@ def edit_movie(movie_id):
     Route to allow users to edit and update movie
     """
     if "user" in session:
-        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        movie = mongo.db.movies.find_one_or_404(
+            {"_id": ObjectId(movie_id)})
+
         if session["user"].lower() == movie["created_by"]:
 
             if request.method == "POST":
@@ -264,7 +266,8 @@ def edit_movie(movie_id):
                 flash("Your movie has been succesfully updated.")
                 return redirect(url_for("show_movies"))
 
-            movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+            movie = mongo.db.movies.find_one_or_404(
+                {"_id": ObjectId(movie_id)})
             genres = list(mongo.db.genres.find().sort("genre_name", 1))
             return render_template(
                 "edit_movie.html", movie=movie, genres=genres)
@@ -282,7 +285,8 @@ def delete_movie(movie_id):
     Route allows logged in users to delete their own movies
     """
     if "user" in session:
-        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        movie = mongo.db.movies.find_one_or_404(
+            {"_id": ObjectId(movie_id)})
         if session["user"].lower() == movie["created_by"].lower():
             mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
             flash("Movie has been successfully deleted.")
@@ -336,7 +340,7 @@ def edit_genre(genre_id):
     if "user" in session:
         if session["user"].lower() == "admin":
             # Grabs the previous genre and stores it
-            prev_genre = mongo.db.genres.find_one(
+            prev_genre = mongo.db.genres.find_one_or_404(
                 {"_id": ObjectId(genre_id)})["genre_name"]
             if request.method == "POST":
                 updated_genre = {
@@ -351,7 +355,8 @@ def edit_genre(genre_id):
 
                 flash("Genre succesfully updated and all associated movies.")
                 return redirect(url_for("show_genres"))
-            genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})
+            genre = mongo.db.genres.find_one_or_404(
+                {"_id": ObjectId(genre_id)})
             return render_template("edit_genre.html", genre=genre)
 
         flash("Only admin can access this page.")
@@ -368,7 +373,7 @@ def delete_genre(genre_id):
     if "user" in session:
         if session["user"].lower() == "admin":
             # Grab genre name to delete associated movies
-            genre = mongo.db.genres.find_one(
+            genre = mongo.db.genres.find_one_or_404(
                 {"_id": ObjectId(genre_id)})["genre_name"]
             # Find all movies associated with genre and delete
             mongo.db.movies.delete_many({"genre_name": genre})
@@ -388,7 +393,7 @@ def show_reviews(movie_id):
     Route used to show reviews for specific movie
     """
     # Grab all the movie information
-    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+    movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
     # Grab all reviews associated with the movie
     reviews = list(mongo.db.reviews.find({"title": movie["title"]}))
     return render_template("reviews.html", movie=movie, reviews=reviews)
@@ -400,7 +405,7 @@ def add_review(movie_id):
     Route used to allow user to add a review for specific movie
     """
     if "user" in session:
-        movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+        movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
         if request.method == "POST":
             new_review = {
                 "review": request.form.get("review"),
@@ -424,8 +429,10 @@ def edit_review(review_id):
 
     # Check if the review writer is logged in.
     if "user" in session:
-        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-        movie = mongo.db.movies.find_one({"title": review["title"]})
+        review = mongo.db.reviews.find_one_or_404(
+            {"_id": ObjectId(review_id)})
+        movie = mongo.db.movies.find_one_or_404(
+            {"title": review["title"]})
 
         if session["user"].lower() == review["created_by"].lower():
             if request.method == "POST":
@@ -453,8 +460,10 @@ def delete_review(review_id):
     Route used to delete reviews
     """
     if "user" in session:
-        review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-        movie = mongo.db.movies.find_one({"title": review["title"]})
+        review = mongo.db.reviews.find_one_or_404(
+            {"_id": ObjectId(review_id)})
+        movie = mongo.db.movies.find_one_or_404(
+            {"title": review["title"]})
         if session["user"].lower() == review["created_by"]:
             mongo.db.reviews.delete_one({"_id": ObjectId(review_id)})
             flash("Review sucessfully deleted")

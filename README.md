@@ -264,8 +264,8 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ![Logo Navigation on Desktop](docs/features/feature-navigation-bar.png)
 
 
-### About Section
-- Informs user of what the QuickShot game is about 
+### Movie Section
+- Displays all movies uploaded 
 
 ![About Section](docs/features/feature-about.png)
 
