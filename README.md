@@ -628,6 +628,8 @@ You can clone the repository by:
 
 - Used [Code Institute Github Solutions](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) to assist with validating materializes drop down correctly.
 
+- Used [Python Basics](https://pythonbasics.org/flask-redirect-and-errors/), [w3schools](https://www.w3schools.com/python/python_regex.asp) and [Pythex](https://pythex.org/) for regex and abort class on `valid_object_id` function in app.py
+
 ## Acknowledgements
 
 I would like to take the opportunity to thank:

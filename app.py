@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -30,6 +30,38 @@ def valid_object_id(id):
     check = re.search("[0-9a-zA-Z]{24}", id)
 
     return bool(check)
+
+
+def delete_user_entirely(id):
+    """
+    Function to purge user, all associated movies
+    and reviews from mongodb based upon id
+    """
+    # Grab user to delete associated movies and reviews
+    user_to_delete = mongo.db.users.find_one_or_404(
+        {"_id": ObjectId(id)})["username"]
+    # Find all reviews associated with user and delete
+    mongo.db.reviews.delete_many({"created_by": user_to_delete})
+    # Find all movies associated with user and delete
+    mongo.db.movies.delete_many({"created_by": user_to_delete})
+    # Finally find the user and delete them
+    mongo.db.users.find_one_and_delete({"_id": ObjectId(id)})
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Route for all 404 errors
+    """
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """
+    Route for all 500 errors
+    """
+    return render_template("500.html"), 500
 
 
 @app.route("/")
@@ -90,28 +122,15 @@ def register():
     return render_template("register.html")
 
 
-def delete_user_entirely(id):
-    """
-    Function to purge user, all associated movies
-    and reviews from mongodb based upon id
-    """
-    # Grab user to delete associated movies and reviews
-    user_to_delete = mongo.db.users.find_one_or_404(
-        {"_id": ObjectId(id)})["username"]
-    # Find all reviews associated with user and delete
-    mongo.db.reviews.delete_many({"created_by": user_to_delete})
-    # Find all movies associated with user and delete
-    mongo.db.movies.delete_many({"created_by": user_to_delete})
-    # Finally find the user and delete them
-    mongo.db.users.find_one_and_delete({"_id": ObjectId(id)})
-
-
 @app.route("/delete_user/<user_id>")
 def delete_user(user_id):
     """
     Route handles the deletion of a user from the site
     from both the admin and user themselves
     """
+    if not valid_object_id(user_id):
+        abort(404)
+
     if session["user"] == "admin":
         delete_user_entirely(user_id)
 
@@ -206,22 +225,6 @@ def sign_out():
     return redirect(url_for("sign_in"))
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    """
-    Route for all 404 errors
-    """
-    return render_template("404.html"), 404
-
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    """
-    Route for all 500 errors
-    """
-    return render_template("500.html"), 500
-
-
 @app.route("/add_movie", methods=["GET", "POST"])
 def add_movie():
     """
@@ -256,6 +259,9 @@ def edit_movie(movie_id):
     """
     Route to allow users to edit and update movie
     """
+    if not valid_object_id(movie_id):
+        abort(404)
+
     if "user" in session:
         movie = mongo.db.movies.find_one_or_404(
             {"_id": ObjectId(movie_id)})
@@ -296,6 +302,9 @@ def delete_movie(movie_id):
     """
     Route allows logged in users to delete their own movies
     """
+    if not valid_object_id(movie_id):
+        abort(404)
+
     if "user" in session:
         movie = mongo.db.movies.find_one_or_404(
             {"_id": ObjectId(movie_id)})
@@ -349,6 +358,9 @@ def edit_genre(genre_id):
     """
     Route used to edit a single genre
     """
+    if not valid_object_id(genre_id):
+        abort(404)
+
     if "user" in session:
         if session["user"].lower() == "admin":
             # Grabs the previous genre and stores it
@@ -382,6 +394,9 @@ def delete_genre(genre_id):
     """
     Route allows admin user to delete genre
     """
+    if not valid_object_id(genre_id):
+        abort(404)
+
     if "user" in session:
         if session["user"].lower() == "admin":
             # Grab genre name to delete associated movies
@@ -405,7 +420,7 @@ def show_reviews(movie_id):
     Route used to show reviews for specific movie
     """
     if not valid_object_id(movie_id):
-        return redirect(url_for("show_reviews", movie_id=""))
+        abort(404)
 
     # Grab all the movie information
     movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
@@ -420,8 +435,8 @@ def add_review(movie_id):
     Route used to allow user to add a review for specific movie
     """
     if not valid_object_id(movie_id):
-        return redirect(url_for("add_reviews", movie_id=""))
-        
+        abort(404)
+
     if "user" in session:
         movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
         if request.method == "POST":
@@ -444,8 +459,8 @@ def edit_review(review_id):
     """
     Route allows user to edit their own review
     """
-    if not valid_object_id(movie_id):
-        return redirect(url_for("edit_review", review_id=""))
+    if not valid_object_id(review_id):
+        abort(404)
 
     # Check if the review writer is logged in.
     if "user" in session:
@@ -479,6 +494,9 @@ def delete_review(review_id):
     """
     Route used to delete reviews
     """
+    if not valid_object_id(review_id):
+        abort(404)
+
     if "user" in session:
         review = mongo.db.reviews.find_one_or_404(
             {"_id": ObjectId(review_id)})
