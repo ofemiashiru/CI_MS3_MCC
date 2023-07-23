@@ -19,6 +19,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+def object_id_checker(id):
+    """
+    Function that checks that the id being passed is 24 characters long
+    """
+    return True if len(id) == 24 else False
+        
 
 @app.route("/")
 @app.route("/show_movies")
@@ -392,6 +398,9 @@ def show_reviews(movie_id):
     """
     Route used to show reviews for specific movie
     """
+    if not object_id_checker(movie_id):
+        return redirect(url_for("show_reviews", movie_id=""))
+
     # Grab all the movie information
     movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
     # Grab all reviews associated with the movie
