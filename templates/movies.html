@@ -59,8 +59,8 @@
                         <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close btn red darken-4">No</a>
-                        <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="modal-close btn green darken-3">Yes</a>
+                        <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                        <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" class="modal-close btn green darken-3" aria-label="No">Yes</a>
                     </div>
                 </div>      
             {% endfor %}

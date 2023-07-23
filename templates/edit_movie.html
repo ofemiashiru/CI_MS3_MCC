@@ -16,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="" id="poster" name="poster" value="{{ movie.poster }}" type="text" value="Auto Generated" class="validate" readonly>
+                    <input id="poster" name="poster" value="{{ movie.poster }}" type="text" value="Auto Generated" class="validate" readonly>
                     <label for="Poster">Poster</label>
                 </div>
             </div>
@@ -32,7 +32,6 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <!-- Remove whitespace from beginning and end of text using - -->
                     <textarea id="plot" name="plot" class="materialize-textarea validate" required>
                         {{- movie.plot -}}
                     </textarea>
@@ -58,7 +57,7 @@
                 </div>
             </div>
             <div class="row center">
-                <a href="{{ url_for('show_movies') }}" class="cancel-btn btn-large red darken-4"> 
+                <a href="{{ url_for('show_movies') }}" class="cancel-btn btn-large red darken-4" aria-label="Cancel"> 
                     <i class="fa-solid fa-xmark right"></i>
                     Cancel
                 </a>
@@ -78,8 +77,8 @@
                     <span class="red-text darken-4">Warning! Updating this movie will affect the reviews connected.</span>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close btn red darken-4">No</a>
-                    <button class="modal-clos btn green darken-3" type="submit">
+                    <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                    <button class="modal-clos btn green darken-3" aria-label="Yes" type="submit">
                         Yes
                     </button>
                 </div>
@@ -89,7 +88,7 @@
             <div class="movie-cover-container col s12 l6 center">
                 <h5 class="movie-cover-container__header">Movie Poster</h5>
                 <img id="movie-img" src="{{ movie.poster }}" >
-                <!-- Preloader from Materialize -->
+                <!-- Preloader -->
                 <div class="preloader-wrapper big active hidden">
                     <div class="spinner-layer spinner-blue-only">
                         <div class="circle-clipper left">

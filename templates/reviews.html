@@ -27,7 +27,7 @@
                         <div class="col s12">
                             <p class="center-align white-text">
                                 <span>To leave a review you must be logged in</span>
-                                <a class="gold pad-small-text black-text" href="{{ url_for('sign_in') }}">Sign In</a>
+                                <a class="gold pad-small-text black-text" aria-label="Sign In" href="{{ url_for('sign_in') }}">Sign In</a>
                             </p>
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                             <span class="red-text darken-4">Warning! Maybe you wish to edit your review instead?</span>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close btn red darken-4">No</a>
-                            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="modal-close btn green darken-3">Yes</a>
+                            <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                            <a href="{{ url_for('delete_review', review_id=review._id) }}" class="modal-close btn green darken-3" aria-label="Yes">Yes</a>
                         </div>
                     </div> 
                 </div>

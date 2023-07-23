@@ -17,7 +17,7 @@
             </div>
             <div class="row center">
                 <div class="row">
-                    <a href="{{ url_for('show_genres') }}" class="cancel-btn btn-large red darken-4"> 
+                    <a href="{{ url_for('show_genres') }}" class="cancel-btn btn-large red darken-4" aria-label="Cancel"> 
                         <i class="fa-solid fa-xmark right"></i>
                         Cancel
                     </a>
@@ -38,8 +38,8 @@
                     <span class="red-text darken-4">Warning! Updating this genre will effect all associated movies.</span>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close btn red darken-4">No</a>
-                    <button class="modal-clos btn green darken-3" type="submit">
+                    <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                    <button class="modal-clos btn green darken-3" aria-label="Yes" type="submit">
                         Yes
                     </button>
                 </div>

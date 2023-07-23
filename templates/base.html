@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-    <!-- Added for custom styles on each page -->
-    {% block styles %}
-    {% endblock %}
     <title>Movie Crazy Club - {% block title %} {% endblock %}</title>
 </head>
 <body>
@@ -27,10 +24,10 @@
             <!-- main navbar -->
             <nav class="nav-extended text-shadow black">
                 <div class="nav-wrapper row ">
-                    <a data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <a data-target="mobile-demo" aria-label="Side menu" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <!-- main logo -->
                     <div class="col l2">
-                        <a href="{{ url_for('show_movies') }}" class="brand-logo">
+                        <a href="{{ url_for('show_movies') }}" aria-label="Movie Crazy Club link to home" class="brand-logo">
                             <span>movie.crazy.club</span>
                         </a>
                     </div>
@@ -44,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="col s2 m1 l1 center-align">
-                                <button type="submit" class="transparent btn tooltipped" data-position="bottom" data-tooltip="Search Movies">
+                                <button type="submit" class="transparent btn tooltipped" aria-label="Search Movies" data-position="bottom" data-tooltip="Search Movies">
                                     <i class="fa-solid fa-magnifying-glass white-text"></i><span class="hide">Search</span>                       
                                 </button>
                             </div>
@@ -53,18 +50,17 @@
                     <!-- top link body -->
                     <div class="col l6 right">
                         <ul class="right hide-on-med-and-down nav-body">
-                            <li><a href="{{ url_for('show_movies') }}">Home</a></li>
-                            <!-- If user exists in session then show relevant links -->
+                            <li><a href="{{ url_for('show_movies') }}" aria-label="Home page">Home</a></li>
                             {% if session.user %}
-                                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                                <li><a href="{{ url_for('add_movie') }}">Add Movie</a></li>
+                                <li><a href="{{ url_for('profile', username=session['user']) }}" aria-label="Profile">Profile</a></li>
+                                <li><a href="{{ url_for('add_movie') }}" aria-label="Add Movie">Add Movie</a></li>
                                 {% if session.user|lower == "admin" %}
-                                    <li><a href="{{ url_for('show_genres') }}">Manage Genres</a></li>
+                                    <li><a href="{{ url_for('show_genres') }}" aria-label="Manage Generes">Manage Genres</a></li>
                                 {% endif %}
-                                <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
+                                <li><a href="{{ url_for('sign_out') }}" aria-label="Sign Out">Sign Out</a></li>
                             {% else %}
-                                <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-                                <li><a href="{{ url_for('register') }}">Register</a></li>
+                                <li><a href="{{ url_for('sign_in') }}" aria-label="Sign In">Sign In</a></li>
+                                <li><a href="{{ url_for('register') }}" aria-label="Register">Register</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -74,54 +70,54 @@
             <!-- mobile navbar -->
             <ul class="sidenav nav-body" id="mobile-demo">
                 <li>
-                    <i class="fa-solid fa-xmark fa-xl sidenav-close"></i>
-                    <a href="{{ url_for('show_movies') }}" class="brand-logo side-nav-logo">
+                    <i class="fa-solid fa-xmark fa-xl sidenav-close" aria-label="Close menu"></i>
+                    <a href="{{ url_for('show_movies') }}" aria-label="Movie Crazy Club link to home" class="brand-logo side-nav-logo">
                         <span>movie.crazy.club</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url_for('show_movies') }}">
+                    <a href="{{ url_for('show_movies') }}" aria-label="Home page">
                         <i class="fa-solid fa-house"></i>
                         Home
                     </a>
                 </li>
-                <!-- If user exists in session then show relevant links -->
+                
                 {% if session.user %}
                     <li>
-                        <a href="{{ url_for('profile', username=session['user']) }}">
+                        <a href="{{ url_for('profile', username=session['user']) }}" aria-label="Profile">
                             <i class="fa-solid fa-user"></i>
                             Profile
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url_for('add_movie') }}">
+                        <a href="{{ url_for('add_movie') }}" aria-label="Add Movie">
                             <i class="fa-solid fa-film"></i>
                             Add Movie
                         </a>
                     </li>
                     {% if session.user == "admin" %}
                         <li>
-                            <a href="{{ url_for('show_genres') }}">
+                            <a href="{{ url_for('show_genres') }}" aria-label="Manage Genres">
                                 <i class="fa-solid fa-filter"></i>
                                 Manage Genres
                             </a>
                         </li>
                     {% endif %}
                     <li>
-                        <a href="{{ url_for('sign_out') }}">
+                        <a href="{{ url_for('sign_out') }}" aria-label="Sign Out">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Sign Out
                         </a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="{{ url_for('sign_in') }}">
+                        <a href="{{ url_for('sign_in') }}" aria-label="Sign In">
                             <i class="fa-solid fa-right-to-bracket"></i>
                             Sign In
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url_for('register') }}">
+                        <a href="{{ url_for('register') }}" aria-label="Register">
                             <i class="fa-solid fa-user-pen"></i>
                             Register
                         </a>
@@ -146,7 +142,6 @@
         <!-- Main Content -->
         <main class="container">
             {% block content %}
-            <!-- This is where the main content appears -->
             {% endblock %}
         </main>
 
@@ -160,17 +155,17 @@
                         </a>
                         <ul class="socials">
                             <li>
-                                <a class="white-text" target="_blank" href="https://www.linkedin.com/in/ofemiashiru/">
+                                <a class="white-text" target="_blank" href="https://www.linkedin.com/in/ofemiashiru/" aria-label="LinkedIn">
                                     <i class="fa-brands fa-linkedin fa-xl"></i> LinkedIn
                                 </a>
                             </li>
                             <li>
-                                <a class="white-text" target="_blank" href="https://github.com/ofemiashiru">
+                                <a class="white-text" target="_blank" href="https://github.com/ofemiashiru" aria-label="Github">
                                     <i class="fa-brands fa-square-github fa-xl"></i> Github
                                 </a>
                             </li>
                             <li>
-                                <a class="white-text" target="_blank" href="https://twitter.com/ofemiashiru">
+                                <a class="white-text" target="_blank" href="https://twitter.com/ofemiashiru" aria-label="Twitter">
                                     <i class="fa-brands fa-square-twitter fa-xl"></i> Twitter
                                 </a>
                             </li>
