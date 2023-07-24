@@ -32,10 +32,11 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="plot" name="plot" class="materialize-textarea validate" required>
+                    <textarea id="plot" name="plot" class="materialize-textarea validate" maxlength="1000" required>
                         {{- movie.plot -}}
                     </textarea>
                     <label for="plot">Plot</label>
+                    <span class="text-usage">0</span><span>/</span><span class="text-total">0</span>
                 </div>
             </div>
             <div class="row">
@@ -109,4 +110,5 @@
 {% block scripts %}
     <script src="{{ url_for('static', filename='js/drop_down_validator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/fetch_movie_poster.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/character_count.js') }}"></script>
 {% endblock %}

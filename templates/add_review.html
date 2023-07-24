@@ -13,8 +13,9 @@
                     <img class="review__image" src="{{ movie.poster }}" alt="{{ movie.poster }} image" >
                 </div>
                 <div class="input-field col s12 m6 l6">
-                    <textarea id="review" name="review" class="materialize-textarea validate" required></textarea>
+                    <textarea id="review" name="review" class="materialize-textarea validate" maxlength="255" required></textarea>
                     <label for="review">Review</label>
+                    <span class="text-usage">0</span><span>/</span><span class="text-total">0</span>
                 </div>
             </div>
             <div class="row center">
@@ -29,4 +30,8 @@
             </div>
         </form>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/character_count.js') }}"></script>
 {% endblock %}
