@@ -368,6 +368,10 @@ custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%
 <img src="docs/validation/js/fetch_movie_poster.png" alt="fetch_movie_poster.js">
 </details>
 
+<details><summary>character_count.js</summary>
+<img src="docs/validation/js/character_count.png" alt="character_count.js">
+</details>
+
 
 ### Python Validation
 
