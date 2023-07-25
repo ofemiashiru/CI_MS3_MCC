@@ -87,30 +87,31 @@
 4. I want to add reviews on MCC.
 
 #### Returning User
-5. I want to edit movies on MCC.
-6. I want to edit reviews on MCC.
-7. I want to delete my movies on MCC.
-8. I want delete my reviews on MCC.
-9. I want to use the search bar to search movies on MCC.
-10. I want to delete my account if no longer needed.
+5. I want to log into my MCC account.
+6. I want to edit movies on MCC.
+7. I want to edit reviews on MCC.
+8. I want to delete my movies on MCC.
+9. I want delete my reviews on MCC.
+10. I want to use the search bar to search movies on MCC.
+11. I want to delete my account if no longer needed.
 
 #### Site Owner 
-11. I want all users to be able to see all movies.
-12. I want all users to be able to see all reviews.
-13. I want all users to be able to create an account.
+12. I want all users to be able to see all movies.
+13. I want all users to be able to see all reviews.
+14. I want all users to be able to create an account.
 14. I want users who have created accounts to log in and see their profile.
-15. I want account users to add a movie.
-16. I want account users to edit their own movie.
-17. I want account users to delete their own movie.
-18. I want account users to add reviews.
-19. I want account users to edit their own review.
-20. I want account users to delete their own review.
-21. I want to be able to log in as admin.
-22. I want to be able to add a genre.
-23. I want to be able to edit a genre.
-24. I want to be able to delete a genre.
-25. I want to be able to prompt account users before updating or deleting.
-26. I do not want users to use browser back button if they are looking for a page that does not exist.
+16. I want account users to add a movie.
+17. I want account users to edit their own movie.
+18. I want account users to delete their own movie.
+19. I want account users to add reviews.
+20. I want account users to edit their own review.
+21. I want account users to delete their own review.
+22. I want to be able to log in as admin.
+23. I want to be able to add a genre.
+24. I want to be able to edit a genre.
+25. I want to be able to delete a genre.
+26. I want to be able to prompt account users before updating or deleting.
+27. I do not want users to use browser back button if they are looking for a page that does not exist.
 
 ## Scope
 
@@ -256,58 +257,35 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ### Logo Navigation and Search bar
 - Navigation and Logo remains consistent on each page
 - Navigation and search bar are fully responsive and collapse when window is resized
-- Navigation allows users to easily navigate the site and search bar allows users to search movies
+- Navigation allows users to easily navigate the site and search bar allows users to search movies (User story 9)
 - Logo in Navigation takes user back to the main page
 
 <p>Nav on Desktop, tablet and mobile</p>
 
-![Logo Navigation on Desktop](docs/features/feature-navigation-bar.png)
+![Logo Navigation on Desktop](docs/features/feature-navigation-bar.gif)
 
 
 ### Movie Section
-- Displays all movies uploaded 
+- Displays all movies uploaded, with choice to leave review, edit or delete movie  (User story 1, 4, 5, 7, 11, 12, 16, 17)
 
-![About Section](docs/features/feature-about.png)
-
-### Leader board Section
-- Informs users of the top ten players (User story - 3, 10)
-
-![Leader board Section](docs/features/feature-leaderboard.png)
-
-### Quiz Section
-- Allows users to play a Video Game related quiz to pass the time (User story - 14)
-
-![Quiz Section](docs/features/feature-quiz.png)
-
-### Contact Section
-- Allows users to send queries and messages to site owner (User story - 4, 7, 11)
-
-![Contact Section](docs/features/feature-contact.png)
+![Movie Section](docs/features/feature-movie-section.gif)
 
 ### Footer
-- Features on all pages
+- Displays logo, copyright and social links 
+
 ![Footer](docs/features/feature-footer.png)
 
-### Game
-- Allows users to play the Quick Shot Game (User story 1, 6, 8)
-- Allows users to save their score to the leader board, if it is a top ten score it will appear on the board (User story 2, 6, 9)
 
-<p>Game Home screen</p>
+### Sign In
+- Allows users to sign into their own account  (User Story 5)
 
-![Game Play - Home](docs/features/feature-game-home.png)
+![Sign In](docs/features/feature-sign-in.gif)
 
-<p>Game Play screen</p>
 
-![Game Play - Display](docs/features/feature-game-display.png)
+### Register
+- Allows users to register with MCC  (User Story 2)
 
-<p>Game Over screen</p>
-
-![Game Play - Display](docs/features/feature-game-over.png)
-
-### 404 Page
-- Allow users to navigate back to site without the use of back button on browser when visiting a page that does not exist (User story - 12)
-
-![404 page](docs/features/feature-404.png)
+![Register](docs/features/feature-register.gif)
 
 ## Validation
 
