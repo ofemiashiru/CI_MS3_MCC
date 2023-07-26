@@ -99,7 +99,7 @@
 12. I want all users to be able to see all movies.
 13. I want all users to be able to see all reviews.
 14. I want all users to be able to create an account.
-14. I want users who have created accounts to log in and see their profile.
+15. I want users who have created accounts to log in and see their profile.
 16. I want account users to add a movie.
 17. I want account users to edit their own movie.
 18. I want account users to delete their own movie.
@@ -277,7 +277,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 
 ### Sign In
-- Allows users to sign into their own account  (User Story 5)
+- Allows users to sign into their own account  (User Story 5, 14, 15)
 
 ![Sign In](docs/features/feature-sign-in.gif)
 
@@ -286,6 +286,18 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 - Allows users to register with MCC  (User Story 2)
 
 ![Register](docs/features/feature-register.gif)
+
+
+### Add Movie
+- Allows users to add a movie  (User Story 3, 16)
+
+![Add Movie](docs/features/feature-add-movie.gif)
+
+
+### Edit Movie
+- Allows users to edit their own movie  (User Story 6, 17)
+
+![Edit Movie](docs/features/feature-edit-movie.gif)
 
 ## Validation
 
