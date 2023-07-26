@@ -86,6 +86,6 @@
 {% endblock %}
 {% block scripts %}
     <script src="{{ url_for('static', filename='js/drop_down_validator.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/fetch_movie_poster.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/fetch_movie_poster.js') }}"></script>
     <script src="{{ url_for('static', filename='js/character_count.js') }}"></script>
 {% endblock %}

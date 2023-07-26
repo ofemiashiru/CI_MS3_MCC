@@ -413,8 +413,6 @@ The website is completely responsive and has been tested on mobile, tablet and d
 <details><summary>Mobile, Tablet and Desktop</summary>
 <p>Part One</p>
 <img src="docs/responsiveness/respsonsiveness-part-one.gif" alt="Responsiveness Part One">
-<p>Part Two</p>
-<img src="docs/responsiveness/respsonsiveness-part-two.gif" alt="Responsiveness Part Two">
 </details>
 
 
