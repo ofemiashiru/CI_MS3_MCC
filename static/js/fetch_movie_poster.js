@@ -1,7 +1,7 @@
-import OMDB_API_KEY from "./apikey.js";
-
 document.addEventListener("DOMContentLoaded", function () {
     
+    const omdbAPIKey = document.querySelector(".omdb_key").value;
+
     // Get Movie cover - add_movie.html
     const fetchMovieCover = function(){
         // clear img src
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const strMovieName = arrMovieName.join("+");
 
         // fetch request
-        fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=${OMDB_API_KEY}`)
+        fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=${omdbAPIKey}`)
         .then(response => response.json())
         .then(data => {
             if(data.Response === "False"){
