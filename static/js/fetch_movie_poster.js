@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    const omdbAPIKey = document.querySelector(".omdb_key").value;
+    //Retrieves api key from html page 
+    const getKey = function(){
+        return document.querySelector(".omdb_key").value;
+    }
 
     // Get Movie cover - add_movie.html
     const fetchMovieCover = function(){
@@ -21,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const strMovieName = arrMovieName.join("+");
 
         // fetch request
-        fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=${omdbAPIKey}`)
+        fetch(`https://www.omdbapi.com/?t=${strMovieName}&apikey=${getKey()}`)
         .then(response => response.json())
         .then(data => {
             if(data.Response === "False"){
@@ -48,7 +51,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#title").addEventListener("input", function(){
         fetchMovieCover();
     });
-
-    
 
 });
