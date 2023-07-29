@@ -42,18 +42,18 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                            </li>
-                            <!-- Modal Structure -->
-                            <div id="modal-delete-{{ movie._id }}" class="modal">
-                                <div class="modal-content">
-                                    <h5>Are you sure you want to delete {{ movie.title }}?</h5>
-                                    <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
-                                    <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
-                                </div>
-                            </div>    
+                                <!-- Modal Structure -->
+                                <div id="modal-delete-{{ movie._id }}" class="modal">
+                                    <div class="modal-content">
+                                        <h5>Are you sure you want to delete {{ movie.title }}?</h5>
+                                        <span class="red-text darken-4">Warning! All reviews associated with this movie will be deleted.</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close btn red darken-4" aria-label="No">No</a>
+                                        <a href="{{ url_for('delete_movie', movie_id=movie._id) }}" aria-label="Yes" class="modal-close btn green darken-3">Yes</a>
+                                    </div>
+                                </div>  
+                            </li>  
                         {% endfor %}
                     </ul>
                 {% else %}
