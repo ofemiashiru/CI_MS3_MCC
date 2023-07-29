@@ -444,8 +444,7 @@ The website was tested on the following browsers:
 The website is completely responsive and has been tested on mobile, tablet and desktop:
 
 <details><summary>Mobile, Tablet and Desktop</summary>
-<p>Part One</p>
-<img src="docs/responsiveness/respsonsiveness-part-one.gif" alt="Responsiveness Part One">
+<img src="docs/responsiveness/respsonsiveness_of_site.gif" alt="Responsiveness of Site">
 </details>
 
 
