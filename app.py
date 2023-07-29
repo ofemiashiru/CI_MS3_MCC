@@ -436,29 +436,30 @@ def show_reviews(movie_id):
     return render_template("reviews.html", movie=movie, reviews=reviews)
 
 
-@app.route("/add_review/<movie_id>", methods=["GET", "POST"])
-def add_review(movie_id):
+@app.route("/add_review/", methods=["GET", "POST"])
+def add_review():
+    return render_template("add_review.html", movie=[])
     """
     Route used to allow user to add a review for specific movie
     """
-    if not valid_object_id(movie_id):
-        abort(404)
+    # if not valid_object_id(movie_id):
+    #     abort(404)
 
-    if "user" in session:
-        movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
-        if request.method == "POST":
-            new_review = {
-                "review": request.form.get("review"),
-                "title": movie["title"],
-                "created_by": session["user"]
-            }
-            mongo.db.reviews.insert_one(new_review)
-            flash("Your review has been succesfully added")
-            return redirect(
-                url_for("show_reviews", movie_id=ObjectId(movie_id)))
-        return render_template("add_review.html", movie=movie)
-    flash("You need to be logged in.")
-    return redirect(url_for("sign_in"))
+    # if "user" in session:
+    #     movie = mongo.db.movies.find_one_or_404({"_id": ObjectId(movie_id)})
+    #     if request.method == "POST":
+    #         new_review = {
+    #             "review": request.form.get("review"),
+    #             "title": movie["title"],
+    #             "created_by": session["user"]
+    #         }
+    #         mongo.db.reviews.insert_one(new_review)
+    #         flash("Your review has been succesfully added")
+    #         return redirect(
+    #             url_for("show_reviews", movie_id=ObjectId(movie_id)))
+    #     return render_template("add_review.html", movie=movie)
+    # flash("You need to be logged in.")
+    # return redirect(url_for("sign_in"))
 
 
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
