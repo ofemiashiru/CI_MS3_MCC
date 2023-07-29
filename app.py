@@ -343,22 +343,21 @@ def show_genres():
 
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
-    return render_template("add_genre.html")
     """
     Route used to add genres
     """
-    # if "user" in session:
-    #     if session["user"].lower() == "admin":
-    #         if request.method == "POST":
-    #             genre = request.form.get("genre_name")
-    #             mongo.db.genres.insert_one({"genre_name": genre})
-    #             flash("Genre successfully added.")
-    #             return redirect("show_genres")
-    #         return render_template("add_genre.html")
-    #     flash("Only admin can access this page.")
-    #     return redirect(url_for("sign_in"))
-    # flash("You need to be logged in.")
-    # return redirect(url_for("sign_in"))
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            if request.method == "POST":
+                genre = request.form.get("genre_name")
+                mongo.db.genres.insert_one({"genre_name": genre})
+                flash("Genre successfully added.")
+                return redirect("show_genres")
+            return render_template("add_genre.html")
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/edit_genre/<genre_id>", methods=["GET", "POST"])
