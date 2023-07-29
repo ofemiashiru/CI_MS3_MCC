@@ -310,6 +310,11 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ![Edit Review](docs/features/feature-edit-review.gif)
 
+### Manage Genres
+- Allow user (admin) to see, add and edit genres (User Story 23, 24, 25)
+
+![Manage Genres](docs/features/feature-manage-genres.gif)
+
 ## Validation
 
 ### HTML Validation
@@ -457,7 +462,6 @@ The website is completely responsive and has been tested on mobile, tablet and d
 <details><summary>Mobile, Tablet and Desktop</summary>
 <img src="docs/responsiveness/respsonsiveness_of_site.gif" alt="Responsiveness of Site">
 </details>
-
 
 
 ### Testing user stories
