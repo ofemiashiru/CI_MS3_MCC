@@ -193,27 +193,27 @@ def profile(username):
     """
     Route for the user profile route with additional custom route
     """
-    # if "user" in session:
-    # Use this section to pull other data through based on username
-    user_info = mongo.db.users.find_one_or_404(
-        {"username": "ajasko"})
-    # Bring back all the users movies
-    users_movies = list(
-        mongo.db.movies.find({"created_by": "ajasko"}))
-    # bring back all reviews for the users movie
-    reviews = list(mongo.db.reviews.find())
+    if "user" in session:
+        # Use this section to pull other data through based on username
+        user_info = mongo.db.users.find_one_or_404(
+            {"username": session["user"]})
+        # Bring back all the users movies
+        users_movies = list(
+            mongo.db.movies.find({"created_by": user_info["username"]}))
+        # bring back all reviews for the users movie
+        reviews = list(mongo.db.reviews.find())
 
-    return render_template(
-        "profile.html",
-        user_info=user_info,
-        users_movies=users_movies,
-        reviews=reviews,
-        # all_users=list(mongo.db.users.find())
-        # if session["user"].lower() == "admin" else []
-    )
+        return render_template(
+            "profile.html",
+            user_info=user_info,
+            users_movies=users_movies,
+            reviews=reviews,
+            all_users=list(mongo.db.users.find())
+            if session["user"].lower() == "admin" else []
+        )
 
-    # flash("You are not currently logged in.")
-    # return redirect(url_for("sign_in"))
+    flash("You are not currently logged in.")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/sign_out")
