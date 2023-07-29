@@ -390,14 +390,41 @@ register.html [results](https://wave.webaim.org/report#/https://movie-crazy-club
 
 ### Performance 
 Google Lighthouse Tool was used to test the performance of the website. 
-<details><summary>Home</summary>
-<img src="docs/validation/performance/lighthouse-performance-index.png" alt="lighthouse for index">
+<details><summary>movies</summary>
+<img src="docs/validation/performance/movies.png" alt="lighthouse for movies">
 </details>
-<details><summary>Game</summary>
-<img src="docs/validation/performance/lighthouse-performance-game.png" alt="lighthouse for game">
+<details><summary>reviews</summary>
+<img src="docs/validation/performance/reviews.png" alt="lighthouse for reviews">
 </details>
-<details><summary>404</summary>
-<img src="docs/validation/performance/lighthouse-performance-404.png" alt="lighthouse for 404">
+<details><summary>genres</summary>
+<img src="docs/validation/performance/genres.png" alt="lighthouse for genres">
+</details>
+<details><summary>sign_in</summary>
+<img src="docs/validation/performance/sign_in.png" alt="lighthouse for sign_in">
+</details>
+<details><summary>register</summary>
+<img src="docs/validation/performance/register.png" alt="lighthouse for register">
+</details>
+<details><summary>profile</summary>
+<img src="docs/validation/performance/profile.png" alt="lighthouse for profile">
+</details>
+<details><summary>add_movie</summary>
+<img src="docs/validation/performance/add_movie.png" alt="lighthouse for add_movie">
+</details>
+<details><summary>add_review</summary>
+<img src="docs/validation/performance/add_review.png" alt="lighthouse for add_review">
+</details>
+<details><summary>add_genre</summary>
+<img src="docs/validation/performance/add_genre.png" alt="lighthouse for add_genre">
+</details>
+<details><summary>edit_movie</summary>
+<img src="docs/validation/performance/edit_movie.png" alt="lighthouse for edit_movie">
+</details>
+<details><summary>edit_review</summary>
+<img src="docs/validation/performance/edit_review.png" alt="lighthouse for edit_review">
+</details>
+<details><summary>edit_genre</summary>
+<img src="docs/validation/performance/edit_genre.png" alt="lighthouse for edit_genre">
 </details>
 
 ### Performing tests on various devices 
