@@ -113,7 +113,7 @@
             const encoded = "{{ omdb_api_key }}";
             const encStripped = encoded.substring(encoded.indexOf("k"), encoded.lastIndexOf("&"));
             return encStripped;
-        }
+        };
     </script>
     <script src="{{ url_for('static', filename='js/drop_down_validator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/fetch_movie_poster.js') }}"></script>
