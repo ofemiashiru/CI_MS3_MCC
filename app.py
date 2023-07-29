@@ -234,30 +234,30 @@ def add_movie():
     """
     Route to allow users to add movies
     """
-    # if "user" in session:
-    if request.method == "POST":
+    if "user" in session:
+        if request.method == "POST":
 
-        movie = {
-            "genre_name": request.form.get("genre_name"),
-            "title": request.form.get("title"),
-            "year": int(request.form.get("year")),
-            "plot": request.form.get("plot"),
-            "rating": int(request.form.get("rating")),
-            "director": request.form.get("director"),
-            "poster": request.form.get("poster"),
-            "created_by": session["user"]
-        }
-        mongo.db.movies.insert_one(movie)
-        flash("Your movie has been succesfully added.")
-        return redirect(url_for("show_movies"))
+            movie = {
+                "genre_name": request.form.get("genre_name"),
+                "title": request.form.get("title"),
+                "year": int(request.form.get("year")),
+                "plot": request.form.get("plot"),
+                "rating": int(request.form.get("rating")),
+                "director": request.form.get("director"),
+                "poster": request.form.get("poster"),
+                "created_by": session["user"]
+            }
+            mongo.db.movies.insert_one(movie)
+            flash("Your movie has been succesfully added.")
+            return redirect(url_for("show_movies"))
 
-    genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    return render_template(
-        "add_movie.html", genres=genres,
-        omdb_api_key=encoded_key)
+        genres = list(mongo.db.genres.find().sort("genre_name", 1))
+        return render_template(
+            "add_movie.html", genres=genres,
+            omdb_api_key=encoded_key)
 
-    # flash("You need to be logged in to add a movie.")
-    # return redirect("sign_in")
+    flash("You need to be logged in to add a movie.")
+    return redirect("sign_in")
 
 
 @app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
