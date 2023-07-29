@@ -47,7 +47,7 @@
                     <label for="rating">Rating</label>
                 </div>
                 <div class="input-field col s9">
-                    <select id="genre_name" name="genre_name" class="validate" required>
+                    <select aria-label="Choose genre" id="genre_name" name="genre_name" class="validate" required>
                         <option value="" disabled selected>Choose genre</option>
                         {% for genre in genres %}
                             <option value="{{genre.genre_name}}">{{ genre.genre_name }}</option>

@@ -45,7 +45,7 @@
                     <label for="rating">Rating</label>
                 </div>
                 <div class="input-field col s9">
-                    <select id="genre_name" name="genre_name" class="validate" required>
+                    <select aria-label="Choose genre" id="genre_name" name="genre_name" class="validate" required>
                         <option value="" disabled>Choose genre</option>
                         {% for genre in genres %}
                             {% if genre.genre_name == movie.genre_name %}
@@ -88,7 +88,7 @@
         <div class="row">
             <div class="movie-cover-container col s12 l6 center">
                 <h5 class="movie-cover-container__header">Movie Poster</h5>
-                <img id="movie-img" src="{{ movie.poster }}" >
+                <img id="movie-img" src="{{ movie.poster }}" alt="{{ movie.title }} poster">
                 <!-- Preloader -->
                 <div class="preloader-wrapper big active hidden">
                     <div class="spinner-layer spinner-blue-only">
