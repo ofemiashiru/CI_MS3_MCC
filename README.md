@@ -299,6 +299,17 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ![Edit Movie](docs/features/feature-edit-movie.gif)
 
+
+### Add Review
+- Allows users to see and add reviews (User Story 4, 13, 19)
+
+![Add Review](docs/features/feature-see-add-review.gif)
+
+### Edit Review
+- Allows users to edit reviews (User Story 7, 20)
+
+![Edit Review](docs/features/feature-edit-review.gif)
+
 ## Validation
 
 ### HTML Validation
