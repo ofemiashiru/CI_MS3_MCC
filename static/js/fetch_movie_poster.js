@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    //Retrieves api key from html page 
+    //Retrieves api key 
     const getKey = function(){
-        return document.querySelector(".omdb_key").value;
+        return btoa(encodedKey())
     }
 
     // Get Movie cover - add_movie.html

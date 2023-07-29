@@ -89,7 +89,6 @@
             <div class="movie-cover-container col s12 l6 center">
                 <h5 class="movie-cover-container__header">Movie Poster</h5>
                 <img id="movie-img" src="{{ movie.poster }}" >
-                <input class="omdb_key" type="hidden" value="{{ omdb_api_key }}" >
                 <!-- Preloader -->
                 <div class="preloader-wrapper big active hidden">
                     <div class="spinner-layer spinner-blue-only">
@@ -109,6 +108,13 @@
     </div>
 {% endblock %}
 {% block scripts %}
+    <script type="text/javascript">
+        const encodedKey = function(){
+            const encoded = "{{ omdb_api_key }}";
+            const encStripped = encoded.substring(encoded.indexOf("k"), encoded.lastIndexOf("&"));
+            return encStripped;
+        }
+    </script>
     <script src="{{ url_for('static', filename='js/drop_down_validator.js') }}"></script>
     <script src="{{ url_for('static', filename='js/fetch_movie_poster.js') }}"></script>
     <script src="{{ url_for('static', filename='js/character_count.js') }}"></script>

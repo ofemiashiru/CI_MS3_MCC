@@ -7,6 +7,7 @@ from bson.objectid import ObjectId
 
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
+import base64
 
 if os.path.exists("env.py"):
     import env
@@ -21,6 +22,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 omdb_api_key = os.environ.get("OMDB_API_KEY")
+encoded_key = base64.b64decode(omdb_api_key)
 
 
 def valid_object_id(id):
@@ -252,7 +254,7 @@ def add_movie():
         genres = list(mongo.db.genres.find().sort("genre_name", 1))
         return render_template(
             "add_movie.html", genres=genres,
-            omdb_api_key=omdb_api_key)
+            omdb_api_key=encoded_key)
 
     flash("You need to be logged in to add a movie.")
     return redirect("sign_in")
@@ -293,7 +295,7 @@ def edit_movie(movie_id):
             genres = list(mongo.db.genres.find().sort("genre_name", 1))
             return render_template(
                 "edit_movie.html", movie=movie, genres=genres,
-                omdb_api_key=omdb_api_key)
+                omdb_api_key=encoded_key)
 
         flash("Only the user who submitted this movie can edit it.")
         return redirect(url_for("show_movies"))
