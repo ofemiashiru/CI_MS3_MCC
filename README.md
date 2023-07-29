@@ -354,7 +354,13 @@ custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%
 <img src="docs/validation/js/drop_down_validator.png" alt="drop_down_validator.js">
 </details>
 
+<details><summary>in_html_script located in add_moveie.html and edit_movie.html</summary>
+<p>One unused variable warning however it is used within fetch_movie_poster.js</p>
+<img src="docs/validation/js/in_html_script.png" alt="in_html_script for add and edit movie page">
+</details>
+
 <details><summary>fetch_movie_poster.js</summary>
+<p>One undefined variable warning however it is defined within in script for add and edit movie pages to hide api key</p>
 <img src="docs/validation/js/fetch_movie_poster.png" alt="fetch_movie_poster.js">
 </details>
 
@@ -365,7 +371,7 @@ custom css [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%
 
 ### Python Validation
 
-[Python Linter](https://pep8ci.herokuapp.com/) was used to test and validate the Python used in app.py and env.py
+[Python Linter](https://pep8ci.herokuapp.com/) was used to test and validate the Python used in app.py
 
 - app.py - No Errors
 
