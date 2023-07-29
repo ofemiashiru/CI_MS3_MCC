@@ -328,19 +328,17 @@ def delete_movie(movie_id):
 
 @app.route("/show_genres")
 def show_genres():
-    genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    return render_template("genres.html", genres=genres)
     """
     Route used to display all genres
     """
-    # if "user" in session:
-    #     if session["user"].lower() == "admin":
-    #         genres = list(mongo.db.genres.find().sort("genre_name", 1))
-    #         return render_template("genres.html", genres=genres)
-    #     flash("Only admin can access this page.")
-    #     return redirect(url_for("sign_in"))
-    # flash("You need to be logged in.")
-    # return redirect(url_for("sign_in"))
+    if "user" in session:
+        if session["user"].lower() == "admin":
+            genres = list(mongo.db.genres.find().sort("genre_name", 1))
+            return render_template("genres.html", genres=genres)
+        flash("Only admin can access this page.")
+        return redirect(url_for("sign_in"))
+    flash("You need to be logged in.")
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/add_genre", methods=["GET", "POST"])
