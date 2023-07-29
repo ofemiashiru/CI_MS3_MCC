@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <input id="poster" name="poster" value="{{ movie.poster }}" type="text" placeholder="Auto Generated" class="validate" required readonly>
-                    <label for="Poster">Poster Link</label>
+                    <label for="poster">Poster Link</label>
                 </div>
             </div>
             <div class="row">
@@ -26,7 +26,7 @@
                     <label for="director">Director</label>
                 </div>
                 <div class="input-field col s3">
-                    <input id="year" name="year" type="number" min="1888" max="2023" step="1" value="{{ movie.year }}" pattern="^[0-9]{4}$" class="validate" required/>
+                    <input id="year" name="year" type="number" min="1888" max="2023" step="1" value="{{ movie.year }}" class="validate" required>
                     <label for="year">Year</label>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s3">
-                    <input id="rating" name="rating" value="{{ movie.rating }}" type="number" max="100" step="1" class="validate" required/>
+                    <input id="rating" name="rating" value="{{ movie.rating }}" type="number" max="100" step="1" class="validate" required>
                     <label for="rating">Rating</label>
                 </div>
                 <div class="input-field col s9">
@@ -108,7 +108,7 @@
     </div>
 {% endblock %}
 {% block scripts %}
-    <script type="text/javascript">
+    <script>
         const encodedKey = function(){
             const encoded = "{{ omdb_api_key }}";
             const encStripped = encoded.substring(encoded.indexOf("k"), encoded.lastIndexOf("&"));

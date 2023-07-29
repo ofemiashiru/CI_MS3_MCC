@@ -29,14 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             if(data.Response === "False"){
                 document.querySelector("#poster").value = "Poster not found!";
-                document.querySelector("#movie-img").src = "";
                 document.querySelector(".movie-cover-container__header").innerHTML = "Poster not found!";
                 document.querySelector(".preloader-wrapper").classList.remove("hidden");
                 
             } else {
                 const omdbMoviePoster = data.Poster;
                 document.querySelector(".movie-cover-container__header").innerHTML = "Poster found";
-                document.querySelector("#movie-img").src = omdbMoviePoster;
+                document.querySelector("#movie-img").setAttribute("src", omdbMoviePoster);
                 document.querySelector("#poster").value = omdbMoviePoster;
                 document.querySelector(".preloader-wrapper").classList.add("hidden");
             }
