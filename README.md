@@ -93,7 +93,7 @@
 6. I want to edit movies on MCC.
 7. I want to edit reviews on MCC.
 8. I want to delete my movies on MCC.
-9. I want delete my reviews on MCC.
+9. I want to delete my reviews on MCC.
 10. I want to use the search bar to search movies on MCC.
 11. I want to delete my account if no longer needed.
 
@@ -349,10 +349,14 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 
 ### Edit Movie
-- Allows users to edit their own movie  (User Story 6, 17)
+- Allows users to edit their own movie  (User Story 6, 17, 26)
 
 ![Edit Movie](docs/features/feature-edit-movie.gif)
 
+### Delete Movie
+- Allows users to delete their own movie  (User Story 8, 18, 26)
+
+![Delete Movie](docs/features/feature-delete-movie.gif)
 
 ### Add Review
 - Allows users to see and add reviews (User Story 4, 13, 19)
@@ -360,12 +364,17 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ![Add Review](docs/features/feature-see-add-review.gif)
 
 ### Edit Review
-- Allows users to edit reviews (User Story 7, 20)
+- Allows users to edit reviews (User Story 7, 20, 26)
 
 ![Edit Review](docs/features/feature-edit-review.gif)
 
+### Delete Review
+- Allows users to delete their own review  (User Story 9, 21, 26)
+
+![Delete Movie](docs/features/feature-delete-review.gif)
+
 ### Manage Genres
-- Allow user (admin) to see, add and edit genres (User Story 23, 24, 25)
+- Allow user (admin) to see, add and edit genres (User Story 23, 24, 25, 26)
 
 ![Manage Genres](docs/features/feature-manage-genres.gif)
 
