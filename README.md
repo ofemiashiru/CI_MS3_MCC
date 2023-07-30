@@ -492,7 +492,9 @@ sign_in.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-
 
 register.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/register) - No Errors Found.
 
-404.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/profilesdfd) - No
+404.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/profilesdfd) - No Errors Found.
+
+500.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/search) - No Errors Found.
 
 ### Performance 
 Google Lighthouse Tool was used to test the performance of the website. 
