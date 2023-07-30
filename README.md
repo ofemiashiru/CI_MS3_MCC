@@ -240,7 +240,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ### Frameworks and Tools
 - Flask
-- Materialise
+- Materialize
 - MongoDB
 - Git
 - GitHub
