@@ -772,10 +772,20 @@ You can clone the repository by:
 
 Deployed using Heroku using the following steps:
 1. You will need to first create the requirements that Heroku will use to import the dependencies. To do so type the following command in your CLI ```pip3 freeze > requirements.txt```
+
 2. You will then need a Procfile which is needed to specify the commands that are executed by the Heroku app on startup. To do so type the following command in your CLI ```echo web: python app.py > Procfile```
+
 3. Be sure to add, commit and push your changes once you have done the above two tasks
 4. Within Heroku follow the steps "New" > "Create New App" > Give app a name and choose the relevant region
+
+![heroku step1](docs/heroku-steps/heroku-1.png)
+![heroku step2](docs/heroku-steps/heroku-2.png)
+
 5. The newly created app will open on "Deploy", then follow the steps "Deployment Method" > Select Github and search for the repo-name. Once you have found it click "Connect" beside repo-name
+
+![heroku step3](docs/heroku-steps/heroku-3.png)
+![heroku step4](docs/heroku-steps/heroku-4.png)
+
 6. Be sure to update the "Config Vars" located in "Settings" > "Config Vars" > "Reveal Config Vars". You will need to set the following variables:
     - IP
     - MONGO_DBNAME
@@ -783,7 +793,17 @@ Deployed using Heroku using the following steps:
     - SECRET_KEY
     - OMDB_API_KEY
     - PORT
+
+![heroku step5](docs/heroku-steps/heroku-5.png)
+![heroku step6](docs/heroku-steps/heroku-6.png)
+
 7. Please also be sure to have set your Heroku API key within the Heroku CLI Toolbelt. The API key can be found in "Account Settings" > "Account" > "API Key"
+
+![heroku step7](docs/heroku-steps/heroku-7.png)
+
+![heroku step8](docs/heroku-steps/heroku-8.png)
+
+![heroku step9](docs/heroku-steps/heroku-9.png)
 
 ## Credits
 
