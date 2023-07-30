@@ -700,7 +700,7 @@ The website is completely responsive and has been tested on mobile, tablet and d
 
 | **Bug** | **Fix** | 
 |-------------|------------|
-|bug|fix|
+|Not so much of a bug but the OMDB api was shown in the fetch_movie_poster.js and the add/edit movie page which could present a potential security risk|Moved the api key to the env.py, encoded it in base64 within the app.py file and then decoded it when it reached |
 
 
 ## Deployment

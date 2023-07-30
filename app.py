@@ -315,6 +315,7 @@ def delete_movie(movie_id):
         movie = mongo.db.movies.find_one_or_404(
             {"_id": ObjectId(movie_id)})
         if session["user"].lower() == movie["created_by"].lower():
+            mongo.db.reviews.delete_many({"title": movie["title"]})
             mongo.db.movies.find_one_and_delete({"_id": ObjectId(movie_id)})
             flash("Movie has been successfully deleted.")
             return redirect(url_for("show_movies"))
