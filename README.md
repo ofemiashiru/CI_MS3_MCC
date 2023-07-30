@@ -781,7 +781,7 @@ Deployed using Heroku using the following steps:
 ![heroku step1](docs/heroku-steps/heroku-1.png)
 ![heroku step2](docs/heroku-steps/heroku-2.png)
 
-5. The newly created app will open on "Deploy", then follow the steps "Deployment Method" > Select Github and search for the repo-name. Once you have found it click "Connect" beside repo-name
+5. The newly created app will open on "Deploy", then follow the steps "Deployment Method" > Select Github and search for the repo-name. Once you have found it, click "Connect" beside the repo-name
 
 ![heroku step3](docs/heroku-steps/heroku-3.png)
 ![heroku step4](docs/heroku-steps/heroku-4.png)
