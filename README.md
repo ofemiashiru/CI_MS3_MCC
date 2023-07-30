@@ -659,7 +659,9 @@ You can clone the repository by:
 
 - Movie Wallpaper background | soure: [Wallpapers.com](https://wallpapers.com/)
 
-- All movie poster images are API generated from [OMDb](https://www.omdbapi.com/).
+- All movie poster images are API generated from [OMDb](https://www.omdbapi.com/)
+
+- Image used on add and edit movie pages taken from [Font Awesome](https://fontawesome.com/icons/image?f=classic&s=solid)
 
 ### Code
 
