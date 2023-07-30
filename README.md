@@ -259,7 +259,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ### Logo Navigation and Search bar
 - Navigation and Logo remains consistent on each page
 - Navigation and search bar are fully responsive and collapse when window is resized
-- Navigation allows users to easily navigate the site and search bar allows users to search movies (User story 9)
+- Navigation allows users to easily navigate the site and search bar allows users to search movies (User story 10)
 - Logo in Navigation takes user back to the main page
 
 <p>Nav on Desktop, tablet and mobile</p>
@@ -268,7 +268,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 <p>Search Bar</p>
 
-![Search bar](docs/features/feature-navigation-bar.gif)
+![Search bar](docs/features/feature-search-bar.gif)
 
 
 ### Movie Section
