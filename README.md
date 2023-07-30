@@ -383,7 +383,6 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ![Delete User](docs/features/feature-delete-user.gif)
 
-
 ### 404 Page
 - Users should be presented with a 404 page if they visit an incorrect page (User Story 27)
 
@@ -476,7 +475,7 @@ sign_in.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-
 
 register.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/register) - No Errors Found.
 
-404.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/profilesdfd)
+404.html [results](https://wave.webaim.org/report#/https://movie-crazy-club-73ece9687233.herokuapp.com/profilesdfd) - No
 
 ### Performance 
 Google Lighthouse Tool was used to test the performance of the website. 
@@ -680,6 +679,53 @@ The website is completely responsive and has been tested on mobile, tablet and d
 |-------------|------------|---------------------|-------------------|
 | Reviews and Edit Review | Click on the see reviews button, locate user review and click on the edit review button. Update review with correct details and click update review | Edit review should confirm if user wants to update. Once confirmed it should navigate to the show_revies route displaying update review. Flash message should confirm this. | Works as expected |
 
+
+21. I want account users to delete their own review.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Reviews and Delete Review | Click on see reviews button, locate your review and click delete review button | Delete review should confirm if user wants to delete. Once confirmed it should navigate to the show_reviews route with delete review no longer present. Flash message should confirm this. | Works as expected |
+
+
+22. I want to be able to log in as admin.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Sign In and Profile | Click sign in and log in as admin | Profile should open that displays other users accounts and Manage genre in the navigation. Flash message should confirm this. | Works as expected |
+
+
+23. I want to be able to add a genre.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Manage Genres | Click add genre button, enter the correct details and add genre | show_genres route should appear with newly added genre. Flash message should confirm this. | Works as expected |
+
+24. I want to be able to edit a genre.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Manage Genres | Click the edit genre button, enter the correct details, and click update genre | Manage genres should confirm if user wants to update genre. Once confirmed it should navigate to the show_genres route with updated genre displayed. Flash message should confirm this. | Works as expected |
+
+
+25. I want to be able to delete a genre.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Manage Genres | Click the delete genre button and confirm deletion | Manage genres should confirm if user wants to delete genre. Once confirmed it should navigate to the show_genres route with deleted genre no longer present. All it's associated movies should also be deleted. Flash message should confirm this. | Works as expected |
+
+
+26. I want to be able to prompt account users before updating or deleting.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| All Update and Delete functionality | Click on update or delete for specific movie, review or genre (admin) | Modal should appear confirming whether user wishes to update/delte item. User has choice to say yes or no | Works as expected |
+
+
+27. I do not want users to use browser back button if they are looking for a page that does not exist.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| 404 Page | Type in an incorrect route in address bar | 404 template should be rendered with a button navigating to home beneath | Works as expected |
 
 
 ## Bugs
