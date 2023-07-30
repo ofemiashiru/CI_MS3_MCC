@@ -341,6 +341,16 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ![Register](docs/features/feature-register.gif)
 
+### Profile
+- Allow users to see their own profile (User Story 15)
+
+<p>Admin</p>
+
+![Admin Profile](docs/features/feature-profile-admin.png)
+
+<p>Non-admin User</p>
+
+![Non-admin Profile](docs/features/feature-profile-non-admin.png)
 
 ### Add Movie
 - Allows users to add a movie (User Story 3, 16)
