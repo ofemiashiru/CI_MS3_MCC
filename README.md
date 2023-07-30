@@ -343,7 +343,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 
 ### Add Movie
-- Allows users to add a movie  (User Story 3, 16)
+- Allows users to add a movie (User Story 3, 16)
 
 ![Add Movie](docs/features/feature-add-movie.gif)
 
@@ -377,6 +377,11 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 - Allow user (admin) to see, add and edit genres (User Story 23, 24, 25, 26)
 
 ![Manage Genres](docs/features/feature-manage-genres.gif)
+
+### Delete User
+- Allow user to delete their account (User Story 11)
+
+![Delete User](docs/features/feature-delete-user.gif)
 
 ## Validation
 
@@ -725,11 +730,11 @@ You can clone the repository by:
 
 ### Code
 
-- Used [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/) to add error routes for 404 and 500.
+- Used [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/) to add error routes for 404 and 500
 
-- Used [Code Institute Github Solutions](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) to assist with validating materializes drop down correctly.
+- Used [Code Institute Github Solutions](https://github.com/Code-Institute-Solutions/TaskManagerAuth/blob/main/04-AddingATask-WritingToTheDatabase/02-materialize-select-validation/static/js/script.js) to assist with validating materializes drop down correctly
 
-- Used [Python Basics](https://pythonbasics.org/flask-redirect-and-errors/), [w3schools](https://www.w3schools.com/python/python_regex.asp) and [Pythex](https://pythex.org/) for regex and abort class on `valid_object_id` function in app.py
+- Used [Python Basics](https://pythonbasics.org/flask-redirect-and-errors/), [w3schools](https://www.w3schools.com/python/python_regex.asp), [Stack Overflow](https://stackoverflow.com/questions/33467536/how-to-check-if-a-string-is-made-only-of-letters-and-numbers) and [Pythex](https://pythex.org/) for regex and abort class on `valid_object_id` function in app.py
 
 - Used [Geeks for Geeks](https://www.geeksforgeeks.org/encoding-and-decoding-base64-strings-in-python/) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/atob) to encode/decode the OMDB api so it cannot be seen directly in the JS or HTML file
 

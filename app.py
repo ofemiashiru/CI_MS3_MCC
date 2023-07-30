@@ -31,9 +31,8 @@ def valid_object_id(id):
     and contains only letters and numbers. This is used to validate the
     ids being used and returns a boolean value
     """
-    check = re.search("[0-9a-zA-Z]{24}", id)
-
-    return bool(check)
+    check = re.search("^[0-9a-zA-Z]+$", id)
+    return bool(len(id) == 24 and check)
 
 
 def delete_user_entirely(id):
