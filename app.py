@@ -158,7 +158,7 @@ def sign_in():
 
     if request.method == "POST":
         #  check if the user exists in our database
-        existing_user = mongo.db.users.find_one_or_404(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         # if the existing user is truthy
