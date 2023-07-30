@@ -794,7 +794,10 @@ Deployed using Heroku using the following steps:
     - OMDB_API_KEY
     - PORT
 
+![heroku step5](docs/heroku-steps/heroku-5a.jpg)
+
 ![heroku step5](docs/heroku-steps/heroku-5.png)
+
 ![heroku step6](docs/heroku-steps/heroku-6.png)
 
 7. Please also be sure to have set your Heroku API key within the Heroku CLI Toolbelt. The API key can be found in "Account Settings" > "Account" > "API Key"
