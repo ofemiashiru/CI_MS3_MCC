@@ -379,9 +379,15 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 ![Manage Genres](docs/features/feature-manage-genres.gif)
 
 ### Delete User
-- Allow user to delete their account (User Story 11)
+- Allow user to delete their account (User Story 11, 26)
 
 ![Delete User](docs/features/feature-delete-user.gif)
+
+
+### 404 Page
+- Users should be presented with a 404 page if they visit an incorrect page (User Story 27)
+
+![404](docs/features/feature-404-page.gif)
 
 ## Validation
 
