@@ -37,7 +37,7 @@
                                     </a>
                                     {% for review in reviews %}
                                         {% if movie.title|lower == review.title|lower  %}
-                                            <p class="flow-text">{{ review.review }}</p>
+                                            <p>"{{ review.review }}"</p>
                                             <em class="grey-text text-darken-1">{{ review.created_by}}</em>                 
                                         {% endif %}
                                     {% endfor %}
