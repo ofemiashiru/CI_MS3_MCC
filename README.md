@@ -705,13 +705,7 @@ The website is completely responsive and has been tested on mobile, tablet and d
 
 ## Deployment
 
-Deployed using Heroku using the following steps:
-1. Whilst in GitHub repository navigate to the Settings tab
-2. On the left hand menu select Pages
-3. Scroll to "Branch" tap none to show the different options and select "main"
-4. Click save and the site will be published. You will see "Your site is live at https://ofemiashiru.github.io/CI_MS2_QSG/"
-
-You can also fork the repository by:
+You can fork the repository by:
 1. Navigating to the GitHub repository
 2. Click on "Fork" button in top right hand corner (Please note you must be signed in to Fork a repository)
 
@@ -723,6 +717,21 @@ You can clone the repository by:
 5. Change the current working directory to where you wish to clone the directory
 6. Type ```git clone``` and paste in the URL from the clipboard e.g ```$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)```
 7. Press Enter to create your local clone in your chosen folder.
+
+Deployed using Heroku using the following steps:
+1. You will need to first create the requirements that Heroku will use to import the dependencies. To do so type the following command in your CLI ```pip3 freeze > requirements.txt```
+2. You will then need a Procfile which is needed to specify the commands that are executed by the Heroku app on startup. To do so type the following command in your CLI ```echo web: python app.py > Procfile```
+3. Be sure to add, commit and push your changes once you have done the above two tasks
+4. Within Heroku follow the steps "New" > "Create New App" > Give app a name and choose the relevant region
+5. The newly created app will open on "Deploy", then follow the steps "Deployment Method" > Select Github and search for the repo-name. Once you have found it click "Connect" beside repo-name
+6. Be sure to update the "Config Vars" located in "Settings" > "Config Vars" > "Reveal Config Vars". You will need to set the following variables:
+    - IP
+    - MONGO_DBNAME
+    - MONGO_URI
+    - SECRET_KEY
+    - OMDB_API_KEY
+    - PORT
+7. Please also be sure to have set your Heroku API key within the Heroku CLI Toolbelt. The API key can be found in "Account Settings" > "Account" > "API Key"
 
 ## Credits
 
