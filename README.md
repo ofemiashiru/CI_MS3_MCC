@@ -62,7 +62,8 @@
 
 ### Target Audience
 - People who are fans of films. 
-- People who are part of a film club.
+- People who are part of a physical film club.
+- To be a central place for movie fans to share their reviews.
 
 ### User Requirements and Expectations
 
@@ -127,14 +128,15 @@ The scope of the project in its first release is defined by the following featur
 
 Features to be built in future releases:
 
-- Allow admin to review movie submissions to check whether movie has already been added or not. Some movies over time have had the same title so an extra field in the Movies collection that will signify approval that will alert admin so that they can approve it or not.
+- Allow admin to review movie submissions to check whether a movie has already been added or not. Some movies over time have had the same title name so an extra field in the Movies collection that will signify approval that will alert admin so that they can approve it or not.
 - Further development to allow admin users to have super user controls and delete reviews and movies.
 - Ability for users to add a list of Actors to be submitted into the Movies collection.
+- Users to create groups which they can add other users to.
 
 ## Design
 
 ### Design Choices
-MMC was designed to mimic the look and feel of iMdb. It was very much styled on that basis however the layout is very simple so that users can accurately locate all the necesarry sections of the site with ease. The majority of the site is style using Materialize components which has helped the site keep a consistent structure and made it fully responsive also. As alot of the images used are being derived from OMDbs api the site colours and layout need to be kept simple. My attempt with this was to see if I could essentially make the design an iMdb/Netflix clone.
+MMC was designed to mimic the look and feel of iMdb. It was very much styled on that basis however the layout is very simple so that users can accurately locate all the necesarry sections of the site with ease. The majority of the site is styled using Materialize components which has helped the site keep a consistent structure and made it fully responsive also. As alot of the images used are being generated from OMDbs api the site colours and layout need to be kept simple. My attempt with this was to see if I could essentially make the design an iMdb/Netflix clone.
 
 ### Colour
 
@@ -263,6 +265,10 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 <p>Nav on Desktop, tablet and mobile</p>
 
 ![Logo Navigation on Desktop](docs/features/feature-navigation-bar.gif)
+
+<p>Search Bar</p>
+
+![Search bar](docs/features/feature-navigation-bar.gif)
 
 
 ### Movie Section
