@@ -398,6 +398,11 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 ![404](docs/features/feature-404-page.gif)
 
+### 500 Page
+- Users should be presented with a 500 page if there are any server issues
+
+![500](docs/features/feature-500-page.png)
+
 ## Validation
 
 ### HTML Validation
