@@ -540,160 +540,146 @@ The website is completely responsive and has been tested on mobile, tablet and d
 
 ### Testing user stories
 
-1. I want to play the QuickShot game.
+1. I want to see all movies on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav and Game Page | Click play game on Nav in index.html and start game on game.html | Game.html page opens and game should start when start game is clicked | Works as expected |
+| Movies and Navigation| Click on the home link or logo | show_movies route should be open with all movies display | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-1-6-8.gif">
-</details>
 
-2. I want to save my score on the leader board.
+2. I want to create an account on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Game Page | When game over screen appears, enter name and click save | Main page should open and smooth scroll to leader board section showing newly added score if it is in the top ten | Works as expected |
+| Register | Click on register link and enter new details | Correct details should be accepted and profile page with newly created account should appear. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-2-6-9.gif">
-</details>
 
-3. I want to see the leader board.
+3. I want to add movies on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav | Click leader board on Nav in index.html | Main page should smooth scroll to leader board section | Works as expected |
+| Add Movie | Click on Add movie and enter detials of movie | Correct details should be accepted and show_movies page should open with newly added film. Flash message should confirm this.  | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-3-5-10.gif">
-</details>
 
-4. I want to contact QuickShot game site
+4. I want to add reviews on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Section | Click contact on Nav in index.html, enter details in text boxes and click send button | Page should smooth scroll to contact section, allow user to enter fields and only send if all fields are entered. On clicking send a message should appear beneath informing user of whether or not the message was sent successfully | Works as expected |
-
-<details><summary>Screen recording/ Screenshot</summary>
-<img src="docs/user-story-testing/user-story-4-7-11.gif">
-<img src="docs/user-story-testing/user-story-4-7-11.png">
-</details>
+| Reviews | Click on see reviews button, click leave review and enter details | Correct details should be accepted and reviews for specific film should be displayed with newly added review. Flash message should confirm this. | Works as expected |
 
 
-5. I want to see all the top ten scores.
+5. I want to log into my MCC account.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav | Click leader board on Nav in index.html | Main page should smooth scroll to leader board section | Works as expected |
+| Navigation, Sign In and Profile| Click on Sign in and enter correct details | Profile should open with logged in user. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-3-5-10.gif">
-</details>
 
-6. I want to be able to see if I can top the leader board.
+6. I want to edit movies on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav and Game Page | Click play game on Nav in index.html and start game on game.html | Game.html page opens and game should start when start game is clicked | Works as expected |
+| Movies and Edit Movie | Click on the edit movie button, enter correct details and click update movie | Edit movie should confirm if user wants to update. Once confirmed it should navigate to the show_movies route displaying updated movie. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-1-6-8.gif">
-</details>
 
-7. I want to be able to contact QuickShot game site.
+7. I want to edit reviews on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Section | Click contact on Nav in index.html, enter details in text boxes and click send button | Page should smooth scroll to contact section, allow user to enter fields and only send if all fields are entered. On clicking send a message should appear beneath informing user of whether or not the message was sent successfully | Works as expected |
-
-<details><summary>Screen recording/ Screenshot</summary>
-<img src="docs/user-story-testing/user-story-4-7-11.gif">
-<img src="docs/user-story-testing/user-story-4-7-11.png">
-</details>
+| Reviews and Edit Review | Click on the see reviews button, locate user review and click on the edit review button. Update review with correct details and click update review | Edit review should confirm if user wants to update. Once confirmed it should navigate to the show_revies route displaying update review. Flash message should confirm this. | Works as expected |
 
 
-8. I want users to be able to play QuickShot game on mobile, tablet and desktop.
+8. I want to delete my movies on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav and Game Page | Click play game on Nav in index.html and start game on game.html | Game.html page opens and game should start when start game is clicked | Works as expected |
+| Movies and Delete Movie | Click on the delete movie button | Delete movie should confirm if user wants to delete. Once confirmed it should navigate to the show_movies route with deleted movie no longer present. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-1-6-8.gif">
-</details>
 
-9. I want users to be able to save their score to the leader board.
+9. I want delete my reviews on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Game Page | When game over screen appears, enter name and click save | Main page should open and smooth scroll to leader board section showing newly added score if it is in the top ten | Works as expected |
+| Reviews and Delete Review | Click on see reviews button, locate your review and click delete review button | Delete review should confirm if user wants to delete. Once confirmed it should navigate to the show_reviews route with delete review no longer present. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-2-6-9.gif">
-</details>
 
-10. I want users to be able to see the top ten scores.
+10. I want to use the search bar to search movies on MCC.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav | Click leader board on Nav in index.html | Main page should smooth scroll to leader board section | Works as expected |
+| Search Bar | Type search criteria within the search bar | Should navigate to the search route and display relevant movies that match search criteria. Should also display if no match can be found | Works as expected |
 
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-3-5-10.gif">
-</details>
 
-11. I want users to be able to contact us.
+11. I want to delete my account if no longer needed.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Contact Section | Click contact on Nav in index.html, enter details in text boxes and click send button | Page should smooth scroll to contact section, allow user to enter fields and only send if all fields are entered. On clicking send a message should appear beneath informing user of whether or not the message was sent successfully | Works as expected |
-
-<details><summary>Screen recording/ Screenshot</summary>
-<img src="docs/user-story-testing/user-story-4-7-11.gif">
-<img src="docs/user-story-testing/user-story-4-7-11.png">
-</details>
+| Profile and Delete user | Click on the delete account button in profile | Delete user should confirm if user wants to delete. Once confirmed it should delete all associated, movies and reviews as well as their account and finally log the user out | Works as expected |
 
 
-12. I do not want users to use browser back button if they are looking for a page that does not exist.
+
+12. I want all users to be able to see all movies.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| 404 Page| Enter incorrect URI in address bar| 404 page should appear with Header and footer allowing user to navigate to a different page | Works as expected |
-
-<details><summary>Screen recording</summary>
-<img src="docs/user-story-testing/user-story-12.gif">
-</details>
+| Movies and Navigation| Click on the home link or logo | show_movies route should be open with all movies display | Works as expected |
 
 
-13. Inform users that the game will be coming to App store and Google Play soon
+13. I want all users to be able to see all reviews.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Nav and Hero Section | Click Home on Nav in index.html | Page should smooth scroll to home section show users that QuickShot will be coming to App Store and Google Play store soon (Desktop only) | Works as expected |
+| Reviews | Click on the see reviews button for specific film | show_reviews route should open with selected film and all reviews displayed. | Works as expected |
 
-<details><summary>Screenshots</summary>
-<img src="docs/user-story-testing/user-story-13.gif">
-</details>
 
-14. I want users to take a quiz that tests their video game knowledge, to pass the time.
+14. I want all users to be able to create an account.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Quiz Section | Complete quiz in index.html | Quiz section should ask 10 questions one by one giving feedback for each response and give a total at the end of quiz allowing user to restart | Works as expected |
+| Register | Click on register link and enter new details | Correct details should be accepted and profile page with newly created account should appear. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screenshots</summary>
-<img src="docs/user-story-testing/user-story-14.gif">
-</details>
+
+15. I want users who have created accounts to log in and see their profile.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Quiz Section | Choose no value for quiz question | Message should appear informing user to choose a value | Works as expected |
+| Navigation, Sign In and Profile| Click on Sign in and enter correct details | Profile should open with logged in user. Flash message should confirm this. | Works as expected |
 
-<details><summary>Screenshots</summary>
-<img src="docs/user-story-testing/user-story-14b.gif">
-</details>
+
+16. I want account users to add a movie.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Add Movie | Click on Add movie and enter detials of movie | Correct details should be accepted and show_movies page should open with newly added film. Flash message should confirm this.  | Works as expected |
+
+
+17. I want account users to edit their own movie.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Movies and Edit Movie | Click on the edit movie button, enter correct details and click update movie | Edit movie should confirm if user wants to update. Once confirmed it should navigate to the show_movies route displaying updated movie. Flash message should confirm this. | Works as expected |
+
+
+18. I want account users to delete their own movie.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Movies and Delete Movie | Click on the delete movie button | Delete movie should confirm if user wants to delete. Once confirmed it should navigate to the show_movies route with deleted movie no longer present. Flash message should confirm this. | Works as expected |
+
+
+19. I want account users to add reviews.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Reviews | Click on see reviews button, click leave review and enter details | Correct details should be accepted and reviews for specific film should be displayed with newly added review. Flash message should confirm this. | Works as expected |
+
+
+20. I want account users to edit their own review.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Reviews and Edit Review | Click on the see reviews button, locate user review and click on the edit review button. Update review with correct details and click update review | Edit review should confirm if user wants to update. Once confirmed it should navigate to the show_revies route displaying update review. Flash message should confirm this. | Works as expected |
+
 
 
 ## Bugs
