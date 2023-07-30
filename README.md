@@ -23,6 +23,7 @@
     3. [Fonts](#fonts)
     4. [Structure](#structure)
     5. [Database Structure](#database-structure)
+    6. [MongoDB Collections](#mongodb-collections)
     6. [Wireframes](#wireframes)
 4. [Technologies Used](#technologies-used)
     1. [Languages](#languages)
@@ -182,6 +183,53 @@ Using Figma I created a conceptual flow chart of how users will navigate through
 Using Lucid chart I created an ERD to show how data will flow and be stored within MongoDB collections.
 
 ![MovieCrazyClub MongoDB Image](docs/data_models/movie-crazy-club-erd.png)
+
+### MongoDB Collections
+
+<p>Genres</p>
+
+"_id":{"$oid":"UNIQUE_ID"},
+
+"genre_name":"Comedy"
+
+<p>Movies</p>
+
+
+"_id":{"$oid":"UNIQUE_ID"},
+
+"genre_name":"Comedy",
+
+"title":"Rush Hour",
+
+"year":{"$numberInt":"1998"},
+
+"plot":"When a Chinese diplomat's daughter is kidnapped in Los Angeles, he calls in Hong Kong Detective Inspector Lee (Jackie Chan) to assist the FBI with the case. But the FBI doesn't want anything to do with Lee, and they dump him off on the LAPD, who assign wisecracking Detective James Carter (Chris Tucker) to watch over him. Although Lee and Carter can't stand each other, they choose to work together to solve the case on their own when they figure out they've been ditched by both the FBI and police.",
+
+"rating":{"$numberInt":"89"},
+
+"director":"Brett Ratner",
+
+"poster":"IMAGE_FROM_OMDB_API",
+
+"created_by":"USER"
+
+<p>Reviews</p>
+
+"_id":{"$oid":"UNIQUE_ID"},
+
+"review":"This movie is really funny. I laughed from start to finish.",
+
+"title":"Rush Hour",
+
+"created_by":"USER"
+
+<p>Users</p>
+
+"_id":{"$oid":"UNIQUE_ID"},
+
+"username":"CHOSEN_USERNAME",
+
+"password":"HASHED_PASSWORD"
 
 
 ### Wireframes
@@ -472,9 +520,6 @@ The website is completely responsive and has been tested on mobile, tablet and d
 
 ### Testing user stories
 
-- Please note that these screen recordings were taken before the play now buttons and quiz were added
-- However the quiz itself has been added to fulfil user story 14
-
 1. I want to play the QuickShot game.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
@@ -635,12 +680,12 @@ The website is completely responsive and has been tested on mobile, tablet and d
 
 | **Bug** | **Fix** | 
 |-------------|------------|
-|Receiving the error message ```An invalid form control with name='' is not focusable``` when submitting answer without picking true or false|As the element created was set to required the DOM was searching for the element but could not find it as I set it the display property to none - created custom validation within the quiz.js file starting on line 170 to handle non input.|
+|bug|fix|
 
 
 ## Deployment
 
-Deployed using GitHub Pages using the following steps:
+Deployed using Heroku using the following steps:
 1. Whilst in GitHub repository navigate to the Settings tab
 2. On the left hand menu select Pages
 3. Scroll to "Branch" tap none to show the different options and select "main"
