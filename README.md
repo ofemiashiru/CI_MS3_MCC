@@ -118,9 +118,10 @@
 The scope of the project in its first release is defined by the following features:
 
 - Simple navigation that allows user to navigate between sections of the site. 
-- Allow users to log into their own accounts and perform CRUD operations on movies and reviews associated to their own account as well as their own account.
+- Allow users to log into their own accounts and perform CRUD operations on movies and reviews associated to the moviews as well as their own account. Admin users should also be able to perform CRUD operations on genres and on the users with accounts.
 - Allow all users to see the stored movies and reviews.
-- Allow users to search all the movies that have been added.
+- Allow all users to search all the movies that have been added.
+- Allow visitors to create an account as well as delete it if no longer needed.
 - An error page (404.html) and internal server error page (500.html) that appears when visiting a page that does not exist or when an internal server error has been detected.
 - Clear and simple favicon icon to help users identify the site.
 - Navigation links to show and hide based on logged in and logged out users as well as admin and non-admin users 
