@@ -5,8 +5,6 @@
 
 [Live Project](https://movie-crazy-club-73ece9687233.herokuapp.com/show_movies)
 
-[Github Repo](https://github.com/ofemiashiru/CI_MS3_MCC)
-
 ## Table of Content
 
 1. [Project Goals](#project-goals)
@@ -320,7 +318,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 
 ### Movie Section
-- Displays all movies uploaded, with choice to leave review, edit or delete movie  (User story 1, 4, 5, 7, 11, 12, 16, 17)
+- Displays all movies uploaded, with choice to leave review, edit or delete movie  (User story 1)
 
 ![Movie Section](docs/features/feature-movie-section.gif)
 
@@ -337,7 +335,7 @@ Using Lucid chart I created an ERD to show how data will flow and be stored with
 
 
 ### Register
-- Allows users to register with MCC  (User Story 2)
+- Allows users to register with MCC  (User Story 2, 14)
 
 ![Register](docs/features/feature-register.gif)
 
